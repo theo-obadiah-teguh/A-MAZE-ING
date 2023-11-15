@@ -1,7 +1,5 @@
-// searchword.h
 #ifndef PLAYERS_H
 #define PLAYERS_H
-
 struct playerObject {
   int vertical; 
   int horizontal; 
@@ -13,8 +11,5 @@ struct playerObject {
     horizontal = horiSpawn;
   }
 };
-
-// Function to animate character movement
-void moveCharacter(int steps, playerObject& character, string direction);
 
 #endif

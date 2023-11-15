@@ -4,30 +4,46 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string>
+
 using namespace std;
 
 int main() {
-  playerObject player = playerObject(spawnPoint, spawnPoint);
-  createPlot();
-    
-  string distance;
-  int movement;
-
   system("clear");
 
   cout << "Welcome to the game." << endl;
   sleep(2);
 
+  string difficulty;
+  cout << "Please choose a difficulty level -> (easy, medium, hard): ";
+  cin >> difficulty;
+
+  // Initialize memory allocation and playerObject
+  int plotDimension;
+  string ** myPlot = initPlot(difficulty, plotDimension);
+
+  if (myPlot == NULL) {
+    exit(1);
+  }
+
+  int spawnPoint = calcPlayerSpawn(plotDimension);
+  playerObject player = playerObject(spawnPoint, spawnPoint);
+
+  system("clear");
+
   cout << "You find yourself in the center of a maze!" << endl;
   cout << endl;
   sleep(2);
 
-  printPlot();
+  loadPlot(myPlot, plotDimension, spawnPoint);
+  printPlot(myPlot, plotDimension);
   cout << endl;
   sleep(2);
     
   bool firstJourney = true;
   while (true) {
+    string direction;
+    int steps;
+
     if (firstJourney) {
       cout << "Where do you want to go? ";
     }
@@ -36,7 +52,7 @@ int main() {
       cout << "Where do you want to go next? ";
     }
 
-    cin >> distance;
+    cin >> direction;
 
     if (firstJourney) {
       cout << "How far will you go? ";
@@ -45,9 +61,9 @@ int main() {
     else {
       cout << "How far will you go now? ";
     }
-    cin >> movement;
+    cin >> steps;
 
-    moveCharacter(movement, player, distance);  
+    moveAnimation(myPlot, steps, player, direction, plotDimension);  
         
     string answer;
     cout << "Do you want to continue your journey? (yes/no) ";

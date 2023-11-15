@@ -1,35 +1,102 @@
+#include "players.h"
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <unistd.h>
+
 using namespace std;
 
-const int plotHeight = 31;
-const int plotWidth = 31;
+// Dynamically create 2D arrays for the plots based on the desired difficulty level
+string ** initPlot (string difficulty, int& plotDimension) {
+  if (difficulty == "easy") {
+    plotDimension = 31;
+    string **plot = new string*[plotDimension];
+    for (int i = 0; i < plotDimension; i++) {
+      plot[i] = new string[plotDimension];
+    }
+    return plot;
+  }
+  else if (difficulty == "medium") {
+    plotDimension = 41;
+    string **plot = new string*[plotDimension];
+    for (int i = 0; i < plotDimension; i++) {
+      plot[i] = new string[plotDimension];
+    }
+    return plot;
+  }
+  else if (difficulty == "hard") {
+    plotDimension = 51;
+    string **plot = new string*[plotDimension];
+    for (int i = 0; i < plotDimension; i++) {
+      plot[i] = new string[plotDimension];
+    }
+    return plot;
+  }
+  else {
+    sleep(1);
+    system("clear");
+    cout << "Invalid Difficulty!" << endl;
+    return NULL;
+  }
+}
 
-string Plot [plotHeight][plotWidth];
-const int spawnPoint = 15; // Middle of the plot is the starting point
+// Calculate the spawn point of the player, which is the middle of the map
+int calcPlayerSpawn(int plotDimension) {
+  int result = (plotDimension - 1) / 2;
+  return result;
+}
 
-void createPlot() {
-  for(int i = 0; i < plotHeight; i++) {
-    for(int j = 0; j < plotWidth; j++) {
+// Load in the characters that form the maze, from the .txt file to the array
+void loadPlot(string **plot, int plotDimension, int spawnPoint) {
+  for(int i = 0; i < plotDimension; i++) {
+    for(int j = 0; j < plotDimension; j++) {
       if (i == spawnPoint && j == spawnPoint) {
-        Plot[i][j] = "O";
+        plot[i][j] = "O";
       }
       else {
-        Plot[i][j] = "*";
+        plot[i][j] = "*";
       }
     }
   }
 }
 
-void printPlot() {
+void printPlot(string **plot, int plotDimension) {
   string result = "";
 
-  for(int i = 0; i < plotHeight; i++) {
+  for(int i = 0; i < plotDimension; i++) {
     string line = "";
-    for(int j = 0; j < plotWidth; j++) {
-      line += Plot[i][j];
+    for(int j = 0; j < plotDimension; j++) {
+      line += plot[i][j];
     }
     result = result + line + '\n';
     }
     cout << result;
+}
+
+void moveAnimation(string **plot, int steps, playerObject& character, string direction, int plotDimension) { // Use & to actually edit the struct
+  system("clear");
+  for(int i = 0; i < steps; i++) {
+    plot[character.vertical][character.horizontal] = '*';
+
+    if (direction == "up")
+      character.vertical--;
+    else if (direction == "down")
+      character.vertical++;
+    else if (direction == "right")
+      character.horizontal++;
+    else if (direction == "left")
+      character.horizontal--;
+
+    plot[character.vertical][character.horizontal] = character.avatar;
+
+    printPlot(plot, plotDimension);
+
+    cout << endl;
+    cout << "You moved " << steps << " steps " << direction << "wards." << endl;
+
+    sleep(1);
+    if (i < steps - 1) {
+    	system("clear"); // Use "cls" for Linux (IMPORTANT!)
+    }
+	}
 }
