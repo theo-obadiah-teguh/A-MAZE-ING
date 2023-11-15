@@ -26,6 +26,7 @@ int steps(){
             //code to move ghost
         }
         else{
+            //call back function and try until all moves are valid
             step()
         }
         */
