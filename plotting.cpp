@@ -6,6 +6,11 @@
 
 using namespace std;
 
+// Clear screen function that we will use
+void clearscreen() {
+    system("cls||clear");
+}
+
 // Dynamically create 2D arrays for the plots based on the desired difficulty level
 string ** initPlot (string difficulty, int& plotDimension) {
   if (difficulty == "easy") {
@@ -34,7 +39,7 @@ string ** initPlot (string difficulty, int& plotDimension) {
   }
   else {
     sleep(1);
-    system("clear");
+    clearscreen();
     cout << "Invalid Difficulty!" << endl;
     return NULL;
   }
@@ -74,7 +79,7 @@ void printPlot(string **plot, int plotDimension) {
 }
 
 void moveAnimation(string **plot, int steps, playerObject& character, string direction, int plotDimension) { // Use & to actually edit the struct
-  system("clear");
+  clearscreen();
   for(int i = 0; i < steps; i++) {
     plot[character.vertical][character.horizontal] = '*';
 
@@ -96,7 +101,7 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
 
     sleep(1);
     if (i < steps - 1) {
-    	system("clear"); // Use "cls" for Linux (IMPORTANT!)
+    	clearscreen();
     }
 	}
 }

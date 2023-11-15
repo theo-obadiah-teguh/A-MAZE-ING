@@ -8,7 +8,7 @@
 using namespace std;
 
 int main() {
-  system("clear");
+  clearscreen();
 
   cout << "Welcome to the game." << endl;
   sleep(2);
@@ -28,7 +28,7 @@ int main() {
   int spawnPoint = calcPlayerSpawn(plotDimension);
   playerObject player = playerObject(spawnPoint, spawnPoint);
 
-  system("clear");
+  clearscreen();
 
   cout << "You find yourself in the center of a maze!" << endl;
   cout << endl;
@@ -70,7 +70,7 @@ int main() {
     cin >> answer;
 
     if (answer == "no") {
-      system("clear");
+      clearscreen();
       cout << "See you next time, traveller!" << endl;
       sleep(2);
       break;

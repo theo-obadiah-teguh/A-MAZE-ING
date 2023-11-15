@@ -6,6 +6,9 @@
 #include "players.h"
 using namespace std;
 
+// Clear screen function that is compatible with Windows/MacOS/Linux
+void clearscreen();
+
 // Dynamically allocate memory for the 2D plot
 string ** initPlot (string difficulty, int& plotDimension);
 
