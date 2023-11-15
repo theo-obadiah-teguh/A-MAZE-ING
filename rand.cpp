@@ -2,16 +2,23 @@
 using namespace std;
 #include <cstdlib>
 #include <ctime>
-
+/*
+struct ghostObject={
+    int direction;
+    int vertical_ax;
+    int horizaontal_ax;
+}
+*/
 //determine direction of the ghost (draft)
-//currently 4 direction but later should calculate the distance and then set randomization of 2 only
+//currently 4 direction but later we should calculate the distance and then set randomization of 2 only
 int direction(){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
+    //assume 3 ghost first, later change to the number of ghost dynamically
     for (int i=0;i<3;i++){
         time_t _time=time(nullptr);
         int _dir=rand()%4+1;
-        //ghost[i]=_dir;
+        //ghost[i].direction=_dir;
 }        
 
 //determine how many steps the ghost will take
