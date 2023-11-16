@@ -96,6 +96,10 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
   int prevHorizontal = character.horizontal;
   bool obstacleHit = false;
 
+  ////If bump into obstacles let's say 3 times then player loses the game
+  int bumps = 0;
+  int maxBumps = 3; 
+
 	
   for(int i = 0; i < steps; i++) {
     plot[character.vertical][character.horizontal] = '*';
@@ -113,6 +117,13 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     if (plot[character.vertical][character.horizontal] == "#"){
 	    clearscreen();
 	    cout << "You hit an obstacle!" << endl;
+	    bumps++
+	    if (bumps >= maxBumps){
+		    cout << "You lost the game" << endl;
+		    //////Add option to restart the game and quit the game
+		    
+		    break;
+	    }
 	    sleep(2);
 	    obstacleHit = true;
 	    break;
