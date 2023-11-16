@@ -119,8 +119,9 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
 	    bumps++
 	    if (bumps >= maxBumps){
 		    cout << "You lost the game" << endl;
+		    exit(0);
 		    //////Add option to restart the game and quit the game
-		    
+		    //// I will add a gameover function that will direct to a gameover screen
 		    break;
 	    }
 	    sleep(2);
