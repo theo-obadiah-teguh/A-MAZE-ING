@@ -90,6 +90,13 @@ void printPlot(string **plot, int plotDimension) {
 
 void moveAnimation(string **plot, int steps, playerObject& character, string direction, int plotDimension) { // Use & to actually edit the struct
   clearscreen();
+
+  /////Track the previous position of the character before bumping into the obstacle
+  int prevVertical = character.vertical;
+  int prevHorizontal = character.horizontal;
+  bool obstacleHit = false;
+
+	
   for(int i = 0; i < steps; i++) {
     plot[character.vertical][character.horizontal] = '*';
 
@@ -102,6 +109,15 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     else if (direction == "left")
       character.horizontal--;
 
+    ////////Check if player hits an obstacle
+    if (plot[character.vertical][character.horizontal] == "#"){
+	    clearscreen();
+	    cout << "You hit an obstacle!" << endl;
+	    sleep(2);
+	    obstacleHit = true;
+	    break;
+    }
+	    
     plot[character.vertical][character.horizontal] = character.avatar;
 
     printPlot(plot, plotDimension);
@@ -113,5 +129,11 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     if (i < steps - 1) {
     	clearscreen();
     }
-	}
+
+    /////Make player go back to previous position once hit the obstacle; Or should we move them to the right place? how?
+    if (obstacleHit){
+	    character.vertical = prevVertical;
+	    character.horizontal = prevHorizontal;
+	    plot[character.vertical][character.horizontal] = character.avatar;
+    }
 }
