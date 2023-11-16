@@ -26,7 +26,7 @@ int main() {
   }
 
   int spawnPoint = calcPlayerSpawn(plotDimension);
-  playerObject player = playerObject(spawnPoint, spawnPoint);
+  playerObject player = playerObject(spawnPoint, spawnPoint, true);
 
   clearscreen();
 

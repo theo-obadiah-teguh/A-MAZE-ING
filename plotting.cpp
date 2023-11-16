@@ -16,7 +16,7 @@ string ** initPlot (string difficulty, int& plotDimension) {
   if (difficulty == "easy") {
     plotDimension = 31;
     string **plot = new string*[plotDimension];
-    for (int i = 0; i < plotDimension; i++) {
+    for (int i = 0; i < plotDimension; ++i) {
       plot[i] = new string[plotDimension];
     }
     return plot;
@@ -24,7 +24,7 @@ string ** initPlot (string difficulty, int& plotDimension) {
   else if (difficulty == "medium") {
     plotDimension = 41;
     string **plot = new string*[plotDimension];
-    for (int i = 0; i < plotDimension; i++) {
+    for (int i = 0; i < plotDimension; ++i) {
       plot[i] = new string[plotDimension];
     }
     return plot;
@@ -32,7 +32,7 @@ string ** initPlot (string difficulty, int& plotDimension) {
   else if (difficulty == "hard") {
     plotDimension = 51;
     string **plot = new string*[plotDimension];
-    for (int i = 0; i < plotDimension; i++) {
+    for (int i = 0; i < plotDimension; ++i) {
       plot[i] = new string[plotDimension];
     }
     return plot;
@@ -53,23 +53,23 @@ int calcPlayerSpawn(int plotDimension) {
 
 // Load in the characters that form the maze, from the .txt file to the array
 void loadPlot(string **plot, int plotDimension, int spawnPoint) {
-  for(int i = 0; i < plotDimension; i++) {
-    for(int j = 0; j < plotDimension; j++) {
+  for(int i = 0; i < plotDimension; ++i) {
+    for(int j = 0; j < plotDimension; ++j) {
       if (i == spawnPoint && j == spawnPoint) {
-        plot[i][j] = "O";
+        plot[i][j] = "☺";
       }
       else {
         plot[i][j] = "*";
       }
     }
   }
- //////Adding obstacles in the maze through randomization (making it 10% of the maze) using "#"
-	
+
+ // Adding obstacles in the maze through randomization (making it 10% of the maze) using "#"
   int numObstacles = plotDimension * plotDimension * 0.1;
-  for (int k=0; k< numObstacles; k++){
+  for (int k = 0; k < numObstacles; ++k){
 	  int row = rand() % plotDimension;
 	  int col = rand() % plotDimension;
-          if (plot[row][col] != "O"){
+          if (plot[row][col] != "☺" && plot[row][col] != "☠"){
 		  plot[row][col] = "#";
 	  }
   }
@@ -78,9 +78,9 @@ void loadPlot(string **plot, int plotDimension, int spawnPoint) {
 void printPlot(string **plot, int plotDimension) {
   string result = "";
 
-  for(int i = 0; i < plotDimension; i++) {
+  for(int i = 0; i < plotDimension; ++i) {
     string line = "";
-    for(int j = 0; j < plotDimension; j++) {
+    for(int j = 0; j < plotDimension; ++j) {
       line += plot[i][j];
     }
     result = result + line + '\n';
@@ -91,37 +91,37 @@ void printPlot(string **plot, int plotDimension) {
 void moveAnimation(string **plot, int steps, playerObject& character, string direction, int plotDimension) { // Use & to actually edit the struct
   clearscreen();
 
-  /////Track the previous position of the character before bumping into the obstacle
+  // Track the previous position of the character before bumping into the obstacle
   int prevVertical = character.vertical;
   int prevHorizontal = character.horizontal;
   bool obstacleHit = false;
 
-  ////If bump into obstacles let's say 3 times then player loses the game
+  // If bump into obstacles let's say 3 times then player loses the game
   int bumps = 0;
   int maxBumps = 3;
 
-  for(int i = 0; i < steps; i++) {
+  for(int i = 0; i < steps; ++i) {
     plot[character.vertical][character.horizontal] = '*';
 
     if (direction == "up")
-      character.vertical--;
+      --character.vertical;
     else if (direction == "down")
-      character.vertical++;
+      ++character.vertical;
     else if (direction == "right")
-      character.horizontal++;
+      ++character.horizontal;
     else if (direction == "left")
-      character.horizontal--;
+      --character.horizontal;
 
-    ////////Check if player hits an obstacle
+    // Check if player hits an obstacle
     if (plot[character.vertical][character.horizontal] == "#"){
 	    clearscreen();
 	    cout << "You hit an obstacle!" << endl;
-	    bumps++
+	    bumps++;
 	    if (bumps >= maxBumps){
 		    cout << "You lost the game" << endl;
 		    exit(0);
-		    //////Add option to restart the game and quit the game
-		    //// I will add a gameover function that will direct to a gameover screen
+		    // Add option to restart the game and quit the game
+		    // Aryaman will add a gameover function that will direct to a gameover screen
 		    break;
 	    }
 	    sleep(2);
@@ -130,7 +130,6 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     }
 	    
     plot[character.vertical][character.horizontal] = character.avatar;
-
     printPlot(plot, plotDimension);
 
     cout << endl;
@@ -141,10 +140,11 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     	clearscreen();
     }
 
-    /////Make player go back to previous position once hit the obstacle; Or should we move them to the right place? how?
+    // Make player go back to previous position once hit the obstacle; Or should we move them to the right place? How?
     if (obstacleHit){
 	    character.vertical = prevVertical;
 	    character.horizontal = prevHorizontal;
 	    plot[character.vertical][character.horizontal] = character.avatar;
     }
+  }
 }
