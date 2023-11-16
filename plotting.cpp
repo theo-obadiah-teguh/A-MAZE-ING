@@ -63,6 +63,16 @@ void loadPlot(string **plot, int plotDimension, int spawnPoint) {
       }
     }
   }
+ //////Adding obstacles in the maze through randomization (making it 10% of the maze) using "#"
+	
+  int numObstacles = plotDimension * plotDimension * 0.1;
+  for (int k=0; k< numObstacles; k++){
+	  int row = rand() % plotDimension;
+	  int col = rand() % plotDimension;
+          if (plot[row][col] != "O"){
+		  plot[row][col] = "#";
+	  }
+  }
 }
 
 void printPlot(string **plot, int plotDimension) {
