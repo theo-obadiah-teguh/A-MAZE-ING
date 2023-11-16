@@ -98,9 +98,8 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
 
   ////If bump into obstacles let's say 3 times then player loses the game
   int bumps = 0;
-  int maxBumps = 3; 
+  int maxBumps = 3;
 
-	
   for(int i = 0; i < steps; i++) {
     plot[character.vertical][character.horizontal] = '*';
 
