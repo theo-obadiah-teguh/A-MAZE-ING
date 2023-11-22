@@ -77,7 +77,8 @@ void loadPlot(string **plot, int plotDimension, int spawnPoint) {
 
 void printPlot(string **plot, int plotDimension) {
   string result = "";
-
+  cout << endl;
+  
   for(int i = 0; i < plotDimension; ++i) {
     string line = "";
     for(int j = 0; j < plotDimension; ++j) {

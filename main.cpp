@@ -1,5 +1,6 @@
 #include "plotting.h"
 #include "players.h"
+#include "aesthetics.h"
 #include <iostream>
 #include <stdlib.h>
 #include <unistd.h>
@@ -10,8 +11,7 @@ using namespace std;
 int main() {
   clearscreen();
 
-  cout << "Welcome to the game." << endl;
-  sleep(2);
+  welcomeAnimation();
 
   string difficulty;
   cout << "Please choose a difficulty level -> (easy, medium, hard): ";
@@ -30,13 +30,12 @@ int main() {
 
   clearscreen();
 
-  cout << "You find yourself in the center of a maze!" << endl;
-  cout << endl;
-  sleep(2);
-
   loadPlot(myPlot, plotDimension, spawnPoint);
   printPlot(myPlot, plotDimension);
   cout << endl;
+  sleep(2);
+
+  cout << "You find yourself in the center of a dungeon maze!" << endl;
   sleep(2);
     
   bool firstJourney = true;
@@ -70,9 +69,7 @@ int main() {
     cin >> answer;
 
     if (answer == "no") {
-      clearscreen();
-      cout << "See you next time, traveller!" << endl;
-      sleep(2);
+      exitAnimation();
       break;
     }
   }
