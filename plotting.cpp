@@ -166,8 +166,8 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     
     //Make player move to a random position on the maze 
     if (teleportHit) {
-            int teleportRow = rand() % plotDimension();
-	    int teleportCol = rand() % plotDimension();
+            int teleportRow = rand() % plotDimension;
+	    int teleportCol = rand() % plotDimension;
 	    while (plot[teleportRow][teleportCol] != "#" && plot[teleportRow][teleportCol] != "☠" && plot[teleportRow][teleportCol] != "☺"){
 		    teleportRow = rand() % plotDimension;
                     teleportCol = rand() % plotDimension;
