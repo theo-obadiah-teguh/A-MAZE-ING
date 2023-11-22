@@ -4,7 +4,6 @@
 using namespace std;
 
 /*
-
 struct ghostObject={
     int direction;
     int vertical_ax;
@@ -63,8 +62,8 @@ bool check_valid(int ghost_no, int steps){
         //vertical movement
         if (ghostObject.direction == 1)  {
             if (ghostObject.vertical_ax + steps =< plotDimension) {
-                for (int a = ghostObject.vertical_ax;a < steps;a--) {
-                    if (myPlot[a-1][ghostObject.horizontal_ax] == '_') {
+                for (int a = 0;a < steps;a++) {
+                    if (myPlot[ghostObject.vertical_ax-1-a][ghostObject.horizontal_ax] == '_') {
                         steps++
                     }    
                 }
@@ -78,8 +77,8 @@ bool check_valid(int ghost_no, int steps){
             }
         } else if (ghostObject.direction == 3) {
             if (ghostObject.vertical_ax - steps >= 0) {
-                for (int b = ghostObject.vertical_ax;b < steps;b++) {
-                    if (myPlot[b+1][ghostObject.horizontal_ax] == '_') {
+                for (int b = 0;b < steps;b++) {
+                    if (myPlot[ghostObject.vertical_ax+1+b][ghostObject.horizontal_ax] == '_') {
                         steps++
                     }    
                 }
@@ -95,8 +94,8 @@ bool check_valid(int ghost_no, int steps){
         //horizontal movement
         } else if (ghostObject.direction == 2) {
             if (ghostObject.horizontal_ax + steps =< plotDimension) {
-                for (int c = ghostObject.horizontal_ax;c < steps;c++) {
-                    if (myPlot[ghostObject.vertical_ax][c+1] == '|') {
+                for (int c = 0;c < steps;c++) {
+                    if (myPlot[ghostObject.vertical_ax][ghostObject.horizontal_ax+1+c] == '|') {
                         steps++
                     }
                 }
@@ -110,8 +109,8 @@ bool check_valid(int ghost_no, int steps){
             }
         } else if (ghostObject.direction == 4) {
             if (ghostObject.horizontal_ax - steps >= 0) {
-                for (int d = ghostObject.horizontal_ax;d < steps;d--) {
-                    if (myPlot[ghostObject.vertical_ax][d-1] == '|') {
+                for (int d = 0;d < steps;d++) {
+                    if (myPlot[ghostObject.vertical_ax][ghostObject.horizontal_ax-1-d] == '|') {
                         steps++
                     }
                 }
