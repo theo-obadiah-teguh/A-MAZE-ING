@@ -64,7 +64,7 @@ void loadPlot(string **plot, int plotDimension, int spawnPoint) {
     }
   }
 
- // Adding obstacles in the maze through randomization (making it 10% of the maze) using "#"
+ // Adding obstacles in the maze through randomization (making it 15% of the maze) using "#" for obstacle and "T" for teleportation
   int numObstacles = plotDimension * plotDimension * 0.15;
   for (int k = 0; k < numObstacles; ++k){
 	  int row = rand() % plotDimension;
@@ -72,10 +72,10 @@ void loadPlot(string **plot, int plotDimension, int spawnPoint) {
           if (plot[row][col] != "☺" && plot[row][col] != "☠"){
                 int obstacleType = rand() % 2;
                 if (obstacleType == 0){
-		  plot[row][col] = "#";
+		  plot[row][col] = "#"; //Obstacle 
 		}
                 else if (obstacleType == 1){
-	          plot[row][col] = "T"
+	          plot[row][col] = "T"; //Teleportation
                 }
 	  }
   }
@@ -136,7 +136,8 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
 	    obstacleHit = true;
 	    break;
     }
-
+    
+    //Check if player encounters a teleporter
     else if (plot[character.vertical][character.horizontal] == "T"){
 	clearscreen();
         cout << "You encountered a teleporter" << endl;
@@ -156,17 +157,18 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     	clearscreen();
     }
 
-    // Make player go back to previous position once hit the obstacle; Or should we move them to the right place? How?
+    // Make player go back to previous position once hit the obstacle
     if (obstacleHit){
 	    character.vertical = prevVertical;
 	    character.horizontal = prevHorizontal;
 	    plot[character.vertical][character.horizontal] = character.avatar;
     }
     
+    //Make player move to a random position on the maze 
     if (teleportHit) {
             int teleportRow = rand() % plotDimension();
 	    int teleportCol = rand() % plotDimension();
-	    while (plot[teleportRow][teleportCol] != "#" || plot[teleportRow][teleportCol] != "☠" || plot[teleportRow][teleportCol] != "☺"){
+	    while (plot[teleportRow][teleportCol] != "#" && plot[teleportRow][teleportCol] != "☠" && plot[teleportRow][teleportCol] != "☺"){
 		    teleportRow = rand() % plotDimension;
                     teleportCol = rand() % plotDimension;
 	    }
