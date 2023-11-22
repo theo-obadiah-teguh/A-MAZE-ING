@@ -65,12 +65,18 @@ void loadPlot(string **plot, int plotDimension, int spawnPoint) {
   }
 
  // Adding obstacles in the maze through randomization (making it 10% of the maze) using "#"
-  int numObstacles = plotDimension * plotDimension * 0.1;
+  int numObstacles = plotDimension * plotDimension * 0.15;
   for (int k = 0; k < numObstacles; ++k){
 	  int row = rand() % plotDimension;
 	  int col = rand() % plotDimension;
           if (plot[row][col] != "☺" && plot[row][col] != "☠"){
+                int obstacleType = rand() % 2;
+                if (obstacleType == 0){
 		  plot[row][col] = "#";
+		}
+                else if (obstacleType == 1){
+	          plot[row][col] = "T"
+                }
 	  }
   }
 }
@@ -96,6 +102,7 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
   int prevVertical = character.vertical;
   int prevHorizontal = character.horizontal;
   bool obstacleHit = false;
+  bool teleportHit = false;
 
   // If bump into obstacles let's say 3 times then player loses the game
   int bumps = 0;
@@ -129,6 +136,14 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
 	    obstacleHit = true;
 	    break;
     }
+
+    else if (plot[character.vertical][character.horizontal] == "T"{
+	clearscreen();
+        cout << "You encountered a teleporter" << endl;
+        sleep(2);
+	teleportHit = true;
+        break;
+    }
 	    
     plot[character.vertical][character.horizontal] = character.avatar;
     printPlot(plot, plotDimension);
@@ -145,6 +160,18 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     if (obstacleHit){
 	    character.vertical = prevVertical;
 	    character.horizontal = prevHorizontal;
+	    plot[character.vertical][character.horizontal] = character.avatar;
+    }
+    
+    if (teleportHit) {
+            int teleportRow = rand() % plotDimension();
+	    int teleportCol = rand() % plotDimension();
+	    while ((plot[teleportRow][teleportCol] != "#" || plot[teleportRow][teleportCol] != "☠") != plot[teleportRow][teleportCol] != "☺"){
+		    teleportRow = rand() % plotDimension;
+                    teleportCol = rand() % plotDimension;
+	    }
+	    character.vertical = teleportRow;
+	    character.horizontal = teleportCol;
 	    plot[character.vertical][character.horizontal] = character.avatar;
     }
   }
