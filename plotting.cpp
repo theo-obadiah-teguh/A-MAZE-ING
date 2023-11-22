@@ -137,7 +137,7 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
 	    break;
     }
 
-    else if (plot[character.vertical][character.horizontal] == "T"{
+    else if (plot[character.vertical][character.horizontal] == "T"){
 	clearscreen();
         cout << "You encountered a teleporter" << endl;
         sleep(2);
@@ -166,7 +166,7 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     if (teleportHit) {
             int teleportRow = rand() % plotDimension();
 	    int teleportCol = rand() % plotDimension();
-	    while ((plot[teleportRow][teleportCol] != "#" || plot[teleportRow][teleportCol] != "☠") != plot[teleportRow][teleportCol] != "☺"){
+	    while (plot[teleportRow][teleportCol] != "#" || plot[teleportRow][teleportCol] != "☠" || plot[teleportRow][teleportCol] != "☺"){
 		    teleportRow = rand() % plotDimension;
                     teleportCol = rand() % plotDimension;
 	    }
