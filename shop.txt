@@ -1,0 +1,14 @@
+---------------------------------------------------------------
+|                                                             |
+| Welcome to the shop, stranger                               |
+| Items for sales:                                            |
+|-------------------------------------------------------------|
+| Energy drink: $20                                           |
+| Description: Restore your health with a delicious drink     |
+|                                                             |
+| Body training: $30                                          |
+| Description: Strength your power with professional training |
+|                                                             |
+| Time machine: $40                                           |
+| Description: Reverse the time that you have lost            |
+---------------------------------------------------------------
