@@ -103,7 +103,7 @@ void loadPlot(string **plot, int plotDimension, int spawnPoint) {
   }
 }
 
-void moveAnimation(string **plot, int steps, playerObject& character, string direction, int row_size, int column_size, int coin, int time, bool &win) { // Use & to actually edit the struct
+void moveAnimation(string **plot, int steps, playerObject& character, string direction, int row_size, int column_size, int coin, int time_limit, bool &win) { // Use & to actually edit the struct
   clearscreen();
 
   // Track the previous position of the character before bumping into the obstacle
@@ -162,7 +162,7 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
 	string answer;
 	cin >> answer;
 	if (answer == "yes"){
-	  visiting_shop(coin, time, bumps, maxBumps);
+	  visiting_shop(coin, time_limit, bumps, maxBumps);
 	 // break;
 	  }
     }
