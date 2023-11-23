@@ -18,20 +18,24 @@ int main() {
   cin >> difficulty;
 
   // Initialize memory allocation and playerObject
-  int plotDimension;
-  string ** myPlot = initPlot(difficulty, plotDimension);
+  int row_size = 0, column_size =0, coin = 60, time = 180;
+  string filename = "maze1.txt";
+  array_size(row_size, column_size, filename);
+  string map  = SelectPlot(difficulty);
+  string type = "maze";
+  string ** myPlot = create_plot(map, type, row_size, column_size);
 
   if (myPlot == NULL) {
     exit(1);
   }
-
-  int spawnPoint = calcPlayerSpawn(plotDimension);
-  playerObject player = playerObject(spawnPoint, spawnPoint, true);
+  
+  int spawn_row = row_size, spawn_column = column_size;
+  calcPlayerSpawn(spawn_row, spawn_column);
+  playerObject player = playerObject(spawn_row, spawn_column, true);
 
   clearscreen();
 
-  loadPlot(myPlot, plotDimension, spawnPoint);
-  printPlot(myPlot, plotDimension);
+  print_plot(myPlot, row_size, column_size);
   cout << endl;
   sleep(2);
 
@@ -62,7 +66,7 @@ int main() {
     }
     cin >> steps;
 
-    moveAnimation(myPlot, steps, player, direction, plotDimension);  
+    moveAnimation(myPlot, steps, player, direction, row_size, column_size, coin, time);
         
     string answer;
     cout << "Do you want to continue your journey? (yes/no) ";
