@@ -19,6 +19,7 @@ int main() {
 
   // Initialize memory allocation and playerObject
   int row_size = 0, column_size =0, coin = 60, time = 180;
+  bool win = false;
   string filename = "maze1.txt";
   array_size(row_size, column_size, filename);
   string map  = SelectPlot(difficulty);
@@ -66,8 +67,12 @@ int main() {
     }
     cin >> steps;
 
-    moveAnimation(myPlot, steps, player, direction, row_size, column_size, coin, time);
-        
+    moveAnimation(myPlot, steps, player, direction, row_size, column_size, coin, time, win);
+    if (win == true){
+      victoryAnimation();
+      break;
+    }
+    
     string answer;
     cout << "Do you want to continue your journey? (yes/no) ";
     cin >> answer;
