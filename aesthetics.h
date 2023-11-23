@@ -87,6 +87,8 @@ const char* exitArt =
 "  |     /      \n"
 "  |    |       \n";
 
+
+
 // Below are the animation scripts
 
 // An animation script for when the player loses the game
