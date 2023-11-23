@@ -18,7 +18,7 @@ int main() {
   cin >> difficulty;
 
   // Initialize memory allocation and playerObject
-  int row_size = 0, column_size =0, coin = 60, time = 180;
+  int row_size = 0, column_size =0, coin = 60, time_limit = 180;
   bool win = false;
   string filename = "maze1.txt";
   array_size(row_size, column_size, filename);
@@ -67,7 +67,7 @@ int main() {
     }
     cin >> steps;
 
-    moveAnimation(myPlot, steps, player, direction, row_size, column_size, coin, time, win);
+    moveAnimation(myPlot, steps, player, direction, row_size, column_size, coin, time_limit, win);
     if (win == true){
       victoryAnimation();
       break;
