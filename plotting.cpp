@@ -103,7 +103,7 @@ void loadPlot(string **plot, int plotDimension, int spawnPoint) {
   }
 }
 
-void moveAnimation(string **plot, int steps, playerObject& character, string direction, int row_size, int column_size, int coin, int time) { // Use & to actually edit the struct
+void moveAnimation(string **plot, int steps, playerObject& character, string direction, int row_size, int column_size, int coin, int time, bool &win) { // Use & to actually edit the struct
   clearscreen();
 
   // Track the previous position of the character before bumping into the obstacle
@@ -165,7 +165,11 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
 	  visiting_shop(coin, time, bumps, maxBumps);
 	 // break;
 	  }
-	}
+    }
+    else if (plot[character.vertical][character.horizontal] == "@"){
+        win = true;
+        break;
+    }
 	    
     plot[character.vertical][character.horizontal] = character.avatar;
     print_plot(plot, row_size, column_size); 
