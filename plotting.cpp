@@ -55,40 +55,6 @@ string random_exit(){
   return exit_point;
   }
 
-// Dynamically create 2D arrays for the plots based on the desired difficulty level
-string ** initPlot (string difficulty, int& plotDimension) {
-  if (difficulty == "easy") {
-    plotDimension = 31;
-    string **plot = new string*[plotDimension];
-    for (int i = 0; i < plotDimension; ++i) {
-      plot[i] = new string[plotDimension];
-    }
-    return plot;
-  }
-  else if (difficulty == "medium") {
-    plotDimension = 41;
-    string **plot = new string*[plotDimension];
-    for (int i = 0; i < plotDimension; ++i) {
-      plot[i] = new string[plotDimension];
-    }
-    return plot;
-  }
-  else if (difficulty == "hard") {
-    plotDimension = 51;
-    string **plot = new string*[plotDimension];
-    for (int i = 0; i < plotDimension; ++i) {
-      plot[i] = new string[plotDimension];
-    }
-    return plot;
-  }
-  else {
-    sleep(1);
-    clearscreen();
-    cout << "Invalid Difficulty!" << endl;
-    return NULL;
-  }
-}
-
 // Calculate the spawn point of the player, which is the middle of the map
 void calcPlayerSpawn(int &row_size, int &column_size){
   row_size /= 2;
