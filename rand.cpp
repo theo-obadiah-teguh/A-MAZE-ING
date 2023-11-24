@@ -48,7 +48,8 @@ int init(){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
     for (int i=0;i<ghost_no;i++){
-        ghost[i].vertical_ax=rand()%
+        //dimensions?
+        ghost[i].vertical_ax=rand()%dimensions;
     }
 }
 
@@ -66,7 +67,7 @@ int ghost_steps(){
         }
         else{
             //call back function and try until all moves are valid
-            step()
+            ghost_steps();
         }
         
 }
