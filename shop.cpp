@@ -6,7 +6,7 @@
 #include "transform_array.h"
 using namespace std;
 
-void purchase_options(int &coin, int &time, int &bumps, int &maxBumps){
+void purchase_options(int &coin, int &monster_count, int &bumps, int &maxBumps){
   cout << "What do you wish to buy?" << endl;
   string item_string_1, item_string_2;
   cin >> item_string_1 >> item_string_2;
@@ -49,21 +49,35 @@ void purchase_options(int &coin, int &time, int &bumps, int &maxBumps){
       cout << "You have been trained.";
       cout << " Your endurance is now better than ever." << endl;
       }
-    else if (item == "time machine" || item == "Time machine"){
+    else if (item == "monster hunter" || item == "Monster hunter"){
       if (coin < 40){
         cout << rejection << endl;
 	return;
 	}
-      coin -= 40;
-      time += 60;
-      cout << "The time has been reversed by 1 minute." << endl;
+      if (monster_count == 0){
+	      cout << "There is no monsters in the maze. Do you still wish to hire a hunter? (yes/no)" << endl;
+	      string answer_2;
+	      cin >> answer_2;
+	      if (answer_2 == "yes"){
+		      coin -= 40;
+	              return;
+	      }
+	      else if (answer_2 == "no"){
+		      return;
+	      }
       }
+      else {
+	      coin -= 40;
+              time += 60;
+              cout << "One monster has been killed" << endl;
+           }
+    }
     else {
       cout << "Invalid options." << endl;
       }
     }
 
-void visiting_shop(int &coin, int &time, int &bumps, int &maxBumps){
+void visiting_shop(int &coin, int &monster_count, int &bumps, int &maxBumps){
   system("cls||clear");
   int shop_row_size = 0, shop_column_size = 0;
   string filename = "shop.txt", type = "shop";
@@ -81,7 +95,7 @@ void visiting_shop(int &coin, int &time, int &bumps, int &maxBumps){
     return;
     }
   while (answer != "no"){
-    purchase_options(coin, time, bumps, maxBumps);
+    purchase_options(coin, monster_count, bumps, maxBumps);
     cout << "Is there anything you still want to buy? (yes/no)" << endl;
     cin >> answer;
     }
