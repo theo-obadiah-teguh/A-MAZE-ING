@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 
 using namespace std;
 
@@ -25,7 +27,8 @@ int main() {
   string map  = SelectPlot(difficulty);
   string type = "maze";
   string ** myPlot = create_plot(map, type, row_size, column_size);
-
+  string exit_point = random_exit();
+  
   if (myPlot == NULL) {
     exit(1);
   }
@@ -67,7 +70,7 @@ int main() {
     }
     cin >> steps;
 
-    moveAnimation(myPlot, steps, player, direction, row_size, column_size, coin, time_limit, win);
+    moveAnimation(myPlot, steps, player, direction, row_size, column_size, coin, time_limit, win, exit_point);
     if (win == true){
       victoryAnimation();
       break;
