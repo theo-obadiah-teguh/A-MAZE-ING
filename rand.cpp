@@ -2,6 +2,8 @@
 #include <cstdlib>
 #include <ctime>
 using namespace std;
+#include "player.h"
+
 
 /*
 struct ghostObject={
@@ -10,14 +12,14 @@ struct ghostObject={
     int horizontal_ax;
 }
 */
-
+int ghost_no;
 //determine direction of the ghost (draft)
 //currently 4 direction but later we should calculate the distance and then set randomisation of 2 only
-int direction(){
+int ghost_dir(){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
     //assume 3 ghost first, later change to the number of ghost dynamically
-    for (int i=0;i<3;i++){
+    for (int i=0;i<ghost_no;i++){
         time_t _time=time(nullptr);
         // 1 is up, 2 is right, 3 is down, 4 is left
         if (ghostObject.vertical_ax - playerObject.vertical >= 0 ){
@@ -34,11 +36,19 @@ int direction(){
             }
         }
         srand(static_cast<unsigned>(_time+1));
-        //ghost[i].direction=_dir;
+        //ghostObject[i].direction=_dir;
 }        
 
+int init(){
+    time_t _time=time(nullptr);
+    srand(static_cast<unsigned>(_time));
+    for (int i=0;i<ghost_no;i++){
+        
+    }
+}
+
 //determine how many steps the ghost will take
-int steps(){
+int ghost_steps(){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
     for (int i=0;i<3;i++){
