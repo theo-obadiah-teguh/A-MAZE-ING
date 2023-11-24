@@ -68,7 +68,6 @@ void purchase_options(int &coin, int &monster_count, int &bumps, int &maxBumps){
       }
       else {
 	      coin -= 40;
-              time += 60;
               cout << "One monster has been killed" << endl;
            }
     }
