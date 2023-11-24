@@ -33,6 +33,7 @@ int direction(){
                 int _dir=(rand() % 2 == 0) ? 1 : 4;
             }
         }
+        srand(static_cast<unsigned>(_time+1));
         //ghost[i].direction=_dir;
 }        
 
