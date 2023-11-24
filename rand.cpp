@@ -5,14 +5,19 @@ using namespace std;
 #include "player.h"
 
 
-/*
+
 struct ghostObject={
     int direction;
     int vertical_ax;
     int horizontal_ax;
 }
-*/
+
 int ghost_no;
+vector<ghostObject *> ghost;
+for(int i = 0; i < ghost_no; i++){
+    ghost.push_back(new ghostObject);
+}
+
 //determine direction of the ghost (draft)
 //currently 4 direction but later we should calculate the distance and then set randomisation of 2 only
 int ghost_dir(){
@@ -36,14 +41,14 @@ int ghost_dir(){
             }
         }
         srand(static_cast<unsigned>(_time+1));
-        //ghostObject[i].direction=_dir;
+        ghost[i].direction=_dir;
 }        
 
 int init(){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
     for (int i=0;i<ghost_no;i++){
-        
+        ghost[i].vertical_ax=rand()%
     }
 }
 
@@ -54,15 +59,16 @@ int ghost_steps(){
     for (int i=0;i<3;i++){
         time_t _time=time(nullptr);
         int _steps=rand()%4+1;
-        /*
+        
         if(check_valid(i, _steps)){
             //code to move ghost
+            if (ghostObject[i].direction==1)
         }
         else{
             //call back function and try until all moves are valid
             step()
         }
-        */
+        
 }
 
 //check validity (make sure the ghost will not out of boundary)
@@ -75,31 +81,31 @@ bool check_valid(int ghost_no, int steps){
             if (ghostObject.vertical_ax + steps =< plotDimension) {
                 for (int a = 0;a < steps;a++) {
                     if (myPlot[ghostObject.vertical_ax-1-a][ghostObject.horizontal_ax] == '_') {
-                        steps++
+                        steps++;
                     }    
                 }
                 if (ghostObject.vertical_ax + steps =< plotDimension) {
-                    return TRUE
+                    return TRUE;
                 } else {
-                    return FALSE
+                    return FALSE;
                 }
             } else {
-                return FALSE
+                return FALSE;
             }
         } else if (ghostObject.direction == 3) {
             if (ghostObject.vertical_ax - steps >= 0) {
                 for (int b = 0;b < steps;b++) {
                     if (myPlot[ghostObject.vertical_ax+1+b][ghostObject.horizontal_ax] == '_') {
-                        steps++
+                        steps++;
                     }    
                 }
                 if (ghostObject.vertical_ax - steps >= 0) {
-                    return TRUE
+                    return TRUE;
                 } else {
-                    return FALSE
+                    return FALSE;
                 }
             } else {
-                return FALSE
+                return FALSE;
             }
 
         //horizontal movement
@@ -107,31 +113,31 @@ bool check_valid(int ghost_no, int steps){
             if (ghostObject.horizontal_ax + steps =< plotDimension) {
                 for (int c = 0;c < steps;c++) {
                     if (myPlot[ghostObject.vertical_ax][ghostObject.horizontal_ax+1+c] == '|') {
-                        steps++
+                        steps++;
                     }
                 }
                 if (ghostObject.horizontal_ax + steps =< plotDimension) {
-                    return TRUE
+                    return TRUE;
                 } else {
-                    return FALSE
+                    return FALSE;
                 }
             } else {
-                return FALSE
+                return FALSE;
             }
         } else if (ghostObject.direction == 4) {
             if (ghostObject.horizontal_ax - steps >= 0) {
                 for (int d = 0;d < steps;d++) {
                     if (myPlot[ghostObject.vertical_ax][ghostObject.horizontal_ax-1-d] == '|') {
-                        steps++
+                        steps++;
                     }
                 }
                 if (ghostObject.horizontal_ax - steps >= 0) {
-                    return TRUE
+                    return TRUE;
                 } else {
-                    return FALSE
+                    return FALSE;
                 }
             } else {
-                return FALSE
+                return FALSE;
             }
         }
     }       
