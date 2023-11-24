@@ -40,16 +40,14 @@ int ghost_dir(){
                 int _dir=(rand() % 2 == 0) ? 1 : 4;
             }
         }
-        srand(static_cast<unsigned>(_time+1));
-        ghost[i].direction=_dir;
 }        
 
 int init(){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
     for (int i=0;i<ghost_no;i++){
-        //dimensions?
-        ghost[i].vertical_ax=rand()%dimensions;
+        ghost[i].vertical_ax=rand()%row_size;
+        ghost[i].horizontal_ax=rnad()%column_size;
     }
 }
 
