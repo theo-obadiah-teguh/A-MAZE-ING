@@ -43,16 +43,16 @@ string random_exit(){
   int randomization = rand()%4;
   string exit_point;
   switch (randomization){
+    case 0:
+      return "1";
     case 1:
-      exit_point = "1";
+      return "2";
     case 2:
-      exit_point = "2";
+      return "3";
     case 3:
-      exit_point = "3";
-    case 4:
-      exit_point = "4";
+      return "4";
     }
-  return exit_point;
+  return "4";
   }
 
 // Calculate the spawn point of the player, which is the middle of the map
