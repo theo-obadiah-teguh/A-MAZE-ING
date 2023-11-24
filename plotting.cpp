@@ -4,6 +4,8 @@
 #include <string>
 #include <stdlib.h>
 #include <unistd.h>
+#include <chrono>
+#include <thread>
 
 using namespace std;
 
@@ -177,7 +179,7 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     cout << endl;
     cout << "You moved " << steps << " steps " << direction << "wards." << endl;
 
-    sleep(1);
+    this_thread::sleep_for(chrono::milliseconds(500));
     if (i < steps - 1) {
     	clearscreen();
     }
