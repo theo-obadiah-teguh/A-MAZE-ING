@@ -13,6 +13,8 @@ void clearscreen();
 // Dynamically allocate memory for the 2D plot
 string SelectPlot (string difficulty);
 
+string random_exit();
+
 string ** initPlot(string difficulty, int &plotDimension);
 
 // Calculate the spawn point of the player
