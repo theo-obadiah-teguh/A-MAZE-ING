@@ -2,6 +2,8 @@
 #include "shop.h"
 #include <iostream>
 #include <string>
+#include <cstdlib>
+#include <ctime>
 #include <stdlib.h>
 #include <unistd.h>
 #include <chrono>
@@ -34,6 +36,24 @@ string SelectPlot (string difficulty){
   }
   return map;
 }
+
+// randomize exit location
+string random_exit(){
+  srand(time(NULL));
+  int randomization = rand()%4;
+  string exit_point;
+  switch (randomization){
+    case 1:
+      exit_point = "1";
+    case 2:
+      exit_point = "2";
+    case 3:
+      exit_point = "3";
+    case 4:
+      exit_point = "4";
+    }
+  return exit_point;
+  }
 
 // Dynamically create 2D arrays for the plots based on the desired difficulty level
 string ** initPlot (string difficulty, int& plotDimension) {
@@ -105,7 +125,7 @@ void loadPlot(string **plot, int plotDimension, int spawnPoint) {
   }
 }
 
-void moveAnimation(string **plot, int steps, playerObject& character, string direction, int row_size, int column_size, int coin, int time_limit, bool &win) { // Use & to actually edit the struct
+void moveAnimation(string **plot, int steps, playerObject& character, string direction, int row_size, int column_size, int coin, int time_limit, bool &win, string exit_point) { // Use & to actually edit the struct
   clearscreen();
 
   // Track the previous position of the character before bumping into the obstacle
@@ -168,7 +188,7 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
 	 // break;
 	  }
     }
-    else if (plot[character.vertical][character.horizontal] == "@"){
+    else if (plot[character.vertical][character.horizontal] == exit_point){
         win = true;
         break;
     }
