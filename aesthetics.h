@@ -140,17 +140,17 @@ void welcomeAnimation() {
 
   cout << "There was a dungeon..." << endl;
   cout << endl;
-  sleep(2);
+  sleep(1);
 
   cout << welcomeArt << endl;
-  sleep(2);
+  sleep(1);
 }
 
 void exitAnimation() {
   system("cls||clear");
 
   cout << "See you next time, traveller!" << endl;
-  sleep(2);
+  sleep(1);
 
   cout << exitArt << endl;
 }

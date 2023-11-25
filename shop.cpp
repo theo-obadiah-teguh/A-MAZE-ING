@@ -1,17 +1,18 @@
+#include "plotting.h"
 #include <iostream>
 #include <fstream>
 #include <string>
 #include <stdlib.h>
 #include <unistd.h>
-#include "transform_array.h"
+
 using namespace std;
 
 void purchase_options(int &coin, int &monster_count, int &bumps, int &maxBumps){
-  cout << "What do you wish to buy?" << endl;
+  cout << "What do you wish to buy? ";
   string item_string_1, item_string_2;
   cin >> item_string_1 >> item_string_2;
   string item = item_string_1 + " " + item_string_2;
-  string rejection = "Not enough coin. Try to earn more in the game.";
+  string rejection = "Not enough coins. Try to earn more in the game.";
   if (item == "energy drink" || item == "Energy drink"){
     if (coin < 20){
       cout << rejection << endl;
@@ -29,7 +30,7 @@ void purchase_options(int &coin, int &monster_count, int &bumps, int &maxBumps){
       else if (answer == "no"){
         return;
 	}
-      else{
+      else {
         cout << "Invalid options" << endl;
 	}
       }
@@ -76,31 +77,31 @@ void purchase_options(int &coin, int &monster_count, int &bumps, int &maxBumps){
       }
     }
 
-void visiting_shop(int &coin, int &monster_count, int &bumps, int &maxBumps){
+void visiting_shop(int &coin, int &monster_count, int &bumps, int &maxBumps, string exitPoint){
   system("cls||clear");
   int shop_row_size = 0, shop_column_size = 0;
   string filename = "shop.txt", type = "shop";
-  string ** shop_array = create_plot(filename, type, shop_row_size, shop_column_size);
-  print_plot(shop_array, shop_row_size, shop_column_size);
+  string ** shop_array = initPlot(filename, type, shop_row_size, shop_column_size);
+  printPlot(shop_array, shop_row_size, shop_column_size, exitPoint, false);
   cout << "Welcome to the shop, stranger." << endl;
   sleep(1);
   cout << "You have " << coin << " coins left." << endl;
-  cout << "Do you wish to buy some goods? (yes/no)" << endl;
+  cout << "Do you wish to buy some goods? (yes/no) ";
   string answer;
   cin >> answer;
   if (answer == "no"){
     cout << "See you soon." << endl;
-    delete_array(shop_array, shop_row_size);
+    deleteArray(shop_array, shop_row_size);
     return;
     }
   while (answer != "no"){
     purchase_options(coin, monster_count, bumps, maxBumps);
-    cout << "Is there anything you still want to buy? (yes/no)" << endl;
+    cout << "Is there anything you still want to buy? (yes/no) ";
     cin >> answer;
     }
   cout << "See you soon." << endl;
   sleep(1);
-  delete_array(shop_array, shop_row_size);
+  deleteArray(shop_array, shop_row_size);
   }
     
   

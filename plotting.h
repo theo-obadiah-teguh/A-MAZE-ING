@@ -8,22 +8,34 @@
 using namespace std;
 
 // Clear screen function that is compatible with Windows/MacOS/Linux
-void clearscreen();
+void clearscreen ();
 
-// Dynamically allocate memory for the 2D plot
-string SelectPlot (string difficulty);
+// File I/O Functions for loading and deleting dynamic 2D arrays
+// Reads the dimensions of a text input
+void readTextDimensions (int & rowSize, int & columnSize, string filename);
 
-string random_exit();
+// Reads the characters of a text input and stores them to an array
+void readTextToArray (string **& array, int rowLength, int columnLength, string filename, string type);
 
-string ** initPlot(string difficulty, int &plotDimension);
+// Initializes a 2D plot with readTextDimensions and readTextToArray, returns a pointer to the plot
+string ** initPlot (string filename, string type, int & rowSize, int & columnSize, string difficulty = "");
 
-// Calculate the spawn point of the player
-// Will be used for the fill plot function
-int calcPlayerSpawn(int &row_size, int &column_size);
+// Deletes a given 2D array
+void deleteArray (string **& array, int rowSize);
 
-void loadPlot(string ** plot, int plotDimension, int spawnPoint);
+// Selecting different maps based on the chosen difficulty level
+string selectPlot (string difficulty);
+
+// Randomizes the required exit for the win condition
+string randomExit ();
+
+// Prints a given 2D plot
+void printPlot (string ** array, int rowSize, int columnSize, string exitPoint, bool fixPosition = false);
+
+// Calculates the player's spawning point
+void calcPlayerSpawn (int & rowSize, int & columnSize);
 
 // Function to animate a character's movement
-void moveAnimation(string **plot, int steps, playerObject& character, string direction, int row_size, int column_size, int coin, int time_limit, bool &win, string exit_point);
+void moveAnimation (string **plot, int steps, playerObject& character, string direction, int rowSize, int columnSize, int oins, int timeLimit, bool & win, string exitPoint);
 
 #endif

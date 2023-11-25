@@ -1,8 +1,8 @@
 #include <iostream>
+#include "player.h"
 #include <cstdlib>
 #include <ctime>
 using namespace std;
-#include "player.h"
 
 
 

@@ -15,34 +15,37 @@ int main() {
 
   welcomeAnimation();
 
+  // Selecting a desired difficulty level
   string difficulty;
   cout << "Please choose a difficulty level -> (easy, medium, hard): ";
   cin >> difficulty;
+  string map = selectPlot(difficulty);
 
   // Initialize memory allocation and playerObject
-  int row_size = 0, column_size =0, coin = 60, time_limit = 180;
+  int rowSize = 0, columnSize = 0, coin = 60, timeLimit = 180;
   bool win = false;
-  string filename = "maze1.txt";
-  array_size(row_size, column_size, filename);
-  string map  = SelectPlot(difficulty);
+
+  // Initialize our maze plot
   string type = "maze";
-  string ** myPlot = create_plot(map, type, row_size, column_size);
-  string exit_point = random_exit();
+  string ** myPlot = initPlot(map, type, rowSize, columnSize, difficulty);
+
+  // Initialize the randomly assigned exit
+  string exitPoint = randomExit();
   
   if (myPlot == NULL) {
     exit(1);
   }
   
-  int spawn_row = row_size, spawn_column = column_size;
-  calcPlayerSpawn(spawn_row, spawn_column);
-  playerObject player = playerObject(spawn_row, spawn_column, true);
+  // Initialize player spawning point
+  int playerSpawnRow = rowSize, playerSpawnColumn = columnSize;
+  calcPlayerSpawn(playerSpawnRow, playerSpawnColumn);
+
+  // Initialize main player object
+  playerObject player = playerObject(playerSpawnRow, playerSpawnColumn, true);
 
   clearscreen();
 
-  print_plot(myPlot, row_size, column_size);
-  cout << endl;
-  sleep(2);
-
+  printPlot(myPlot, rowSize, columnSize, exitPoint);
   cout << "You find yourself in the center of a dungeon maze!" << endl;
   sleep(2);
     
@@ -70,7 +73,8 @@ int main() {
     }
     cin >> steps;
 
-    moveAnimation(myPlot, steps, player, direction, row_size, column_size, coin, time_limit, win, exit_point);
+    moveAnimation(myPlot, steps, player, direction, rowSize, columnSize, coin, timeLimit, win, exitPoint);
+
     if (win == true){
       victoryAnimation();
       break;

@@ -1,6 +1,7 @@
 #include "players.h"
 #include "shop.h"
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <cstdlib>
 #include <ctime>
@@ -16,17 +17,125 @@ void clearscreen() {
     system("cls||clear");
 }
 
+// Read the text file size
+void readTextDimensions (int & rowSize, int & columnSize, string filename) {
+  ifstream fin;
+  string row;
+  columnSize = 0;
+
+  // Opens map text file, then returns row and column size using pass by reference
+  fin.open(filename.c_str());
+  if (fin.fail()) {
+    cout << "Error when loading text file." << endl;
+    exit(1);
+  }
+
+  while (getline(fin, row)) {
+    columnSize = row.length();
+    rowSize++;
+  }
+
+  fin.close();
+}
+
+// Transform content of text file into a 2D array
+// Function will respond corresponding based on type of text file specified
+void readTextToArray (string **& array, int rowLength, int columnLength, string filename, string type) {
+  ifstream fin;
+  fin.open(filename.c_str());
+
+  if (fin.fail()) {
+    cout << "Error when loading text file." << endl;
+    exit(1);
+  }
+
+  int arrayRow = 0, arrayColumn = 0;
+  string row, textChar;
+  
+  // Obtain content of text file line by line
+  while (getline(fin, row)) {
+    // Reads every single character and input to array
+    for (int i = 0; i < columnLength; ++i){
+      textChar = row.substr(i, 1);  
+      array[arrayRow][i] = textChar; 
+    }
+    arrayRow++;
+  }
+
+  // Calculates player spawn point if the type of text file is maze 
+  if (type == "maze") {
+    int playerSpawnRow = rowLength / 2;
+    int playerSpawnColumn = columnLength / 2;
+    
+    playerObject character = playerObject(playerSpawnRow, playerSpawnColumn, true);
+    array[playerSpawnRow][playerSpawnColumn] = character.avatar;
+  }
+  fin.close();
+}
+
+// Function to transform a text file into 2D array using previous functions
+string ** initPlot (string filename, string type, int & rowSize, int & columnSize, string difficulty) {
+  rowSize = 0, columnSize = 0;
+  readTextDimensions(rowSize, columnSize, filename);
+
+  string ** plot = new string * [rowSize];
+
+  for (int i = 0; i < rowSize; ++i)
+    plot[i] = new string [columnSize];
+  
+  readTextToArray(plot, rowSize, columnSize, filename, type);
+
+  if (type == "maze") {
+    int numObstacles = 0;
+
+    // Determine the percentage of obstacles and teleportation portals based on the difficulty level
+    if (difficulty == "easy") {
+      numObstacles = rowSize * columnSize / 40;
+    }
+    else if (difficulty == "medium") {
+      numObstacles = rowSize * columnSize / 30;
+    }
+    else if (difficulty == "hard") {
+      numObstacles = rowSize * columnSize / 20;
+    }
+
+    for (int k = 0; k < numObstacles; ++k){
+	    int row = rand() % rowSize;
+	    int col = rand() % columnSize;
+
+      if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺"){
+        int obstacleType = rand() % 2;
+
+        if (obstacleType == 0)
+	  	    plot[row][col] = "#"; // Obstacle character
+
+        else if (obstacleType == 1)
+	        plot[row][col] = "T"; // Teleportation portal character
+	    }
+    }
+  }
+  return plot; 
+}
+
+// Function to release memory slots occupied by dynamic array
+void deleteArray (string **& array, int rowSize){
+  for (int i = 0; i < rowSize; ++i) {
+    delete [] array[i];
+  }
+  delete [] array;
+}
+
 // Select maze text files based on player specified difficulty
-string SelectPlot (string difficulty){
+string selectPlot (string difficulty) {
   string map;
   if (difficulty == "easy") {
     map = "maze1.txt"; 
   }
   else if (difficulty == "medium") {
-    map = "maze1.txt";
+    map = "maze2.txt";
   }
   else if (difficulty == "hard") {
-    map = "maze1.txt";
+    map = "maze3.txt";
   }
   else {
     sleep(1);
@@ -37,11 +146,11 @@ string SelectPlot (string difficulty){
   return map;
 }
 
-// randomize exit location
-string random_exit(){
+// Function to randomize exit location
+string randomExit () {
   srand(time(NULL));
-  int randomization = rand()%4;
-  string exit_point;
+  int randomization = rand() % 4;
+  string exitPoint;
   switch (randomization){
     case 0:
       return "1";
@@ -53,60 +162,66 @@ string random_exit(){
       return "4";
     }
   return "4";
+}
+
+// Function to print a 2D array
+void printPlot (string ** array, int rowSize, int columnSize, string exitPoint, bool fixPosition) {
+  cout << endl;
+
+  if (exitPoint == "1") {
+    cout << "Escape the maze through the 1st exit!" << endl;
   }
+  else if (exitPoint == "2") {
+    cout << "Escape the maze through the 2nd exit!" << endl;
+  }
+  else if (exitPoint == "3") {
+    cout << "Escape the maze through the 3rd exit!" << endl;
+  }
+  else if (exitPoint == "4") {
+    cout << "Escape the maze through the 4th exit!" << endl;
+  }
+
+  for (int i = 0; i < rowSize; ++i) {
+    for (int j = 0; j < columnSize; ++j) {
+      cout << array[i][j];
+    }
+    cout << endl;
+  }
+  
+  if (fixPosition == true)
+    cout << "Returning to player to the previous position..." << endl;
+}
 
 // Calculate the spawn point of the player, which is the middle of the map
-void calcPlayerSpawn(int &row_size, int &column_size){
-  row_size /= 2;
-  column_size /= 2;
+void calcPlayerSpawn (int & rowSize, int & columnSize) {
+  rowSize /= 2;
+  columnSize /= 2;
 }
 
-// Load in the characters that form the maze, from the .txt file to the array
-void loadPlot(string **plot, int plotDimension, int spawnPoint) {
-  for(int i = 0; i < plotDimension; ++i) {
-    for(int j = 0; j < plotDimension; ++j) {
-      if (i == spawnPoint && j == spawnPoint) {
-        plot[i][j] = "☺";
-      }
-      else {
-        plot[i][j] = "*";
-      }
-    }
-  }
-
- // Adding obstacles in the maze through randomization (making it 15% of the maze) using "#" for obstacle and "T" for teleportation
-  int numObstacles = plotDimension * plotDimension * 0.15;
-  for (int k = 0; k < numObstacles; ++k){
-	  int row = rand() % plotDimension;
-	  int col = rand() % plotDimension;
-          if (plot[row][col] != "☺" && plot[row][col] != "☠"){
-                int obstacleType = rand() % 2;
-                if (obstacleType == 0){
-		  plot[row][col] = "#"; //Obstacle
-		}
-                else if (obstacleType == 1){
-	          plot[row][col] = "T"; //Teleportation
-                }
-	  }
-  }
-}
-
-void moveAnimation(string **plot, int steps, playerObject& character, string direction, int row_size, int column_size, int coin, int time_limit, bool &win, string exit_point) { // Use & to actually edit the struct
+void moveAnimation (string **plot, int steps, playerObject& character, string direction, int rowSize, int columnSize, int coin, int timeLimit, bool & win, string exitPoint) {
   clearscreen();
 
-  // Track the previous position of the character before bumping into the obstacle
-  int prevVertical = character.vertical;
-  int prevHorizontal = character.horizontal;
-  bool obstacleHit = false;
-  bool teleportHit = false;
-  bool shopHit = false;
+  printPlot(plot, rowSize, columnSize, exitPoint); 
+  this_thread::sleep_for(chrono::milliseconds(350));
+  clearscreen();
 
   // If bump into obstacles let's say 3 times then player loses the game
   int bumps = 0;
   int maxBumps = 3;
 
-  for(int i = 0; i < steps; ++i) {
+  for (int i = 0; i < steps; ++i) {
     plot[character.vertical][character.horizontal] = ' ';
+
+    // Boolean values for status checking are reset every iteration
+    bool obstacleHit = false;
+    bool teleportHit = false;
+
+    // Store the the obstacle if we hit one
+    string obstacle;
+
+    // Track the previous position of the character before bumping into the obstacle
+    int prevVertical = character.vertical;
+    int prevHorizontal = character.horizontal;
 
     if (direction == "up")
       --character.vertical;
@@ -117,78 +232,104 @@ void moveAnimation(string **plot, int steps, playerObject& character, string dir
     else if (direction == "left")
       --character.horizontal;
 
-    // Check if player hits an obstacle
-    if (plot[character.vertical][character.horizontal] == "*" || plot[character.vertical][character.horizontal] == "|"){
+    // Checks if player hits an obstacle
+    if (plot[character.vertical][character.horizontal] == "*" || plot[character.vertical][character.horizontal] == "|" || plot[character.vertical][character.horizontal] == "-"){
 	    clearscreen();
 	    cout << "You hit an obstacle!" << endl;
 	    bumps++;
+
 	    if (bumps >= maxBumps){
-		    cout << "You lost the game" << endl;
-		    exit(0);
-		    // Add option to restart the game and quit the game
-		    // Aryaman will add a gameover function that will direct to a gameover screen
+        win = false;
 		    return;
 	    }
-	    sleep(2);
+	    sleep(1);
+
 	    obstacleHit = true;
-	    // break;
+      obstacle = plot[character.vertical][character.horizontal];
+
+      clearscreen();
     }
     
-    //Check if player encounters a teleporter
+    // Checks if player encounters a teleporter
     else if (plot[character.vertical][character.horizontal] == "T"){
-	clearscreen();
-        cout << "You encountered a teleporter" << endl;
-        sleep(2);
-	teleportHit = true;
-        //break;
+	    clearscreen();
+      cout << "You encountered a teleporter" << endl;
+      sleep(2);
+	    teleportHit = true;
+      // break;
     }
 
+    // Checks if player encounters a shop
     else if (plot[character.vertical][character.horizontal] == "$"){
-	cout << "You have encountered a shop" << endl;
-	sleep(2);
-        cout << "Do you want to visit there? (yes/no)" << endl;
-	string answer;
-	cin >> answer;
-	if (answer == "yes"){
-	  visiting_shop(coin, time_limit, bumps, maxBumps);
-	 // break;
-	  }
+	    cout << "You have encountered a shop" << endl;
+	    sleep(1);
+      cout << "Do you want to visit it? (yes/no) ";
+	    string answer;
+	    cin >> answer;
+
+	    if (answer == "yes") {
+	      visiting_shop(coin, timeLimit, bumps, maxBumps, exitPoint);
+	      // break;
+      }
+      else if (answer == "no") {
+        clearscreen();
+      }
     }
-    else if (plot[character.vertical][character.horizontal] == exit_point){
-        win = true;
-        break;
+    else if (plot[character.vertical][character.horizontal] == exitPoint){
+      win = true;
+      return;
     }
-	    
+
     plot[character.vertical][character.horizontal] = character.avatar;
-    print_plot(plot, row_size, column_size); 
+    printPlot(plot, rowSize, columnSize, exitPoint, obstacleHit); 
 
     cout << endl;
-    cout << "You moved " << steps << " steps " << direction << "wards." << endl;
+    if (!obstacleHit)
+      cout << "You moved " << steps << " steps " << direction << "wards." << endl;
 
     this_thread::sleep_for(chrono::milliseconds(500));
-    if (i < steps - 1) {
+
+    if (i < steps - 1 && !obstacleHit) {
     	clearscreen();
     }
 
-    // Make player go back to previous position once hit the obstacle
-    if (obstacleHit){
+    // Makes the player go back to previous position once hit the obstacle
+    if (obstacleHit) {
+
+      // Restores the obstacle
+      plot[character.vertical][character.horizontal] = obstacle;
+
+      // Restores the player's previous position
 	    character.vertical = prevVertical;
 	    character.horizontal = prevHorizontal;
 	    plot[character.vertical][character.horizontal] = character.avatar;
+
+      // Updates the plot
+      this_thread::sleep_for(chrono::milliseconds(700));
+
+      clearscreen();
+      printPlot(plot, rowSize, columnSize,  exitPoint, obstacleHit);
+
+      this_thread::sleep_for(chrono::milliseconds(1200));
+
+      clearscreen();
+      printPlot(plot, rowSize, columnSize, exitPoint);
+
+      return;
     }
     
-    //Make player move to a random position on the maze 
+    // Teleports the player to a random position in the maze 
     if (teleportHit) {
-            int teleportRow = rand() % row_size;
-	    int teleportCol = rand() % column_size;
-	    while (plot[teleportRow][teleportCol] != "*" && plot[teleportRow][teleportCol] != "☠" && plot[teleportRow][teleportCol] != "|" && plot[teleportRow][teleportCol] != "☺"){
-		    teleportRow = rand() % row_size;
-                    teleportCol = rand() % column_size;
+      int teleportRow = rand() % rowSize;
+	    int teleportCol = rand() % columnSize;
+      
+	    while (plot[teleportRow][teleportCol] != "*" && plot[teleportRow][teleportCol] != "☠" && plot[teleportRow][teleportCol] != "|" && plot[teleportRow][teleportCol] != "-" && plot[teleportRow][teleportCol] != "☺"){
+		    teleportRow = rand() % rowSize;
+        teleportCol = rand() % columnSize;
 	    }
 	    character.vertical = teleportRow;
 	    character.horizontal = teleportCol;
 	    plot[character.vertical][character.horizontal] = character.avatar;
     }
-    
   }
 }
