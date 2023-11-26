@@ -174,25 +174,24 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     
     // Teleports the player to a random position in the maze 
     if (teleportHit) {
-            int teleportRow = rand() % rowSize;
-	    int teleportCol = rand() % columnSize;
-      
-	    while (plot[teleportRow][teleportCol] != "*" && plot[teleportRow][teleportCol] != "☠" && plot[teleportRow][teleportCol] != "|" && plot[teleportRow][teleportCol] != "-" && plot[teleportRow][teleportCol] != "☺"){
-		    teleportRow = rand() % rowSize;
-                    teleportCol = rand() % columnSize;
-	    }
 
 	    // Store the previous position before teleporting
             int prevVertical = character.vertical;
             int prevHorizontal = character.horizontal;
 	    
+            int teleportRow = rand() % rowSize;
+	    int teleportCol = rand() % columnSize;
+      
+	    while (plot[teleportRow][teleportCol] != "*" && plot[teleportRow][teleportCol] != "☠" && plot[teleportRow][teleportCol] != "|" && plot[teleportRow][teleportCol] != "-" && plot[teleportRow][teleportCol] != "☺" && plot[teleportRow][teleportCol] != "T"){
+		    teleportRow = rand() % rowSize;
+                    teleportCol = rand() % columnSize;
+	    }
+
             // Move the player to the new teleporter position
 	    character.vertical = teleportRow;
 	    character.horizontal = teleportCol;
-
-            //Move the teleporter to the previous player's position
-            plot[prevVertical][prevHorizontal] = "T";
-	    plot[character.vertical][character.horizontal] = character.avatar;
+            plot[character.vertical][character.horizontal] = character.avatar;
+	    
     }
   }
 }
