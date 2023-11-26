@@ -4,6 +4,8 @@
 #include <fstream>
 #include <string>
 #include <unistd.h>
+#include <cstdlib>
+#include <ctime>
 using namespace std;
 
 // Clear screen function that we will use
@@ -92,7 +94,9 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
     else if (difficulty == "hard") {
       numObstacles = rowSize * columnSize / 20;
     }
-
+	  
+    srand(time(0));
+	  
     for (int k = 0; k < numObstacles; ++k){
 	    int row = rand() % rowSize;
 	    int col = rand() % columnSize;
