@@ -104,6 +104,8 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
       if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺"){
         int obstacleType = rand() % 2;
 
+       //Aryaman will add function to not make an obstacle or teleporter near an exit point/integer in the maze
+
         if (obstacleType == 0)
 	  	    plot[row][col] = "#"; // Obstacle character
 
