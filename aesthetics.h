@@ -159,6 +159,10 @@ void welcomeAnimation() {
   cout << "Enter your choice (1, 2, 3): ";
   cin >> choice;
 
+  cout << "1. Start Game" << endl;
+  cout << "2. Rules" << endl;
+  cout << "3. Quit" << endl;
+
   switch (choice){
     case 1:
           //Start the game
