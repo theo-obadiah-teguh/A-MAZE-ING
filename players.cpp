@@ -23,7 +23,22 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 
   printPlot(plot, rowSize, columnSize, exitPoint);
   printPlayerStats(character);
-  cout << "You moved " << steps << " step(s) " << direction << "wards." << endl;
+
+  string directionLiteral;
+  if (direction == "w") {
+    directionLiteral = "up";
+  }
+  else if (direction == "a") {
+    directionLiteral = "left";
+  }
+  else if (direction == "s") {
+    directionLiteral = "down";
+  }
+  else if (direction == "d") {
+    directionLiteral = "right";
+  }
+
+  cout << "You moved " << steps << " step(s) " << directionLiteral << "wards." << endl;
 
   this_thread::sleep_for(chrono::milliseconds(500));
   clearscreen();
@@ -42,13 +57,13 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     int prevVertical = character.vertical;
     int prevHorizontal = character.horizontal;
 
-    if (direction == "up")
+    if (direction == "w")
       --character.vertical;
-    else if (direction == "down")
+    else if (direction == "s")
       ++character.vertical;
-    else if (direction == "right")
+    else if (direction == "d")
       ++character.horizontal;
-    else if (direction == "left")
+    else if (direction == "a")
       --character.horizontal;
 
     // Checks if player hits an obstacle
@@ -121,7 +136,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     printPlayerStats(character);
 
     if (!obstacleHit || obstacle == "#") {
-      cout << "You moved " << steps << " step(s) " << direction << "wards." << endl;
+      cout << "You moved " << steps << " step(s) " << directionLiteral << "wards." << endl;
     }
 
     this_thread::sleep_for(chrono::milliseconds(500));

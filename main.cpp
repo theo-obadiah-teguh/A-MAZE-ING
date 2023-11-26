@@ -2,11 +2,9 @@
 #include "players.h"
 #include "aesthetics.h"
 #include <iostream>
-#include <stdlib.h>
 #include <unistd.h>
 #include <string>
-#include <cstdlib>
-#include <ctime>
+#include <cctype>
 
 using namespace std;
 
@@ -51,32 +49,92 @@ int main() {
   printPlayerStats(player);
   cout << "You find yourself in the center of a dungeon maze!" << endl;
   sleep(2);
-    
+
+  string prevDirection;
   bool firstJourney = true;
+
   while (true) {
     string direction;
     int steps;
 
     if (firstJourney) {
-      cout << "Where do you want to go? ";
-    }
-    else {
-      // cout << player.vertical << " " << player.horizontal << endl; //debug
-      cout << "Where do you want to go next? ";
-    }
+      cout << "Please ENTER the 'w', 'a', 's', 'd' keys to choose a direction." << endl;
+      cout << "Where do you want to go? (ENTER 'q' -> Main Menu) ";
+      cin >> direction;
 
-    cin >> direction;
+      if (direction == "W") {
+        direction = "w";
+      }
+      else if (direction == "A") {
+        direction = "a";
+      }
+      else if (direction == "S") {
+        direction = "s";
+      }
+      else if (direction == "D") {
+        direction = "d";
+      }
+      else if (direction == "Q") {
+        direction = "q";
+      }
 
-    if (firstJourney) {
+      if (direction == "q") {
+        exitAnimation();
+        break;
+      }
+
+      if (direction != "w" && direction != "a" && direction != "s" && direction != "d") {
+        clearscreen();
+        printPlot(myPlot, rowSize, columnSize, exitPoint);
+        printPlayerStats(player);
+        cout << "You find yourself in the center of a dungeon maze!" << endl;
+        continue;
+      }
+
       cout << "How far will you go? ";
+      cin >> steps;
+
       firstJourney = false;
     }
     else {
+      cout << "Please ENTER the 'w', 'a', 's', 'd' keys to choose a direction." << endl;
+      cout << "Where do you want to go next? (ENTER 'q' -> Main Menu) ";
+      cin >> direction;
+
+      if (direction == "W") {
+        direction = "w";
+      }
+      else if (direction == "A") {
+        direction = "a";
+      }
+      else if (direction == "S") {
+        direction = "s";
+      }
+      else if (direction == "D") {
+        direction = "d";
+      }
+      else if (direction == "Q") {
+        direction = "q";
+      }
+
+      if (direction == "q") {
+        exitAnimation();
+        break;
+      }
+
+      if (direction != "w" && direction != "a" && direction != "s" && direction != "d") {
+        clearscreen();
+        printPlot(myPlot, rowSize, columnSize, exitPoint);
+        printPlayerStats(player);
+        continue;
+      }
+
       cout << "How far will you go now? ";
+      cin >> steps;
     }
-    cin >> steps;
 
     movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint);
+    prevDirection = direction;
 
     if (player.health <= 0) {
       defeatAnimation();
@@ -85,15 +143,7 @@ int main() {
     else if (win == true){
       victoryAnimation();
       break;
-    }
-    
-    string answer;
-    cout << "Do you want to continue your journey? (yes/no) ";
-    cin >> answer;
 
-    if (answer == "no") {
-      exitAnimation();
-      break;
     }
   }
 }
