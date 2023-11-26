@@ -176,6 +176,7 @@ void welcomeAnimation() {
           //Invalid choice
           cout << "Invalid choice. Please try again." << endl;
           break;
+  }
 }
 
 void exitAnimation() {
