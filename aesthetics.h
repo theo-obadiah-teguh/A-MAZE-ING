@@ -144,6 +144,38 @@ void welcomeAnimation() {
 
   cout << welcomeArt << endl;
   sleep(1);
+
+  cout << "Main Menu:" << endl;
+  cout << "1. Start Game" << endl;
+  cout << "2. Rules" << endl;
+  cout << "3. Quit" << endl;
+
+  int choice;
+  cout << "Enter your choice: ";
+  cin >> choice;
+
+  switch (choice){
+    case 1:
+          //Start the game
+          break;
+    case 2:
+          //Display the rules
+          cout << "Rules:" << endl;
+          cout << "1. Navigate the maze through the arrow keys 'w' 'a' 's' 'd' " << endl;
+          cout << "2. Select how many steps to take" << endl;
+          cout << "3. Find the exit point indicated by the number 1, 2, 3 or 4" << endl;
+          cout << "4. Avoid obstacles # and walls |" << endl;
+          cout << "5. Teleport T to a random location if you wish" << endl;
+          cout << "6. Collect coins $ along the way" << endl;
+          break;
+    case 3:
+          //Quit the game
+          exitAnimation();
+          exit(0);
+    default:
+          //Invalid choice
+          cout << "Invalid choice. Please try again." << endl;
+          break;
 }
 
 void exitAnimation() {
