@@ -169,13 +169,14 @@ void welcomeAnimation() {
           break;
     case 2:
           //Display the rules
+          cout << " " << endl;
           cout << "Rules:" << endl;
-          cout << "1. Navigate the maze through the arrow keys 'w' 'a' 's' 'd' " << endl;
-          cout << "2. Select how many steps to take" << endl;
-          cout << "3. Find the exit point indicated by the number 1, 2, 3 or 4" << endl;
-          cout << "4. Avoid obstacles # and walls |" << endl;
-          cout << "5. Teleport T to a random location if you wish" << endl;
-          cout << "6. Collect coins $ along the way" << endl;
+          cout << "• Navigate the maze through the arrow keys 'w' 'a' 's' 'd' " << endl;
+          cout << "• Select how many steps to take" << endl;
+          cout << "• Find the exit point indicated by the number 1, 2, 3 or 4" << endl;
+          cout << "• Avoid obstacles # and walls |" << endl;
+          cout << "• Teleport T to a random location if you wish" << endl;
+          cout << "• Collect coins $ along the way" << endl;
           break;
     case 3:
           //Quit the game
