@@ -177,13 +177,17 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
            // Store the teleporter's original position
            int teleportRow = character.vertical;
            int teleportCol = character.horizontal;
+	    
+    // Set a constraint on how far the player can teleport
+           int maxDistance = 5;
+	    
 
     // Find a random empty position in the maze
            int playerRow, playerCol;
     		do {
-       		 playerRow = rand() % rowSize;
-        	 playerCol = rand() % columnSize;
-    		} while (plot[playerRow][playerCol] != " ");
+       		 playerRow = teleportRow + (rand() % (2 * maxDistance + 1) - maxDistance);
+        	 playerCol = teleportCol + (rand() % (2 * maxDistance + 1) - maxDistance);
+    		} while (playerRow < 0 || playerRow >= rowSize || playerCol < 0 || playerCol >= columnSize || plot[playerRow][playerCol] != " ");
 
     // Move the player to the random empty position
     	plot[character.vertical][character.horizontal] = " ";
