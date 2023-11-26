@@ -129,7 +129,7 @@ int main() {
         continue;
       }
 
-      cout << "How far will you go now? ";
+      cout << "How far will you go now? (Enter a number)";
       cin >> steps;
     }
 
