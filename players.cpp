@@ -174,25 +174,29 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     
     // Teleports the player to a random position in the maze 
     if (teleportHit) {
+           // Store the teleporter's original position
+           int teleportRow = character.vertical;
+           int teleportCol = character.horizontal;
 
-	    // Store the previous position before teleporting
-            int teleportRow = character.vertical;
-            int teleportCol = character.horizontal;
-	    
-            int playerRow = teleportRow;
-	    int playerCol = teleportCol;
-      
-	    while (plot[playerRow][playerCol] != "*" && plot[playerRow][playerCol] != "☠" && plot[playerRow][playerCol] != "|" && plot[playerRow][playerCol] != "-" && plot[playerRow][playerCol] != "☺" && plot[playerRow][playerCol] != "T"){
-		    playerRow = rand() % rowSize;
-                    playerCol = rand() % columnSize;
-	    }
+    // Find a random empty position in the maze
+           int playerRow, playerCol;
+    		do {
+       		 playerRow = rand() % rowSize;
+        	 playerCol = rand() % columnSize;
+    		} while (plot[playerRow][playerCol] != " ");
 
-            // Move the player to the new teleporter position
-	    character.vertical = playerRow;
-	    character.horizontal = playerCol;
-            plot[character.vertical][character.horizontal] = character.avatar;
+    // Move the player to the random empty position
+    	plot[character.vertical][character.horizontal] = " ";
+    	character.vertical = playerRow;
+    	character.horizontal = playerCol;
+    	plot[character.vertical][character.horizontal] = character.avatar;
 
-            plot[teleportRow][teleportCol] = "T";
+    // Remove the teleporter from its original position
+    	plot[teleportRow][teleportCol] = " ";
+
+    // Clear the screen and display the updated maze
+    	clearscreen();
+
     }
   }
 }
