@@ -176,22 +176,23 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     if (teleportHit) {
 
 	    // Store the previous position before teleporting
-            int prevVertical = character.vertical;
-            int prevHorizontal = character.horizontal;
+            int teleportRow = character.vertical;
+            int teleportCol = character.horizontal;
 	    
-            int teleportRow = rand() % rowSize;
-	    int teleportCol = rand() % columnSize;
+            int playerRow = teleportRow;
+	    int playerCol = teleportCol;
       
-	    while (plot[teleportRow][teleportCol] != "*" && plot[teleportRow][teleportCol] != "☠" && plot[teleportRow][teleportCol] != "|" && plot[teleportRow][teleportCol] != "-" && plot[teleportRow][teleportCol] != "☺" && plot[teleportRow][teleportCol] != "T"){
-		    teleportRow = rand() % rowSize;
-                    teleportCol = rand() % columnSize;
+	    while (plot[playerRow][playerCol] != "*" && plot[playerRow][playerCol] != "☠" && plot[playerRow][playerCol] != "|" && plot[playerRow][playerCol] != "-" && plot[playerRow][playerCol] != "☺" && plot[playerRow][playerCol] != "T"){
+		    playerRow = rand() % rowSize;
+                    playerCol = rand() % columnSize;
 	    }
 
             // Move the player to the new teleporter position
-	    character.vertical = teleportRow;
-	    character.horizontal = teleportCol;
+	    character.vertical = playerRow;
+	    character.horizontal = playerCol;
             plot[character.vertical][character.horizontal] = character.avatar;
-	    
+
+            plot[teleportRow][teleportCol] = "T";
     }
   }
 }
