@@ -155,10 +155,6 @@ void welcomeAnimation() {
   cout << welcomeArt << endl;
   sleep(1);
 
-  cout << "1. Start Game" << endl;
-  cout << "2. Rules" << endl;
-  cout << "3. Quit" << endl;
-
   int choice;
   cout << "Enter your choice (1, 2, 3): ";
   cin >> choice;
