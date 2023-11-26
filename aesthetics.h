@@ -129,6 +129,15 @@ void victoryAnimation() {
   sleep(3);
 }
 
+void exitAnimation() {
+  system("cls||clear");
+
+  cout << "See you next time, traveller!" << endl;
+  sleep(1);
+
+  cout << exitArt << endl;
+}
+
 // An animation script for when the player starts the game
 void welcomeAnimation() {
   system("cls||clear");
@@ -179,11 +188,3 @@ void welcomeAnimation() {
   }
 }
 
-void exitAnimation() {
-  system("cls||clear");
-
-  cout << "See you next time, traveller!" << endl;
-  sleep(1);
-
-  cout << exitArt << endl;
-}
