@@ -22,7 +22,7 @@ int main() {
   string map = selectPlot(difficulty);
 
   // Initialize memory allocation and playerObject
-  int rowSize = 0, columnSize = 0, coin = 60, timeLimit = 180;
+  int rowSize = 0, columnSize = 0, timeLimit = 180;
   bool win = false;
 
   // Initialize our maze plot
@@ -42,10 +42,13 @@ int main() {
 
   // Initialize main player object
   playerObject player = playerObject(playerSpawnRow, playerSpawnColumn, true);
+  player.health = 100;
+  player.coins = 60;
 
   clearscreen();
 
   printPlot(myPlot, rowSize, columnSize, exitPoint);
+  printPlayerStats(player);
   cout << "You find yourself in the center of a dungeon maze!" << endl;
   sleep(2);
     
@@ -73,9 +76,13 @@ int main() {
     }
     cin >> steps;
 
-    moveAnimation(myPlot, steps, player, direction, rowSize, columnSize, coin, timeLimit, win, exitPoint);
+    movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint);
 
-    if (win == true){
+    if (player.health <= 0) {
+      defeatAnimation();
+      break;
+    }
+    else if (win == true){
       victoryAnimation();
       break;
     }

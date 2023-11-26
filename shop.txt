@@ -3,10 +3,10 @@
 | Welcome to the shop, traveller                              |
 | Items for sale :                                            |
 |-------------------------------------------------------------|
-| Energy drink: $20                                           |
+| Energy drink: $20 (+8 HP)                                   |
 | Description: Restore your health with a delicious drink     |
 |                                                             |
-| Body training: $30                                          |
+| Body training: $30 (+15 HP)                                 |
 | Description: Strengthen yourself with professional training |
 |                                                             |
 | Time machine: $40                                           |

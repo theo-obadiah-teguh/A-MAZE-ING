@@ -3,13 +3,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cstdlib>
-#include <ctime>
-#include <stdlib.h>
 #include <unistd.h>
-#include <chrono>
-#include <thread>
-
 using namespace std;
 
 // Clear screen function that we will use
@@ -169,16 +163,16 @@ void printPlot (string ** array, int rowSize, int columnSize, string exitPoint, 
   cout << endl;
 
   if (exitPoint == "1") {
-    cout << "Escape the maze through the 1st exit!" << endl;
+    cout << "Goal: Escape the maze through the 1st exit!" << endl;
   }
   else if (exitPoint == "2") {
-    cout << "Escape the maze through the 2nd exit!" << endl;
+    cout << "Goal: Escape the maze through the 2nd exit!" << endl;
   }
   else if (exitPoint == "3") {
-    cout << "Escape the maze through the 3rd exit!" << endl;
+    cout << "Goal: Escape the maze through the 3rd exit!" << endl;
   }
   else if (exitPoint == "4") {
-    cout << "Escape the maze through the 4th exit!" << endl;
+    cout << "Goal: Escape the maze through the 4th exit!" << endl;
   }
 
   for (int i = 0; i < rowSize; ++i) {
@@ -190,146 +184,4 @@ void printPlot (string ** array, int rowSize, int columnSize, string exitPoint, 
   
   if (fixPosition == true)
     cout << "Returning to player to the previous position..." << endl;
-}
-
-// Calculate the spawn point of the player, which is the middle of the map
-void calcPlayerSpawn (int & rowSize, int & columnSize) {
-  rowSize /= 2;
-  columnSize /= 2;
-}
-
-void moveAnimation (string **plot, int steps, playerObject& character, string direction, int rowSize, int columnSize, int coin, int timeLimit, bool & win, string exitPoint) {
-  clearscreen();
-
-  printPlot(plot, rowSize, columnSize, exitPoint); 
-  this_thread::sleep_for(chrono::milliseconds(350));
-  clearscreen();
-
-  // If bump into obstacles let's say 3 times then player loses the game
-  int bumps = 0;
-  int maxBumps = 3;
-
-  for (int i = 0; i < steps; ++i) {
-    plot[character.vertical][character.horizontal] = ' ';
-
-    // Boolean values for status checking are reset every iteration
-    bool obstacleHit = false;
-    bool teleportHit = false;
-
-    // Store the the obstacle if we hit one
-    string obstacle;
-
-    // Track the previous position of the character before bumping into the obstacle
-    int prevVertical = character.vertical;
-    int prevHorizontal = character.horizontal;
-
-    if (direction == "up")
-      --character.vertical;
-    else if (direction == "down")
-      ++character.vertical;
-    else if (direction == "right")
-      ++character.horizontal;
-    else if (direction == "left")
-      --character.horizontal;
-
-    // Checks if player hits an obstacle
-    if (plot[character.vertical][character.horizontal] == "*" || plot[character.vertical][character.horizontal] == "|" || plot[character.vertical][character.horizontal] == "-"){
-	    clearscreen();
-	    cout << "You hit an obstacle!" << endl;
-	    bumps++;
-
-	    if (bumps >= maxBumps){
-        win = false;
-		    return;
-	    }
-	    sleep(1);
-
-	    obstacleHit = true;
-      obstacle = plot[character.vertical][character.horizontal];
-
-      clearscreen();
-    }
-    
-    // Checks if player encounters a teleporter
-    else if (plot[character.vertical][character.horizontal] == "T"){
-	    clearscreen();
-      cout << "You encountered a teleporter" << endl;
-      sleep(2);
-	    teleportHit = true;
-      // break;
-    }
-
-    // Checks if player encounters a shop
-    else if (plot[character.vertical][character.horizontal] == "$"){
-	    cout << "You have encountered a shop" << endl;
-	    sleep(1);
-      cout << "Do you want to visit it? (yes/no) ";
-	    string answer;
-	    cin >> answer;
-
-	    if (answer == "yes") {
-	      visiting_shop(coin, timeLimit, bumps, maxBumps, exitPoint);
-	      // break;
-      }
-      else if (answer == "no") {
-        clearscreen();
-      }
-    }
-    else if (plot[character.vertical][character.horizontal] == exitPoint){
-      win = true;
-      return;
-    }
-
-    plot[character.vertical][character.horizontal] = character.avatar;
-    printPlot(plot, rowSize, columnSize, exitPoint, obstacleHit); 
-
-    cout << endl;
-    if (!obstacleHit)
-      cout << "You moved " << steps << " steps " << direction << "wards." << endl;
-
-    this_thread::sleep_for(chrono::milliseconds(500));
-
-    if (i < steps - 1 && !obstacleHit) {
-    	clearscreen();
-    }
-
-    // Makes the player go back to previous position once hit the obstacle
-    if (obstacleHit) {
-
-      // Restores the obstacle
-      plot[character.vertical][character.horizontal] = obstacle;
-
-      // Restores the player's previous position
-	    character.vertical = prevVertical;
-	    character.horizontal = prevHorizontal;
-	    plot[character.vertical][character.horizontal] = character.avatar;
-
-      // Updates the plot
-      this_thread::sleep_for(chrono::milliseconds(700));
-
-      clearscreen();
-      printPlot(plot, rowSize, columnSize,  exitPoint, obstacleHit);
-
-      this_thread::sleep_for(chrono::milliseconds(1200));
-
-      clearscreen();
-      printPlot(plot, rowSize, columnSize, exitPoint);
-
-      return;
-    }
-    
-    // Teleports the player to a random position in the maze 
-    if (teleportHit) {
-      int teleportRow = rand() % rowSize;
-	    int teleportCol = rand() % columnSize;
-      
-	    while (plot[teleportRow][teleportCol] != "*" && plot[teleportRow][teleportCol] != "☠" && plot[teleportRow][teleportCol] != "|" && plot[teleportRow][teleportCol] != "-" && plot[teleportRow][teleportCol] != "☺"){
-		    teleportRow = rand() % rowSize;
-        teleportCol = rand() % columnSize;
-	    }
-	    character.vertical = teleportRow;
-	    character.horizontal = teleportCol;
-	    plot[character.vertical][character.horizontal] = character.avatar;
-    }
-  }
 }

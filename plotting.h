@@ -32,10 +32,4 @@ string randomExit ();
 // Prints a given 2D plot
 void printPlot (string ** array, int rowSize, int columnSize, string exitPoint, bool fixPosition = false);
 
-// Calculates the player's spawning point
-void calcPlayerSpawn (int & rowSize, int & columnSize);
-
-// Function to animate a character's movement
-void moveAnimation (string **plot, int steps, playerObject& character, string direction, int rowSize, int columnSize, int oins, int timeLimit, bool & win, string exitPoint);
-
 #endif

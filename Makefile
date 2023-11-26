@@ -1,18 +1,21 @@
 FLAGS = -pedantic-errors -std=c++11
 
-shop.o: shop.cpp shop.h plotting.h
-	g++ $(FLAGS) -c shop.cpp
-
 plotting.o: plotting.cpp shop.h players.h
 	g++ $(FLAGS) -c $<
+
+players.o: players.cpp players.h plotting.h
+	g++ $(FLAGS) -c $<
+
+shop.o: shop.cpp shop.h plotting.h
+	g++ $(FLAGS) -c shop.cpp
 
 main.o: main.cpp shop.h plotting.h players.h
 	g++ $(FLAGS) -c $<
 
-main: plotting.o shop.o main.o
+main: plotting.o players.o shop.o main.o
 	g++ $(FLAGS) $^ -o $@
 
 clean:
-	rm -f main main.o plotting.o shop.o
+	rm -f main main.o plotting.o players.o shop.o
 
 .PHONY: clean
