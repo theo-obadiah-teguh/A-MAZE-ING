@@ -183,7 +183,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     		do {
        		 playerRow = rand() % rowSize;
         	 playerCol = rand() % columnSize;
-    		} while (plot[playerRow][playerCol] != " ";
+    		} while (plot[playerRow][playerCol] != " ");
 
     // Move the player to the random empty position
     	plot[character.vertical][character.horizontal] = " ";
