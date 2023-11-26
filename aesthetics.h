@@ -129,6 +129,7 @@ void victoryAnimation() {
   sleep(3);
 }
 
+//When the player quits the game
 void exitAnimation() {
   system("cls||clear");
 
