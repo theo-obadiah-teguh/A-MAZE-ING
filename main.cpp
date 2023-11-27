@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <string>
 #include <cctype>
+#include "monster.h"
 
 using namespace std;
 
@@ -45,6 +46,11 @@ int main() {
 
   clearscreen();
 
+  //add monster
+  int monster_count=0;
+  monster_no(difficulty, monster_count);
+  create_monsters(monster_count);
+  init(rowSize, columnSize, myPlot, monster_count);
   printPlot(myPlot, rowSize, columnSize, exitPoint);
   printPlayerStats(player);
   cout << "You find yourself in the center of a dungeon maze!" << endl;
@@ -132,9 +138,12 @@ int main() {
       cout << "How far will you go now? (Enter a number)";
       cin >> steps;
     }
-
+      
     movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint);
     prevDirection = direction;
+      //move monster after player move
+      monster_dir(player);
+      monster_steps(myPlot, rowSize, columnSize);
 
     if (player.health <= 0) {
       defeatAnimation();

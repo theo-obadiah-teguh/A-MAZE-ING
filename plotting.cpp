@@ -134,8 +134,9 @@ string selectPlot (string difficulty) {
   else if (difficulty == "medium") {
     map = "maze2.txt";
   }
+    //try to use maze2.txt to avoid file loading error
   else if (difficulty == "hard") {
-    map = "maze3.txt";
+    map = "maze2.txt";
   }
   else {
     sleep(1);
