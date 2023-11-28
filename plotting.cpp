@@ -97,18 +97,17 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
 	  
     srand(time(0));
 
-    int cornerDistance = 5;
-// ...
+    int cornerDistance = 5; //try not to make obstacles near the exit (not within 5 units)
 
     for (int k = 0; k < numObstacles; ++k) {
        int row, col;
-       bool validPosition = false;
+       bool validPosition = false; //keep obstacles 
 
      while (!validPosition) {
           row = rand() % rowSize;
           col = rand() % columnSize;
 
-    // Check if the position is not near other specific characters
+       //First check if it is not on maze properties
        if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺") {
            validPosition = true;
 
