@@ -155,13 +155,13 @@ void welcomeAnimation() {
   cout << welcomeArt << endl;
   sleep(1);
 
-  int choice;
-  cout << "Enter your choice (1, 2, 3): ";
-  cin >> choice;
-
   cout << "1. Start Game" << endl;
   cout << "2. Rules" << endl;
   cout << "3. Quit" << endl;
+
+  int choice;
+  cout << "Enter your choice (1, 2, 3): ";
+  cin >> choice;
 
   switch (choice){
     case 1:
@@ -169,7 +169,7 @@ void welcomeAnimation() {
           break;
     case 2:
           //Display the rules
-          cout << " " << endl;
+          cout << "------------------------------------------------------------ " << endl;
           cout << "Rules:" << endl;
           cout << "Navigate the maze through the arrow keys 'w' 'a' 's' 'd' " << endl;
           cout << "Select how many steps to take" << endl;
@@ -177,6 +177,7 @@ void welcomeAnimation() {
           cout << "Avoid obstacles # and walls |" << endl;
           cout << "Teleport T to a random location if you wish" << endl;
           cout << "Collect coins $ along the way" << endl;
+          cout << "------------------------------------------------------------ " << endl;
           break;
     case 3:
           //Quit the game
