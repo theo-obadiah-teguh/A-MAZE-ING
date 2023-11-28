@@ -96,24 +96,37 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
     }
 	  
     srand(time(0));
-	  
-    for (int k = 0; k < numObstacles; ++k){
-	    int row = rand() % rowSize;
-	    int col = rand() % columnSize;
 
-      if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺"){
-        int obstacleType = rand() % 2;
+    int cornerDistance = 5;
+// ...
 
-       //Aryaman will add function to not make an obstacle or teleporter near an exit point/integer in the maze
+    for (int k = 0; k < numObstacles; ++k) {
+       int row, col;
+       bool validPosition = false;
 
-        if (obstacleType == 0)
-	  	    plot[row][col] = "#"; // Obstacle character
+     while (!validPosition) {
+          row = rand() % rowSize;
+          col = rand() % columnSize;
 
-        else if (obstacleType == 1)
-	        plot[row][col] = "T"; // Teleportation portal character
-	    }
+    // Check if the position is not near other specific characters
+       if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺") {
+           validPosition = true;
+
+      // Check if the position is within the corner distance
+          if (row <= cornerDistance || row >= rowSize - cornerDistance - 1 || col <= cornerDistance || col >= columnSize - cornerDistance - 1) {
+              validPosition = false;
+          }
+       }
+     }
+     int obstacleType = rand() % 2;
+
+     if (obstacleType == 0){
+       plot[row][col] = "#"; // Obstacle character
+     }
+     else if (obstacleType == 1){
+       plot[row][col] = "T"; // Teleportation portal character
+     }
     }
-  }
   return plot; 
 }
 
