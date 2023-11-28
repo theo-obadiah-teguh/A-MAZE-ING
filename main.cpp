@@ -66,7 +66,7 @@ int main() {
     if (firstJourney) {
       cout << "ENTER 'q' to exit the game" << endl;
       cout << "Please ENTER the 'w', 'a', 's', 'd' keys to choose a direction." << endl;
-      cout << "Where do you want to go? (ENTER a number) ";
+      cout << "Which direction do you want to go? ";
       cin >> direction;
 
       if (direction == "W") {
