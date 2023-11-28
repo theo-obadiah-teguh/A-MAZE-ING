@@ -106,7 +106,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       clearscreen();
       cout << "You encountered a teleporter" << endl;
       sleep(2);
-      cout << "Do you want to jump over the teleporter? (yes/no) ";
+      cout << "Do you want to eat the teleporter? (yes/no) ";
       string answer;
       cin >> answer;
       if (answer == "yes") {
@@ -136,7 +136,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
             this_thread::sleep_for(chrono::milliseconds(1000));
             clearscreen();
 	  } else {
-            cout << "You don't have enough jump points to jump over the teleporter." << endl;
+            cout << "You don't have enough points to eat the teleporter." << endl;
 	    teleportHit = true;
 	  }
       }else {  
