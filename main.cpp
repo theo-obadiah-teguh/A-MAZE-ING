@@ -6,8 +6,10 @@
 #include <string>
 #include <cctype>
 #include "monster.h"
+#include <chrono>
 
 using namespace std;
+using namespace std::chrono;
 
 int main() {
   clearscreen();
@@ -58,6 +60,9 @@ int main() {
 
   string prevDirection;
   bool firstJourney = true;
+
+// Start the timer
+  auto startTime = steady_clock::now();
 
   while (true) {
     string direction;
@@ -138,8 +143,15 @@ int main() {
       cout << "How far will you go now? (ENTER a number)";
       cin >> steps;
     }
+
+// Calculate the elapsed time
+    auto currentTime = steady_clock::now();
+    auto elapsedTime = duration_cast<seconds>(currentTime - startTime).count();
+
+    // Display the elapsed time
+    cout << "Time: " << elapsedTime << " seconds" << endl;
       
-    movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint);
+    movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, elapsedTime);
     prevDirection = direction;
       //move monster after player move
       monster_dir(player);
