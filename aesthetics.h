@@ -160,7 +160,7 @@ void welcomeAnimation() {
   cout << "3. Quit" << endl;
 
   int choice;
-  cout << "Enter your choice (1, 2, 3): ";
+  cout << "Enter your choice number: ";
   cin >> choice;
 
   switch (choice){
@@ -176,7 +176,8 @@ void welcomeAnimation() {
           cout << "Find the exit point indicated by the number 1, 2, 3 or 4" << endl;
           cout << "Avoid obstacles # and walls |" << endl;
           cout << "Teleport T to a random location if you wish" << endl;
-          cout << "Collect coins $ along the way" << endl;
+          cout << "Eat Teleporters if you canmand wish to" << endl;
+          cout << "Collect coins $ along the way to boost your health" << endl;
           cout << "------------------------------------------------------------ " << endl;
           break;
     case 3:
