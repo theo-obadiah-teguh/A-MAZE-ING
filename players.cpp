@@ -142,6 +142,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       }else {  
       	 teleportHit = true;
       // break;
+      }
     }
 
     // Checks if player encounters a shop
