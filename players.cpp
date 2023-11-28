@@ -187,7 +187,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     		do {
        		 playerRow = teleportRow + (rand() % (2 * maxDistance + 1) - maxDistance);
         	 playerCol = teleportCol + (rand() % (2 * maxDistance + 1) - maxDistance);
-    		} while (playerRow < 0 || playerRow >= rowSize || playerCol < 0 || playerCol >= columnSize || plot[playerRow][playerCol] != " ");
+    		} while (playerRow < 0 && playerRow >= rowSize && playerCol < 0 && playerCol >= columnSize && plot[playerRow][playerCol] != " ");
 
     // Move the player to the random empty position
     	plot[character.vertical][character.horizontal] = " ";
