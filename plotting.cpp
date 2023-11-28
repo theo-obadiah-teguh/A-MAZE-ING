@@ -127,6 +127,7 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
        plot[row][col] = "T"; // Teleportation portal character
      }
     }
+  }
   return plot; 
 }
 
