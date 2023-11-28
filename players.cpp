@@ -13,7 +13,7 @@ void calcPlayerSpawn (int & rowSize, int & columnSize) {
 
 // Function to print the player's current health points and coins
 void printPlayerStats (playerObject player) {
-  cout << "HP: " << player.health << "   Coins: " << player.coins << endl;
+  cout << "HP: " << player.health << "   Coins: " << player.coins << "Jump Points: " << player.jumpPoints << endl;
   cout << endl;
 }
 
