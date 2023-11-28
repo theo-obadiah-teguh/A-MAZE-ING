@@ -45,7 +45,7 @@ int main() {
   playerObject player = playerObject(playerSpawnRow, playerSpawnColumn, true);
   player.health = 100;
   player.coins = 60;
-  player.jumpPoints = 3;
+  player.jumpPoints = 5;
 
   clearscreen();
 
@@ -70,7 +70,6 @@ int main() {
     int steps;
 
     if (firstJourney) {
-      cout << "ENTER 'q' to exit the game" << endl;
       cout << "Please ENTER the 'w', 'a', 's', 'd' keys to choose a direction." << endl;
       cout << "Which direction do you want to go? (ENTER 'q' to quit) ";
       cin >> direction;
@@ -141,7 +140,7 @@ int main() {
         continue;
       }
 
-      cout << "How far will you go now? (ENTER a number)";
+      cout << "How far will you go now? ";
       cin >> steps;
     }
 
