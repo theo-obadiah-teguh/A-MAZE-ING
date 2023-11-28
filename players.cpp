@@ -106,7 +106,41 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       clearscreen();
       cout << "You encountered a teleporter" << endl;
       sleep(2);
-      teleportHit = true;
+      cout << "Do you want to jump over the teleporter? (yes/no) ";
+      string answer;
+      cin >> answer;
+      if (answer == "yes") {
+          // Check if the player has enough jump points
+          if (character.jumpPoints > 0) {
+            // Decrement the jump points count
+            character.jumpPoints--;
+
+            // Clear the current position
+            plot[character.vertical][character.horizontal] = ' ';
+
+            // Jump over the teleporter
+            // ...
+
+            // Update the plot with the new position
+            plot[character.vertical][character.horizontal] = character.avatar;
+
+            // Print the updated plot and player stats
+            clearscreen();
+            printPlot(plot, rowSize, columnSize, exitPoint);
+            printPlayerStats(character);
+
+            // Display the jump message
+            cout << "You jumped over the teleporter!" << endl;
+
+            // Wait for a moment before clearing the screen
+            this_thread::sleep_for(chrono::milliseconds(1000));
+            clearscreen();
+	  } else {
+            cout << "You don't have enough jump points to jump over the teleporter." << endl;
+	    teleportHit = true;
+	  }
+      }else {  
+      	 teleportHit = true;
       // break;
     }
 
