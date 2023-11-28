@@ -199,8 +199,8 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     	plot[teleportRow][teleportCol] = " ";
 
     // Clear the screen and display the updated maze
-    	//clearscreen();
-	//printPlot(plot, rowSize, columnSize, exitPoint);
+    	clearscreen();
+	printPlot(plot, rowSize, columnSize, exitPoint);
 
     }
   }
