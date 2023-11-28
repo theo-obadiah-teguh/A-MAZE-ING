@@ -98,14 +98,13 @@ int main() {
         continue;
       }
 
-      cout << "How far will you go? ";
+      cout << "How far will you go? (Enter a number)";
       cin >> steps;
 
       firstJourney = false;
     }
     else {
-      cout << "Please ENTER the 'w', 'a', 's', 'd' keys to choose a direction." << endl;
-      cout << "Where do you want to go next? (ENTER 'q' -> Main Menu) ";
+      cout << "Direction: ";
       cin >> direction;
 
       if (direction == "W") {
