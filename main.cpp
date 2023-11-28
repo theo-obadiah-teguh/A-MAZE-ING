@@ -98,13 +98,13 @@ int main() {
         continue;
       }
 
-      cout << "How far will you go? (Enter a number)";
+      cout << "How far will you go? (ENTER a number)";
       cin >> steps;
 
       firstJourney = false;
     }
     else {
-      cout << "Direction: ";
+      cout << "Which direction do you want to go? ";
       cin >> direction;
 
       if (direction == "W") {
@@ -135,7 +135,7 @@ int main() {
         continue;
       }
 
-      cout << "How far will you go now? (Enter a number)";
+      cout << "How far will you go now? (ENTER a number)";
       cin >> steps;
     }
       
