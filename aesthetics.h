@@ -182,16 +182,16 @@ void welcomeAnimation() {
           cout << "------------------------------------------------------------ " << endl;
           break;
     case 3:
-          cout << "-----------------------------------" << endl;
+          cout << "---------------------------------------" << endl;
           cout << "Credits:" << endl;
           cout << endl;
           cout << "      Name         |        UID" << endl;
-          cout << "Bhardwaj Aryaman   |                 " << endl;
-          cout << "Fok Po Hin         |                 " << endl;
-          cout << "Lai Wan Ching Anson|                 " << endl;
-          cout << "Lee Ka Ka          |                 " << endl;
-          cout << "Teguh Theo Obadiah |                 " << endl;   
-          cout << "-----------------------------------" << endl;
+          cout << "Bhardwaj Aryaman   |     3035858755  " << endl;
+          cout << "Fok Po Hin         |     3036062262  " << endl;
+          cout << "Lai Wan Ching Anson|     3036067676  " << endl;
+          cout << "Lee Ka Ka          |     3035921174  " << endl;
+          cout << "Teguh Theo Obadiah |     3035898872  " << endl;   
+          cout << "---------------------------------------" << endl;
           break;
     case 4:
           //Quit the game
