@@ -118,7 +118,7 @@ void exitAnimation() {
   cout << exitArt << endl;
 }
 
-void startMenu(){
+void startMenu(flag){
   cout << "1. Start Game" << endl;
   cout << "2. Rules" << endl;
   cout << "3. Credits" << endl;
@@ -131,7 +131,12 @@ void startMenu(){
   switch (choice){
     case 1:
           //Start the game
-          break;
+          if (flag == false){
+            cout << welcomeArt << endl;
+          } 
+          else{
+             break;
+          }
     case 2:
           //Display the rules
           cout << "------------------------------------------------------------ " << endl;
@@ -209,6 +214,7 @@ void welcomeAnimation() {
 
   sleep(2);
 
+  flag = true;
   startMenu();
 }
 
