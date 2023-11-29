@@ -127,6 +127,8 @@ void victoryAnimation() {
 
   cout << "You will be redirected to the main menu in a few seconds..." << endl;
   sleep(3);
+
+  startMenu();
 }
 
 //When the player quits the game
