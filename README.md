@@ -9,7 +9,7 @@ Bhardwaj, Aryaman       3035858755\
 Fok, Po Hin 				    3036062262\
 Lai, Wan Ching Anson 		3036067676\
 Lee, Ka Ka 				      3035921174\
-Teguh, Theo Obadiah 		3035898872\
+Teguh, Theo Obadiah 		3035898872
 
 ### Description:
 A-MAZE-ING: A thrilling single-player, text-based game awaits you in the depths of your local terminal. Prepare to embark on an epic adventure as you find yourself transported to an ancient Chinese dungeon maze, where your ultimate goal is to find a way out!
