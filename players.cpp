@@ -89,7 +89,9 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
         sleep(2);
       }
       else if (obstacle == "☠") {
-        cout << "You bumped into a monster! (-50 HP)" << endl;
+        cout << "You bumped into a monster!" << endl;
+        sleep(1);
+        cout << "You have fought it off, but you are heavily injured. (-50 HP)" << endl;
         sleep(1);
         character.health -= 50;
         cout << "You now have " << character.health << " HP." << endl;
@@ -111,7 +113,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     }
     
     // Checks if player encounters a teleporter
-    else if (plot[character.vertical][character.horizontal] == "T"){
+    else if (plot[character.vertical][character.horizontal] == "T") {
       clearscreen();
       cout << "You encountered a teleporter" << endl;
       sleep(2);
@@ -119,41 +121,41 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       string answer;
       cin >> answer;
       if (answer == "yes") {
-          // Check if the player has enough eat points
-          if (character.eatPoints > 0) {
-            // Decrement the eat points
-            character.eatPoints--;
+        // Check if the player has enough eat points
+        if (character.eatPoints > 0) {
+          // Decrement the eat points
+          character.eatPoints--;
 
-            // Clear the current position
-            plot[character.vertical][character.horizontal] = ' ';
+          // Clear the current position
+          plot[character.vertical][character.horizontal] = ' ';
 
-            // Update the plot with the new position
-            plot[character.vertical][character.horizontal] = character.avatar;
+          // Update the plot with the new position
+          plot[character.vertical][character.horizontal] = character.avatar;
 
-            // Print the updated plot and player stats
-            clearscreen();
-            printPlot(plot, rowSize, columnSize, exitPoint);
-            printPlayerStats(character);
+          // Print the updated plot and player stats
+          clearscreen();
+          printPlot(plot, rowSize, columnSize, exitPoint);
+          printPlayerStats(character);
 
-            // Display the eat message
-            cout << "You ate the teleporter!" << endl;
+          // Display the eat message
+          cout << "You ate the teleporter!" << endl;
 
-            // Wait for a moment before clearing the screen
-            this_thread::sleep_for(chrono::milliseconds(1000));
-            clearscreen();
-	  } else {
-            cout << "You don't have enough points to eat the teleporter." << endl;
-	    teleportHit = true;
-	    //break;
-	  }
-      }else {  
+          // Wait for a moment before clearing the screen
+          this_thread::sleep_for(chrono::milliseconds(1000));
+          clearscreen();
+	      }
+        else {
+          cout << "You don't have enough points to eat the teleporter." << endl;
+	        teleportHit = true;
+	      }
+      }
+      else {  
       	 teleportHit = true;
-      // break;
       }
     }
 
     // Checks if player encounters a shop
-    else if (plot[character.vertical][character.horizontal] == "$"){
+    else if (plot[character.vertical][character.horizontal] == "$") {
 	    cout << "You have encountered a shop" << endl;
 	    sleep(1);
       cout << "Do you want to visit it? (yes/no) ";
@@ -162,10 +164,9 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 
 	    if (answer == "yes") {
 	      visitShop(monsterHunt, monsterCount, character, exitPoint);
-	      for (int j=0; j< monsterHunt; j++){
+	      for (int j = 0; j< monsterHunt; ++j){
 		      huntMonster(plot);
 	      }
-	      // break;
       }
       else if (answer == "no") {
         clearscreen();
@@ -177,26 +178,21 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     }
 
     plot[character.vertical][character.horizontal] = character.avatar;
-    if (obstacleHit && obstacle != "☠") {
-       printPlot(plot, rowSize, columnSize, exitPoint, obstacleHit && obstacle != "☠"); 
-    } 
-    else if (obstacleHit && obstacle != "#") {
-       printPlot(plot, rowSize, columnSize, exitPoint, obstacleHit && obstacle != "#"); 
-    }
+    printPlot(plot, rowSize, columnSize, exitPoint, obstacleHit && obstacle != "☠" && obstacle != "#"); 
     printPlayerStats(character);
 
-    if (!obstacleHit || obstacle == "#") {
+    if (!obstacleHit || obstacle == "#" || obstacle == "☠") {
       cout << "You moved " << steps << " step(s) " << directionLiteral << "wards." << endl;
     }
 
     this_thread::sleep_for(chrono::milliseconds(500));
 
     if (i < steps - 1 && !obstacleHit) {
-    	clearscreen();
+      clearscreen(); // DO NOT EDIT
     }
 
-    // Makes the player go back to previous position once hit an obstacle or a monster
-    if (obstacleHit && obstacle != "#" || obstacleHit && obstacle != "☠") {
+    // Makes the player go back to previous position once hit a wall
+    if (obstacleHit && obstacle != "#" && obstacle != "☠") {
 
       // Restores the obstacle
       plot[character.vertical][character.horizontal] = obstacle;
@@ -218,26 +214,24 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       clearscreen();
       printPlot(plot, rowSize, columnSize, exitPoint);
       printPlayerStats(character);
-
-      return;
+      break; // DO NOT DELETE. CRUCIAL PART
     }
     
     // Teleports the player to a random position in the maze 
     if (teleportHit) {
-           // Store the teleporter's original position
-           int teleportRow = character.vertical;
-           int teleportCol = character.horizontal;
+      // Store the teleporter's original position
+      int teleportRow = character.vertical;
+      int teleportCol = character.horizontal;
 	    
-    // Set a constraint on how far the player can teleport
-           int maxDistance = 5;
+      // Set a constraint on how far the player can teleport
+      int maxDistance = 10;
 	    
-
     // Find a random empty position in the maze
-           int playerRow, playerCol;
-    		do {
-       		 playerRow = teleportRow + (rand() % (2 * maxDistance + 1) - maxDistance);
-        	 playerCol = teleportCol + (rand() % (2 * maxDistance + 1) - maxDistance);
-    		} while (playerRow < 0 && playerRow >= rowSize && playerCol < 0 && playerCol >= columnSize && plot[playerRow][playerCol] != " ");
+      int playerRow, playerCol;
+    	do {
+       	playerRow = teleportRow + (rand() % (2 * maxDistance + 1) - maxDistance);
+        playerCol = teleportCol + (rand() % (2 * maxDistance + 1) - maxDistance);
+    	} while (playerRow < 0 && playerRow >= rowSize && playerCol < 0 && playerCol >= columnSize && plot[playerRow][playerCol] != " ");
 
     // Move the player to the random empty position
     	plot[character.vertical][character.horizontal] = " ";
@@ -250,7 +244,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 
     // Clear the screen and display the updated maze
     	clearscreen();
-	printPlot(plot, rowSize, columnSize, exitPoint);
+	    printPlot(plot, rowSize, columnSize, exitPoint);
 
     }
   }
