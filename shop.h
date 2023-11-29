@@ -4,8 +4,8 @@
 #ifndef SHOP_H
 #define SHOP_H
 
-void purchaseOptions(int & time, playerObject & player);
+void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & player);
 
-void visitShop(int & monster_hunter, playerObject & player, string exitPoint);
+void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, string exitPoint);
 
 #endif
