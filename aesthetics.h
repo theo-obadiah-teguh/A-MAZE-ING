@@ -205,6 +205,7 @@ void welcomeAnimation() {
 
   cout << welcomeArt << endl;
   sleep(1);
+  clearscreen();
 
   startMenu();
 }
