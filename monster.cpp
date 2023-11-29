@@ -14,110 +14,64 @@ struct monsterObject{
 };
 vector<monsterObject *> monster;
 //updated monster_count var
-int monster_count;
+int monsterCount;
 
-//void -> int
-void monster_no(string difficulty, int &monster_count){
+void monsterNo(string difficulty, int &monsterCount){
     if (difficulty == "easy") {
-      monster_count = 3;
+      monsterCount = 1;
     }
     else if (difficulty == "medium") {
-     monster_count = 5;
+     monsterCount = 3;
     }
     else if (difficulty == "hard") {
-      monster_count = 7;
+      monsterCount = 5;
     }
     else{
-        monster_count = 0;
+        monsterCount = 0;
     }
 }
 
-void create_monsters(int monster_count){
-    for(int i = 0; i < monster_count; i++){
+void createMonsters(int monsterCount){
+    for(int i = 0; i < monsterCount; ++i){
         monster.push_back(new monsterObject);
     }
 }
 
-//vector<monsterObject *> monster;
-/*
-for(int i = 0; i < monster_count; i++){
-    monster.push_back(new monsterObject);
-}
- */
-
-void hunt_monster(){
+void huntMonster(string ** array){
+    int location = monster.size();
+    myPlot[monster[location-1]->vertical_ax][[monster[location-1]->horizontal_ax]
     monster.pop_back();
     return;
 }
 
-void monster_dir(playerObject player){
+void monsterDir(playerObject player){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
     
-    for (int i = 0; i < monster.size(); i++){
+    for (int i = 0; i < monster.size(); ++i){
         cout << "loop" << endl;
         time_t _time=time(nullptr);
         // 1 is up, 2 is right, 3 is down, 4 is left
         if (monster[i]->vertical_ax - player.vertical <= 0 ){
             if (monster[i]->horizontal_ax - player.horizontal >= 0){
                 monster[i]->direction=rand()%2+3;
-                cout << "monster[" << i << "] direction is " << monster[i]->direction;
             } else {
                 monster[i]->direction=rand()%2+2;
-                cout << "monster[" << i << "] direction is " << monster[i]->direction;
             }
         } else {
             if (monster[i]->horizontal_ax - player.horizontal <= 0) {
                 monster[i]->direction=rand()%2+1;
-                cout << "monster[" << i << "] direction is " << monster[i]->direction;
             } else {
                 monster[i]->direction=(rand() % 2 == 0) ? 1 : 4;
-                cout << "monster[" << i << "] direction is " << monster[i]->direction;
             }
         }
     }
 }
-/*
-void init(int rowSize, int columnSize, string ** myPlot, int monster_count){
-    time_t _time=time(nullptr);
-    srand(static_cast<unsigned>(_time));
-    for (int i=0;i<monster_count;i++){
-        monster[i]->vertical_ax=rand()%rowSize;
-        monster[i]->horizontal_ax=rand()%columnSize;
-        if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]==" "){
-            myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]="☠";
-        }
-        else{
-            if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]!=" "){
-                monster[i]->vertical_ax-=1;
-                myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]="☠";
-            }
-            else{
-                if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]=="|" && myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax-1]=="*" && myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax+1]==" "){
-                    monster[i]->horizontal_ax+=1;
-                    myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]="☠";
-                }
-                else if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]=="|" && myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax+1]=="*" && myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax-1]==" "){
-                    monster[i]->horizontal_ax-=1;
-                    myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]="☠";
-                }
-                else{
-                    do {
-                        monster[i]->vertical_ax=rand()%rowSize;
-                        monster[i]->horizontal_ax=rand()%columnSize;
-                    }
-                    while(myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]!=" ");
-                }
-            }
-        }
-    }
-}
- */
 
-void init(int rowSize, int columnSize, string ** myPlot, int monster_count){
+void init(int rowSize, int columnSize, string ** myPlot, int monsterCount){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
-    for (int i=0;i<monster_count;i++){
+    for (int i=0;i<monsterCount;++i){
         monster[i]->vertical_ax=rand()%rowSize;
         monster[i]->horizontal_ax=rand()%columnSize;
         if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]==" "){
@@ -152,24 +106,24 @@ void init(int rowSize, int columnSize, string ** myPlot, int monster_count){
 
 //check validity (make sure the ghost will not out of boundary)
     //1st para  monster_count-> i
-bool check_valid(int i, int &monster_steps, string ** myPlot, int rowSize, int columnSize){
+bool check_valid(int i, int &monsterSteps, string ** myPlot, int rowSize, int columnSize){
     //iterate over all monsters
     //for (int i=0;i<monster_count;i++) {
 //updated plotdimension -> rowSize/columnSize
         //vertical movement
         if (monster[i]->direction == 1)  {
             if (monster[i]->vertical_ax + monster_steps <= rowSize) {
-                for (int a = 0;a < monster_steps;a++) {
+                for (int a = 0;a < monsterSteps;++a) {
                     /*
                     if (myPlot[monster[i]->vertical_ax-1-a][monster[i]->horizontal_ax] == "|" || myPlot[monster[i]->vertical_ax-1-a][monster[i]->horizontal_ax] == "*") {
-                        monster_steps++;
+                        monsterSteps++;
                     }
                      */
                     if (myPlot[monster[i]->vertical_ax-1-a][monster[i]->horizontal_ax] != " ") {
-                        monster_steps++;
+                        monsterSteps++;
                     }
                 }
-                if (monster[i]->vertical_ax + monster_steps <= rowSize) {
+                if (monster[i]->vertical_ax + monsterSteps <= rowSize) {
                     return true;
                 }
                 else {
@@ -181,18 +135,18 @@ bool check_valid(int i, int &monster_steps, string ** myPlot, int rowSize, int c
             }
         }
         else if (monster[i]->direction == 3) {
-            if (monster[i]->vertical_ax - monster_steps >= 0) {
-                for (int b = 0;b < monster_steps;b++) {
+            if (monster[i]->vertical_ax - monsterSteps >= 0) {
+                for (int b = 0;b < monsterSteps;++b) {
                     /*
                     if (myPlot[monster[i]->vertical_ax+1+b][monster[i]->horizontal_ax] == "|" || myPlot[monster[i]->vertical_ax+1+b][monster[i]->horizontal_ax] == "*") {
-                        monster_steps++;
+                        monsterSteps++;
                     }
                      */
                     if (myPlot[monster[i]->vertical_ax+1+b][monster[i]->horizontal_ax] != " ") {
-                        monster_steps++;
+                        monsterSteps++;
                     }
                 }
-                if (monster[i]->vertical_ax - monster_steps >= 0) {
+                if (monster[i]->vertical_ax - monsterSteps >= 0) {
                     return true;
                 }
                 else {
@@ -206,18 +160,18 @@ bool check_valid(int i, int &monster_steps, string ** myPlot, int rowSize, int c
         //horizontal movement
         }
         else if (monster[i]->direction == 2) {
-            if (monster[i]->horizontal_ax + monster_steps <= columnSize) {
-                for (int c = 0; c < monster_steps; c++) {
+            if (monster[i]->horizontal_ax + monsterSteps <= columnSize) {
+                for (int c = 0; c < monsterSteps; ++c) {
                     /*
                      if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax+1+c] == "*" || myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax+1+c] == "|") {
-                     monster_steps++;
+                     monsterSteps++;
                      }
                      */
                     if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax+1+c] != " ")
-                        monster_steps++;
+                        monsterSteps++;
                 }
                     
-                    if (monster[i]->horizontal_ax + monster_steps <= columnSize)
+                    if (monster[i]->horizontal_ax + monsterSteps <= columnSize)
                         return true;
                     
                     else
@@ -228,18 +182,18 @@ bool check_valid(int i, int &monster_steps, string ** myPlot, int rowSize, int c
                 }
             }
         else if (monster[i]->direction == 4) {
-            if (monster[i]->horizontal_ax - monster_steps >= 0) {
-                for (int d = 0;d < monster_steps;d++) {
+            if (monster[i]->horizontal_ax - monsterSteps >= 0) {
+                for (int d = 0;d < monsterSteps;++d) {
                     /*
                     if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax-1-d] == "*" || myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax-1-d] == "|") {
-                        monster_steps++;
+                        monsterSteps++;
                     }
                      */
                     if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax-1-d] != " ") {
-                        monster_steps++;
+                        monsterSteps++;
                     }
                 }
-                if (monster[i]->horizontal_ax - monster_steps >= 0) {
+                if (monster[i]->horizontal_ax - monsterSteps >= 0) {
                     return true;
                 }
                 else {
@@ -255,33 +209,33 @@ bool check_valid(int i, int &monster_steps, string ** myPlot, int rowSize, int c
 }
 
     //determine how many steps the monster will take
-void monster_steps(string ** myPlot, int rowSize, int columnSize){
+void monsterSteps(string ** myPlot, int rowSize, int columnSize){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
-    for (int i=0;i<monster.size();i++){
+    for (int i=0;i<monster.size();++i){
         time_t _time=time(nullptr);
-        int monster_steps=rand()%4+1;
+        int monsterSteps=rand()%4+1;
         
-        if(check_valid(i, monster_steps, myPlot, rowSize, columnSize)==true){
+        if(check_valid(i, monsterSteps, myPlot, rowSize, columnSize)==true){
             //code to move monster
             if (monster[i]->direction==1){
                 myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]=" ";
-                monster[i]->vertical_ax-=monster_steps;
+                monster[i]->vertical_ax-=monsterSteps;
                 myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]="☠";
             }
             else if (monster[i]->direction==2){
                 myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]=" ";
-                monster[i]->horizontal_ax+=monster_steps;
+                monster[i]->horizontal_ax+=monsterSteps;
                 myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]="☠";
             }
             else if (monster[i]->direction==3){
                 myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]=" ";
-                monster[i]->vertical_ax+=monster_steps;
+                monster[i]->vertical_ax+=monsterSteps;
                 myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]="☠";
             }
             else{
                 myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]=" ";
-                monster[i]->horizontal_ax-=monster_steps;
+                monster[i]->horizontal_ax-=monsterSteps;
                 myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]="☠";
             }
             //return;
@@ -289,8 +243,8 @@ void monster_steps(string ** myPlot, int rowSize, int columnSize){
             else{
                 //call back function and try until all moves are valid
                 do {
-                    monster_steps=rand()%4+1;
-                } while (check_valid(i, monster_steps, myPlot, rowSize, columnSize)==false);
+                    monsterSteps=rand()%4+1;
+                } while (check_valid(i, monsterSteps, myPlot, rowSize, columnSize)==false);
                 //return;
             }
             
