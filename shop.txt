@@ -9,9 +9,6 @@
 | Body training: $30                                          |
 | Description: Strengthen yourself with professional training |
 |                                                             |
-| Time machine: $40                                           |
-| Description: Get back the time that you have lost           |
-|                                                             |
 | Monster hunter: $40                                         |
 | Description: Hunt a monster                                 |
 ---------------------------------------------------------------
