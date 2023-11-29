@@ -157,7 +157,8 @@ void welcomeAnimation() {
 
   cout << "1. Start Game" << endl;
   cout << "2. Rules" << endl;
-  cout << "3. Quit" << endl;
+  cout << "3. Credits" << endl;
+  cout << "4. Quit" << endl;
 
   int choice;
   cout << "Enter your choice number: ";
@@ -181,6 +182,17 @@ void welcomeAnimation() {
           cout << "------------------------------------------------------------ " << endl;
           break;
     case 3:
+          cout << "-----------------------------------" << endl;
+          cout << "Credits:" << endl;
+          cout << endl;
+          cout << "      Name         |        UID" << endl;
+          cout << "Bhardwaj Aryaman   |                 " << endl;
+          cout << "Fok Po Hin         |                 " << endl;
+          cout << "Lai Wan Ching Anson|                 " << endl;
+          cout << "Lee Ka Ka          |                 " << endl;
+          cout << "Teguh Theo Obadiah |                 " << endl;   
+          cout << "-----------------------------------" << endl;
+    case 4:
           //Quit the game
           exitAnimation();
           exit(0);
