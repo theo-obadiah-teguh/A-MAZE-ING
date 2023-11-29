@@ -155,6 +155,8 @@ int main() {
 
     // Display the elapsed time
     cout << "Time: " << elapsedTime << " seconds" << endl;
+
+    monsterHunt = 0;
       
     movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, monsterCount, monsterHunt);
     prevDirection = direction;
