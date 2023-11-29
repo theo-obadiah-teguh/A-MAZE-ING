@@ -6,10 +6,10 @@ A private repository for creating a text-based game in C++. The is project part 
 ### Our Group Members and UIDs
 
 Bhardwaj, Aryaman&nbsp;&nbsp;&nbsp;&nbsp;3035858755\
-Fok, Po Hin 				    3036062262\
-Lai, Wan Ching Anson 		3036067676\
-Lee, Ka Ka 				      3035921174\
-Teguh, Theo Obadiah 		3035898872
+Fok, Po Hin&nbsp;&nbsp;&nbsp;&nbsp;3036062262\
+Lai, Wan Ching Anson&nbsp;&nbsp;&nbsp;&nbsp;3036067676\
+Lee, Ka Ka&nbsp;&nbsp;&nbsp;&nbsp;3035921174\
+Teguh, Theo Obadiah&nbsp;&nbsp;&nbsp;&nbsp;3035898872
 
 ---
 
