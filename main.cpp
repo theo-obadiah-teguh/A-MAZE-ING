@@ -158,7 +158,7 @@ int main() {
 
     monsterHunt = 0;
       
-    movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, monster_count, monsterHunt);
+    movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, monsterCount, monsterHunt);
     prevDirection = direction;
     //move monster after player move
     monsterDir(player)
