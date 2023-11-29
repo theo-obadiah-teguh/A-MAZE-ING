@@ -23,7 +23,7 @@ int main() {
   string map = selectPlot(difficulty);
 
   // Initialize memory allocation and playerObject
-  int rowSize = 0, columnSize = 0, timeLimit = 180;
+  int rowSize = 0, columnSize = 0, timeLimit = 180, monsterHunt;
   bool win = false;
 
   // Initialize our maze plot
@@ -156,7 +156,7 @@ int main() {
     // Display the elapsed time
     cout << "Time: " << elapsedTime << " seconds" << endl;
       
-    movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint);
+    movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, monsterCount, monsterHunt);
     prevDirection = direction;
       //move monster after player move
       monster_dir(player);
