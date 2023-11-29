@@ -14,11 +14,11 @@ Teguh, Theo Obadiah 		3035898872
 ---
 
 ### Game Description
-<div style="text-align: justify">A-MAZE-ING: A thrilling single-player, text-based game awaits you in the depths of your local terminal. Prepare to embark on an epic adventure as you find yourself transported to an ancient Chinese dungeon maze, where your ultimate goal is to find a way out!</div> 
+A-MAZE-ING: A thrilling single-player, text-based game awaits you in the depths of your local terminal. Prepare to embark on an epic adventure as you find yourself transported to an ancient Chinese dungeon maze, where your ultimate goal is to find a way out!
 
 ***But beware! The labyrinth is teeming with peril, and you'll encounter a host of dangers along the way.***
 
-<div style="text-align: justify"> Keep a watchful eye for the hungry ghosts (鬼 gwai2) that lurk in the shadows, their ethereal forms capable of passing through walls, teleporting, and relentlessly pursuing you. Take caution not to unwittingly stumble into unbreakable walls, as they are infused with a mystical poison that can inflict harm. Devise clever strategies to navigate teleporters, overcome obstacles, and reach the exit with utmost swiftness, or alternatively, muster your courage to confront the menacing monsters head-on, deftly leaping over obstacles in your path.</div>
+Keep a watchful eye for the hungry ghosts (鬼 gwai2) that lurk in the shadows, their ethereal forms capable of passing through walls, teleporting, and relentlessly pursuing you. Take caution not to unwittingly stumble into unbreakable walls, as they are infused with a mystical poison that can inflict harm. Devise clever strategies to navigate teleporters, overcome obstacles, and reach the exit with utmost swiftness, or alternatively, muster your courage to confront the menacing monsters head-on, deftly leaping over obstacles in your path.
 
 Will you emerge victorious, escaping the clutches of the treacherous maze and claiming a glorious prize? Or will you find yourself trapped, with no escape in sight? The outcome rests solely in your hands, as you seize control of your destiny!
 
@@ -57,4 +57,16 @@ We have separated the program into different groups based on their functionality
 
 ### Use of Non-Standard Libraries
 There were no non-standard libraries used in the creation of this game.
+
+---
+
+### Compilation and Execution Instructions:
+1. Make sure you have Git installed on your device
+1. Open your terminal, choose your desired directory and clone the repository by executing “git clone https://github.com/theo-obadiah-teguh/group-110.git”.
+1. Enter the newly cloned directory with “cd group-110”.
+1. Execute “make main” to compile the main program.
+1. Execute “./main” to run the program.
+1. Have fun playing the game!
+1. Once you have finished playing, execute “make clean” to clear all .o files and the main file.
+
 
