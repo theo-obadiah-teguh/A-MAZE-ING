@@ -33,6 +33,6 @@ void calcPlayerSpawn (int & rowSize, int & columnSize);
 void printPlayerStats (playerObject player);
 
 // Function to animate a character's movement
-void movePlayer (string ** plot, int steps, playerObject& character, string direction, int rowSize, int columnSize, int timeLimit, bool & win, string exitPoint);
+void movePlayer (string ** plot, int steps, playerObject& character, string direction, int rowSize, int columnSize, int timeLimit, bool & win, string exitPoint, int & monsterCount, int & monsterHunt);
 
 #endif
