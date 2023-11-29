@@ -87,6 +87,57 @@ const char* exitArt =
 "  |     /      \n"
 "  |    |       \n";
 
+//Start menu for the game
+
+void startMenu(){
+  cout << "1. Start Game" << endl;
+  cout << "2. Rules" << endl;
+  cout << "3. Credits" << endl;
+  cout << "4. Quit" << endl;
+
+  int choice;
+  cout << "Enter your choice number: ";
+  cin >> choice;
+
+  switch (choice){
+    case 1:
+          //Start the game
+          break;
+    case 2:
+          //Display the rules
+          cout << "------------------------------------------------------------ " << endl;
+          cout << "Rules:" << endl;
+          cout << "Navigate the maze through the arrow keys 'w' 'a' 's' 'd' " << endl;
+          cout << "Select how many steps to take" << endl;
+          cout << "Find the exit point indicated by the number 1, 2, 3 or 4" << endl;
+          cout << "Avoid obstacles # and walls |" << endl;
+          cout << "Teleport T to a random location if you wish" << endl;
+          cout << "Eat Teleporters if you canmand wish to" << endl;
+          cout << "Collect coins $ along the way to boost your health" << endl;
+          cout << "------------------------------------------------------------ " << endl;
+          break;
+    case 3:
+          cout << "---------------------------------------" << endl;
+          cout << "Credits:" << endl;
+          cout << endl;
+          cout << "      Name         |        UID" << endl;
+          cout << "Bhardwaj Aryaman   |     3035858755  " << endl;
+          cout << "Fok Po Hin         |     3036062262  " << endl;
+          cout << "Lai Wan Ching Anson|     3036067676  " << endl;
+          cout << "Lee Ka Ka          |     3035921174  " << endl;
+          cout << "Teguh Theo Obadiah |     3035898872  " << endl;   
+          cout << "---------------------------------------" << endl;
+          break;
+    case 4:
+          //Quit the game
+          exitAnimation();
+          exit(0);
+    default:
+          //Invalid choice
+          cout << "Invalid choice. Please try again." << endl;
+          break;
+  }
+}
 
 
 // Below are the animation scripts
@@ -142,56 +193,6 @@ void exitAnimation() {
 }
 
 // An animation script for when the player starts the game
-
-void startMenu(){
-  cout << "1. Start Game" << endl;
-  cout << "2. Rules" << endl;
-  cout << "3. Credits" << endl;
-  cout << "4. Quit" << endl;
-
-  int choice;
-  cout << "Enter your choice number: ";
-  cin >> choice;
-
-  switch (choice){
-    case 1:
-          //Start the game
-          break;
-    case 2:
-          //Display the rules
-          cout << "------------------------------------------------------------ " << endl;
-          cout << "Rules:" << endl;
-          cout << "Navigate the maze through the arrow keys 'w' 'a' 's' 'd' " << endl;
-          cout << "Select how many steps to take" << endl;
-          cout << "Find the exit point indicated by the number 1, 2, 3 or 4" << endl;
-          cout << "Avoid obstacles # and walls |" << endl;
-          cout << "Teleport T to a random location if you wish" << endl;
-          cout << "Eat Teleporters if you canmand wish to" << endl;
-          cout << "Collect coins $ along the way to boost your health" << endl;
-          cout << "------------------------------------------------------------ " << endl;
-          break;
-    case 3:
-          cout << "---------------------------------------" << endl;
-          cout << "Credits:" << endl;
-          cout << endl;
-          cout << "      Name         |        UID" << endl;
-          cout << "Bhardwaj Aryaman   |     3035858755  " << endl;
-          cout << "Fok Po Hin         |     3036062262  " << endl;
-          cout << "Lai Wan Ching Anson|     3036067676  " << endl;
-          cout << "Lee Ka Ka          |     3035921174  " << endl;
-          cout << "Teguh Theo Obadiah |     3035898872  " << endl;   
-          cout << "---------------------------------------" << endl;
-          break;
-    case 4:
-          //Quit the game
-          exitAnimation();
-          exit(0);
-    default:
-          //Invalid choice
-          cout << "Invalid choice. Please try again." << endl;
-          break;
-  }
-}
 
 void welcomeAnimation() {
   system("cls||clear");
