@@ -17,6 +17,7 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
   // Check the cases where the player does not have enough money
   string rejection = "Not enough coins. Try to earn more in the game.";
 
+  // Handle the case when the player want to purchase energy drink
   if (item == "energy drink" || item == "Energy drink") {
     if (player.coins < 20) {
       cout << rejection << endl;
@@ -53,6 +54,7 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
       cout << "Now you have " << player.health << " HP." << endl;
     }
   }
+  // Handle the case when player wnat to be trained
   else if (item == "Body training" || item == "body training") {
     if (player.coins < 30) {
       cout << rejection << endl;
@@ -69,6 +71,7 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
     cout << "You have been trained.";
     cout << " Your endurance is now better than ever." << endl;
   }
+  // Handle the case when the player want to kill one monster
   else if (item == "monster hunter" || item == "Monster hunter") {
     if (player.coins < 40) {
       cout << rejection << endl;
