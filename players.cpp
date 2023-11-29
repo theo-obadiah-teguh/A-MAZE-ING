@@ -107,14 +107,14 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       clearscreen();
       cout << "You encountered a teleporter" << endl;
       sleep(2);
-      cout << "Do you want to jump the teleporter? (yes/no) ";
+      cout << "Do you want to eat the teleporter? (yes/no) ";
       string answer;
       cin >> answer;
       if (answer == "yes") {
-          // Check if the player has enough jump points
-          if (character.jumpPoints > 0) {
-            // Decrement the jump points count
-            character.jumpPoints--;
+          // Check if the player has enough eat points
+          if (character.eatPoints > 0) {
+            // Decrement the eat points
+            character.eatPoints--;
 
             // Clear the current position
             plot[character.vertical][character.horizontal] = ' ';
@@ -127,14 +127,14 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
             printPlot(plot, rowSize, columnSize, exitPoint);
             printPlayerStats(character);
 
-            // Display the jump message
-            cout << "You jumped over the teleporter!" << endl;
+            // Display the eat message
+            cout << "You ate the teleporter!" << endl;
 
             // Wait for a moment before clearing the screen
             this_thread::sleep_for(chrono::milliseconds(1000));
             clearscreen();
 	  } else {
-            cout << "You don't have enough points to jump the teleporter." << endl;
+            cout << "You don't have enough points to eat the teleporter." << endl;
 	    teleportHit = true;
 	  }
       }else {  
