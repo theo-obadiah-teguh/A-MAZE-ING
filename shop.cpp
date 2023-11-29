@@ -90,6 +90,7 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
     }
     else {
 	    player.coins -= 40;
+	    monsterCount -= 1;
 	    monsterHunt += 1;
       cout << "One monster has been killed" << endl;
     }
@@ -101,7 +102,7 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
 
 void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, string exitPoint){
   clearscreen();
-  
+	
   // Input and print the shop screen
   int shopRowSize = 0, shopColumnSize = 0;
   string filename = "shop.txt", type = "shop";
@@ -124,7 +125,7 @@ void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, str
   }
 
   while (drinkConfirmation != "no") {
-    purchaseOptions(monsterCount, player);
+    purchaseOptions(monsterHunt, monsterCount, player);
     cout << "Is there anything you still want to buy? (yes/no) ";
     cin >> drinkConfirmation;
   }
