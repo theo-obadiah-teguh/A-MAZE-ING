@@ -167,6 +167,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 	      for (int j = 0; j< monsterHunt; ++j){
 		      huntMonster(plot);
 	      }
+	      clearscreen();
       }
       else if (answer == "no") {
         clearscreen();
