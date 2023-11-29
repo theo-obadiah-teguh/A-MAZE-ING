@@ -91,6 +91,7 @@ int main() {
 
       if (direction == "q") {
         startMenu();
+        bool flag = true;
         break;
       }
 
