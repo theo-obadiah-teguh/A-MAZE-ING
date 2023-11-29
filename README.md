@@ -18,7 +18,7 @@ Teguh, Theo Obadiah 		3035898872
 
 ***But beware! The labyrinth is teeming with peril, and you'll encounter a host of dangers along the way.***
 
-Keep a watchful eye for the hungry ghosts (鬼 gwai2) that lurk in the shadows, their ethereal forms capable of passing through walls, teleporting, and relentlessly pursuing you. Take caution not to unwittingly stumble into unbreakable walls, as they are infused with a mystical poison that can inflict harm. Devise clever strategies to navigate teleporters, overcome obstacles, and reach the exit with utmost swiftness, or alternatively, muster your courage to confront the menacing monsters head-on, deftly leaping over obstacles in your path.
+<p style='text-align: justify;'> Keep a watchful eye for the hungry ghosts (鬼 gwai2) that lurk in the shadows, their ethereal forms capable of passing through walls, teleporting, and relentlessly pursuing you. Take caution not to unwittingly stumble into unbreakable walls, as they are infused with a mystical poison that can inflict harm. Devise clever strategies to navigate teleporters, overcome obstacles, and reach the exit with utmost swiftness, or alternatively, muster your courage to confront the menacing monsters head-on, deftly leaping over obstacles in your path.</p>
 
 Will you emerge victorious, escaping the clutches of the treacherous maze and claiming a glorious prize? Or will you find yourself trapped, with no escape in sight? The outcome rests solely in your hands, as you seize control of your destiny!
 
