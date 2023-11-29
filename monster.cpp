@@ -112,7 +112,7 @@ bool checkValid(int i, int &monsterSteps, string ** myPlot, int rowSize, int col
 //updated plotdimension -> rowSize/columnSize
         //vertical movement
         if (monster[i]->direction == 1)  {
-            if (monster[i]->vertical_ax + monster_steps <= rowSize) {
+            if (monster[i]->vertical_ax + monster_steps <= rowSize-1) {
                 for (int a = 0;a < monsterSteps;++a) {
                     /*
                     if (myPlot[monster[i]->vertical_ax-1-a][monster[i]->horizontal_ax] == "|" || myPlot[monster[i]->vertical_ax-1-a][monster[i]->horizontal_ax] == "*") {
@@ -123,7 +123,7 @@ bool checkValid(int i, int &monsterSteps, string ** myPlot, int rowSize, int col
                         monsterSteps++;
                     }
                 }
-                if (monster[i]->vertical_ax + monsterSteps <= rowSize) {
+                if (monster[i]->vertical_ax + monsterSteps <= rowSize-1) {
                     return true;
                 }
                 else {
@@ -160,7 +160,7 @@ bool checkValid(int i, int &monsterSteps, string ** myPlot, int rowSize, int col
         //horizontal movement
         }
         else if (monster[i]->direction == 2) {
-            if (monster[i]->horizontal_ax + monsterSteps <= columnSize) {
+            if (monster[i]->horizontal_ax + monsterSteps <= columnSize-1) {
                 for (int c = 0; c < monsterSteps; ++c) {
                     /*
                      if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax+1+c] == "*" || myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax+1+c] == "|") {
@@ -171,7 +171,7 @@ bool checkValid(int i, int &monsterSteps, string ** myPlot, int rowSize, int col
                         monsterSteps++;
                 }
                     
-                    if (monster[i]->horizontal_ax + monsterSteps <= columnSize)
+                    if (monster[i]->horizontal_ax + monsterSteps <= columnSize-1)
                         return true;
                     
                     else
