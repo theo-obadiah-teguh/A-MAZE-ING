@@ -106,7 +106,7 @@ void init(int rowSize, int columnSize, string ** myPlot, int monsterCount){
 
 //check validity (make sure the ghost will not out of boundary)
     //1st para  monster_count-> i
-bool check_valid(int i, int &monsterSteps, string ** myPlot, int rowSize, int columnSize){
+bool checkValid(int i, int &monsterSteps, string ** myPlot, int rowSize, int columnSize){
     //iterate over all monsters
     //for (int i=0;i<monster_count;i++) {
 //updated plotdimension -> rowSize/columnSize
@@ -216,7 +216,7 @@ void monsterSteps(string ** myPlot, int rowSize, int columnSize){
         time_t _time=time(nullptr);
         int monsterSteps=rand()%4+1;
         
-        if(check_valid(i, monsterSteps, myPlot, rowSize, columnSize)==true){
+        if(checkValid(i, monsterSteps, myPlot, rowSize, columnSize)==true){
             //code to move monster
             if (monster[i]->direction==1){
                 myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax]=" ";
