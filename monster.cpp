@@ -43,7 +43,6 @@ void monsterDir(playerObject player){
     srand(static_cast<unsigned>(_time));
     
     for (int i = 0; i < monster.size(); ++i){
-        cout << "loop" << endl;
         time_t _time=time(nullptr);
         // 1 is up, 2 is right, 3 is down, 4 is left
         if (monster[i]->vertical_ax - player.vertical <= 0 ){
