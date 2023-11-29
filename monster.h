@@ -38,5 +38,5 @@ void init(int rowSize, int columnSize, string ** myPlot, int monster_count);
 void monster_steps(string ** myPlot, int rowSize, int columnSize);
 bool check_valid(int monster_count, int &monster_steps, string ** myPlot, int rowSize, int columnSize);
 //update hunt_monster function and updated in shop.cpp
-void hunt_monster();
+void hunt_monster(string ** array);
 #endif
