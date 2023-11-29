@@ -154,7 +154,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 	    if (answer == "yes") {
 	      visitShop(monsterHunt, monsterCount, character, exitPoint);
 	      for (int j=0; j< monsterHunt; j++){
-		      hunt_monster(array);
+		      hunt_monster(plot);
 	      }
 	      // break;
       }
