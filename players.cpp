@@ -209,11 +209,11 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       printPlot(plot, rowSize, columnSize,  exitPoint, obstacleHit);
       printPlayerStats(character);
 
-      this_thread::sleep_for(chrono::milliseconds(1200));
+      //this_thread::sleep_for(chrono::milliseconds(1200));
 
-      clearscreen();
-      printPlot(plot, rowSize, columnSize, exitPoint);
-      printPlayerStats(character);
+      //clearscreen();
+      //printPlot(plot, rowSize, columnSize, exitPoint);
+      //printPlayerStats(character);
       break; // DO NOT DELETE. CRUCIAL PART
     }
     
