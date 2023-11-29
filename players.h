@@ -10,7 +10,7 @@ struct playerObject {
   int health;
   int coins;
 
-  int jumpPoints;
+  int eatPoints;
 
   // Declaring the struct with two integer arguments, i.e the spawn location of a player
   // If we want to initialize a player, set type to true
