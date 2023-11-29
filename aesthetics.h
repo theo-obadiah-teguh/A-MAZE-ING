@@ -191,7 +191,7 @@ void victoryAnimation() {
   cout << "You will be redirected to the main menu in a few seconds..." << endl;
   sleep(3);
 
-  startMenu();
+  startMenu(flag);
 }
 
 // An animation script for when the player starts the game
@@ -215,6 +215,6 @@ void welcomeAnimation() {
   sleep(2);
 
   flag = true;
-  startMenu();
+  startMenu(flag);
 }
 
