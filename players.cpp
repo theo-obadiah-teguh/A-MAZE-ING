@@ -136,9 +136,11 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 	  } else {
             cout << "You don't have enough points to eat the teleporter." << endl;
 	    teleportHit = true;
+	    break;
 	  }
       }else {  
       	 teleportHit = true;
+	 break;
       }
     }
 
