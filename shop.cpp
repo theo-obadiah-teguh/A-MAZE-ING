@@ -124,6 +124,7 @@ void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, str
   if (drinkConfirmation == "no") {
     cout << "See you soon." << endl;
     deleteArray(shopArray, shopRowSize);
+    clearscreen();
     return;
   }
 
@@ -138,6 +139,8 @@ void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, str
 
   // Free memory slots
   deleteArray(shopArray, shopRowSize);
+
+  clearscreen();
 }
     
   
