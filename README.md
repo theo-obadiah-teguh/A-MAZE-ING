@@ -3,8 +3,6 @@ A private repository for creating a text-based game in C++. The is project part 
 
 ## A-MAZE-ING
 
----
-
 ### Our Group Members and UIDs
 
 Bhardwaj, Aryaman       3035858755\
