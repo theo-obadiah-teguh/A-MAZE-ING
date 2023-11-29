@@ -23,6 +23,6 @@ main: plotting.o players.o shop.o monster.o main.o
 	g++ $(FLAGS) $^ -o $@
 
 clean:
-	rm -f main main.o plotting.o players.o shop.o
+	rm -f main main.o plotting.o players.o shop.o monster.o
 
 .PHONY: clean

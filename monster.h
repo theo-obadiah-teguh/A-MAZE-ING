@@ -31,7 +31,7 @@ for (int i = 0; i < monster_count; i++){
     monster.push_back(new monsterObject);
 }*/
 //void -> int
-int monster_no(string difficulty, int &monster_count);
+void monster_no(string difficulty, int &monster_count);
 void create_monsters(int monster_count);
 void monster_dir(playerObject player);
 void init(int rowSize, int columnSize, string ** myPlot, int monster_count);
