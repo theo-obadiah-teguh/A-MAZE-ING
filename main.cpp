@@ -49,11 +49,14 @@ int main() {
 
   clearscreen();
 
-  //add monster
-  int monster_count=0;
+  // Initialize monster vector
+  int monster_count = 0;
   monster_no(difficulty, monster_count);
+    
   create_monsters(monster_count);
   init(rowSize, columnSize, myPlot, monster_count);
+    
+    
   printPlot(myPlot, rowSize, columnSize, exitPoint);
   printPlayerStats(player);
   cout << "You find yourself in the center of a dungeon maze!" << endl;
@@ -109,7 +112,9 @@ int main() {
       firstJourney = false;
     }
     else {
-      cout << "Which direction do you want to go? ";
+      //cout << "Which direction do you want to go? ";
+        cout << "Please ENTER the 'w', 'a', 's', 'd' keys to choose a direction." << endl;
+        cout << "Which direction do you want to go? (ENTER 'q' to quit) ";
       cin >> direction;
 
       if (direction == "W") {
@@ -155,7 +160,14 @@ int main() {
     prevDirection = direction;
       //move monster after player move
       monster_dir(player);
+      for (int i = 0; i < monster.size(); i++) {
+          cout << monster[i]->direction << endl;
+      }
+      
       monster_steps(myPlot, rowSize, columnSize);
+      clearscreen();
+      printPlot(myPlot, rowSize, columnSize, exitPoint);
+      //if (true) exit(1);
 
     if (player.health <= 0) {
       defeatAnimation();

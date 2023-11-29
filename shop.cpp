@@ -10,8 +10,9 @@ void purchaseOptions(int & monsterCount, playerObject & player){
   // Prompt the player and input the target items
 
   cout << "What do you wish to buy? ";
-  string item;
-  getline(cin, item);
+    string item1, item2, item;
+      cin >> item1 >> item2;
+      item = item1 + " " + item2;
 
   // Check the cases where the player does not have enough money
   string rejection = "Not enough coins. Try to earn more in the game.";
