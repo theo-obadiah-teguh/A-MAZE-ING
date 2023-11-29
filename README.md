@@ -26,14 +26,14 @@ Will you emerge victorious, escaping the clutches of the treacherous maze and cl
 
 ### Game Rules
 1. Choose a difficulty level: easy, medium, or hard.
-1. ‘☺’ is the player avatar, while ‘☠’ is the monster avatar.
+1. `☺` is the player avatar, while `☠` is the monster avatar.
 1. The player will spawn in the centre of the maze, whilst monsters will spawn randomly in the maze.
 1. Every maze has four exits, but only one will be randomly chosen as the road to victory. This exit will be shown on top of the maze.
 1. The player will start with 100 HP, 150 coins, and 5 chances to avoid teleporting.
-1. ‘$’ is the shop, the player can visit it and purchase items if the player wants.
-1. ‘#’ is the obstacle, when the player hits the obstacle, 2 HP will be deducted, and the obstacle will be removed.
-1. Walls are denoted by ‘|’, ‘-’, and ‘*’. If the player hits them, 5 HP will be deducted, and they’re avatar will move back one step.
-1. ‘T’ is the teleporter and it will teleport the player randomly. The player has 5 chances to avoid the teleporters by eating it.
+1. `$` is the shop, the player can visit it and purchase items if the player wants.
+1. `#` is the obstacle, when the player hits the obstacle, 2 HP will be deducted, and the obstacle will be removed.
+1. Walls are denoted by `|`, `-`, and `*`. If the player hits them, 5 HP will be deducted, and they’re avatar will move back one step.
+1. `T` is the teleporter and it will teleport the player randomly. The player has 5 chances to avoid the teleporters by eating it.
 
 ---
 
