@@ -94,7 +94,7 @@ int main() {
       }
 
       if (direction == "q") {
-        exitAnimation();
+        startMenu();
         break;
       }
 
@@ -134,7 +134,7 @@ int main() {
       }
 
       if (direction == "q") {
-        exitAnimation();
+        startMenu();
         break;
       }
 
