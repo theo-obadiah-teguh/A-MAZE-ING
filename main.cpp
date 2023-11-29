@@ -92,7 +92,7 @@ int main() {
       }
 
       if (direction == "q") {
-        startMenu(flag);
+        startMenu();
         break;
       }
 
@@ -132,7 +132,7 @@ int main() {
       }
 
       if (direction == "q") {
-        startMenu(flag);
+        startMenu();
         deleteArray(myPlot, rowSize);
         break;
       }
