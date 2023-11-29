@@ -160,11 +160,11 @@ int main() {
       
     movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, monsterCount, monsterHunt);
     prevDirection = direction;
-      //move monster after player move
-      monsterDir(player)
-      monsterSteps(myPlot, rowSize, columnSize);
-      clearscreen();
-      printPlot(myPlot, rowSize, columnSize, exitPoint);
+    //move monster after player move
+    monsterDir(player)
+    monsterSteps(myPlot, rowSize, columnSize);
+    clearscreen();
+    printPlot(myPlot, rowSize, columnSize, exitPoint);
 
     if (player.health <= 0) {
       defeatAnimation();
