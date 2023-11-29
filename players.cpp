@@ -1,5 +1,6 @@
 #include "players.h"
 #include "plotting.h"
+#include "monster.h"
 #include <unistd.h>
 #include <chrono>
 #include <thread>
@@ -18,7 +19,7 @@ void printPlayerStats (playerObject player) {
 }
 
 // Function to animate the player's movement
-void movePlayer (string ** plot, int steps, playerObject& character, string direction, int rowSize, int columnSize, int timeLimit, bool & win, string exitPoint) {
+void movePlayer (string ** plot, int steps, playerObject& character, string direction, int rowSize, int columnSize, int timeLimit, bool & win, string exitPoint, int & monsterCount, int & monsterHunt) {
   clearscreen();
 
   printPlot(plot, rowSize, columnSize, exitPoint);
@@ -151,7 +152,10 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 	    cin >> answer;
 
 	    if (answer == "yes") {
-	      visitShop(timeLimit, character, exitPoint);
+	      visitShop(monsterHunt, monsterCount, character, exitPoint);
+	      for (int j=0; j< monsterHunt; j++){
+		      hunt_monster(array);
+	      }
 	      // break;
       }
       else if (answer == "no") {
