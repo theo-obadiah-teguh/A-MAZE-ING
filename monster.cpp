@@ -31,9 +31,9 @@ void createMonsters(int monsterCount){
     }
 }
 
-void huntMonster(string ** array){
+void huntMonster(string ** myPlot){
     int location = monster.size();
-    myPlot[monster[location-1]->vertical_ax][[monster[location-1]->horizontal_ax]] = ' ';
+    myPlot[monster[location-1]->vertical_ax][monster[location-1]->horizontal_ax]] = " ";
     monster.pop_back();
     return;
 }
