@@ -135,6 +135,7 @@ int main() {
 
       if (direction == "q") {
         startMenu();
+        deleteArray(myPlot, rowSize);
         break;
       }
 
@@ -168,10 +169,12 @@ int main() {
 
     if (player.health <= 0) {
       defeatAnimation();
+      deleteArray(myPlot, rowSize);
       break;
     }
     else if (win == true){
       victoryAnimation();
+      deleteArray(myPlot, rowSize);
       break;
 
     }
