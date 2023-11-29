@@ -43,6 +43,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 
   this_thread::sleep_for(chrono::milliseconds(500));
   clearscreen();
+    
 
   for (int i = 0; i < steps; ++i) {
     plot[character.vertical][character.horizontal] = ' ';
@@ -94,6 +95,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
         cout << "You have fought it off, but you are heavily injured. (-50 HP)" << endl;
         sleep(1);
         character.health -= 50;
+          huntMonster(plot);
         cout << "You now have " << character.health << " HP." << endl;
         sleep(2);  
       }
@@ -246,6 +248,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     // Clear the screen and display the updated maze
     	clearscreen();
 	    printPlot(plot, rowSize, columnSize, exitPoint);
+        printPlayerStats(character);
 
     }
   }
