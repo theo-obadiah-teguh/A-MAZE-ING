@@ -207,6 +207,8 @@ void welcomeAnimation() {
   sleep(1);
   clearscreen();
 
+  sleep(2);
+
   startMenu();
 }
 
