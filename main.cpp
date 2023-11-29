@@ -50,11 +50,11 @@ int main() {
   clearscreen();
 
   // Initialize monster vector
-  int monster_count = 0;
-  monster_no(difficulty, monster_count);
+  int monsterCount = 0;
+  monsterNo(difficulty, monsterCount);
     
-  create_monsters(monster_count);
-  init(rowSize, columnSize, myPlot, monster_count);
+  createMonsters(monsterCount);
+  init(rowSize, columnSize, myPlot, monsterCount);
     
     
   printPlot(myPlot, rowSize, columnSize, exitPoint);
@@ -161,15 +161,10 @@ int main() {
     movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, monsterCount, monsterHunt);
     prevDirection = direction;
       //move monster after player move
-      monster_dir(player);
-      for (int i = 0; i < monster.size(); i++) {
-          cout << monster[i]->direction << endl;
-      }
-      
-      monster_steps(myPlot, rowSize, columnSize);
+      monsterDir(player)
+      monsterSteps(myPlot, rowSize, columnSize);
       clearscreen();
       printPlot(myPlot, rowSize, columnSize, exitPoint);
-      //if (true) exit(1);
 
     if (player.health <= 0) {
       defeatAnimation();
