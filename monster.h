@@ -18,7 +18,7 @@ void createMonsters(int monsterCount);
 void monsterDir(playerObject player);
 void init(int rowSize, int columnSize, string ** myPlot, int monsterCount);
 void monsterSteps(string ** myPlot, int rowSize, int columnSize);
-bool check_valid(int monster_count, int &monster_steps, string ** myPlot, int rowSize, int columnSize);
+bool checkValid(int monsterCount, int &monsterSteps, string ** myPlot, int rowSize, int columnSize);
 //update hunt_monster function and updated in shop.cpp
-void hunt_monster(string ** array);
+void huntMonster(string ** array);
 #endif
