@@ -68,7 +68,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       --character.horizontal;
 
     // Checks if player hits an obstacle
-    if (plot[character.vertical][character.horizontal] == "#" || plot[character.vertical][character.horizontal] == "*" || plot[character.vertical][character.horizontal] == "|" || plot[character.vertical][character.horizontal] == "-"){
+    if (plot[character.vertical][character.horizontal] == "#" || plot[character.vertical][character.horizontal] == "*" || plot[character.vertical][character.horizontal] == "|" || plot[character.vertical][character.horizontal] == "-" || plot[character.vertical][character.horizontal] == "☠"){
       sleep(1);
 	    clearscreen();
 
@@ -77,6 +77,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 
       // Obstacles are destructible walls, they exhaust the player (-2 HP)
       // Walls do more damage (-5 HP)
+      // If player hits monster, the damage would be even higher (-50 HP)
 
       if (obstacle == "#") {
         cout << "You encountered an obstacle." << endl;
@@ -86,6 +87,13 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
         character.health -= 2;
         cout << "You now have " << character.health << " HP." << endl;
         sleep(2);
+      }
+      else if (obstacle == "☠") {
+        cout << "You bumped into a monster! (-50 HP)" << endl;
+        sleep(1);
+        character.health -= 50;
+        cout << "You now have " << character.health << " HP." << endl;
+        sleep(2);  
       }
       else {
         cout << "You bumped into a wall! (-5 HP)" << endl;
@@ -140,7 +148,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 	  }
       }else {  
       	 teleportHit = true;
-	 break;
+      // break;
       }
     }
 
@@ -169,7 +177,12 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     }
 
     plot[character.vertical][character.horizontal] = character.avatar;
-    printPlot(plot, rowSize, columnSize, exitPoint, obstacleHit && obstacle != "#");
+    if (obstacleHit && obstacle != "☠") {
+       printPlot(plot, rowSize, columnSize, exitPoint, obstacleHit && obstacle != "☠"); 
+    } 
+    else if (obstacleHit && obstacle != "#") {
+       printPlot(plot, rowSize, columnSize, exitPoint, obstacleHit && obstacle != "#"); 
+    }
     printPlayerStats(character);
 
     if (!obstacleHit || obstacle == "#") {
@@ -182,8 +195,8 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     	clearscreen();
     }
 
-    // Makes the player go back to previous position once hit the obstacle
-    if (obstacleHit && obstacle != "#") {
+    // Makes the player go back to previous position once hit an obstacle or a monster
+    if (obstacleHit && obstacle != "#" || obstacleHit && obstacle != "☠") {
 
       // Restores the obstacle
       plot[character.vertical][character.horizontal] = obstacle;
