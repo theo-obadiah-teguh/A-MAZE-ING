@@ -5,11 +5,11 @@ A private repository for creating a text-based game in C++. The is project part 
 
 ### Our Group Members and UIDs
 
-Bhardwaj, Aryaman 		  3035858755
-Fok, Po Hin 				    3036062262
-Lai, Wan Ching Anson 		3036067676
-Lee, Ka Ka 				      3035921174
-Teguh, Theo Obadiah 		3035898872
+Bhardwaj, Aryaman 		  3035858755\
+Fok, Po Hin 				    3036062262\
+Lai, Wan Ching Anson 		3036067676\
+Lee, Ka Ka 				      3035921174\
+Teguh, Theo Obadiah 		3035898872\
 
 ### Description:
 A-MAZE-ING: A thrilling single-player, text-based game awaits you in the depths of your local terminal. Prepare to embark on an epic adventure as you find yourself transported to an ancient Chinese dungeon maze, where your ultimate goal is to find a way out!
@@ -25,7 +25,7 @@ Choose a difficulty level: easy, medium, or hard.
 ‘☺’ is the player avatar, while ‘☠’ is the monster avatar.
 The player will spawn in the centre of the maze, whilst monsters will spawn randomly in the maze.
 Every maze has four exits, but only one will be randomly chosen as the road to victory. This exit will be shown on top of the maze.
-The player will start with 100 HP, 150 coins and 5 chances to avoid teleporting.
+The player will start with 100 HP, 150 coins, and 5 chances to avoid teleporting.
 ‘$’ is the shop, the player can visit it and purchase items if the player wants.
 ‘#’ is the obstacle, when the player hits the obstacle, 2 HP will be deducted, and the obstacle will be removed.
 Walls are denoted by ‘|’, ‘-’, and ‘*’. If the player hits them, 5 HP will be deducted, and they’re avatar will move back one step.
