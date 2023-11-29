@@ -64,6 +64,8 @@ int main() {
   string prevDirection;
   bool firstJourney = true;
 
+  bool flag = true;
+
   while (true) {
     string direction;
     int steps;
@@ -90,8 +92,7 @@ int main() {
       }
 
       if (direction == "q") {
-        startMenu();
-        bool flag = true;
+        startMenu(flag);
         break;
       }
 
