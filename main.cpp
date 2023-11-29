@@ -45,7 +45,7 @@ int main() {
   playerObject player = playerObject(playerSpawnRow, playerSpawnColumn, true);
   player.health = 100;
   player.coins = 150;
-  player.eatPoints = 2;
+  player.eatPoints = 3;
 
   clearscreen();
 
@@ -56,7 +56,6 @@ int main() {
   createMonsters(monsterCount);
   init(rowSize, columnSize, myPlot, monsterCount);
     
-    
   printPlot(myPlot, rowSize, columnSize, exitPoint);
   printPlayerStats(player);
   cout << "You find yourself in the center of a dungeon maze!" << endl;
@@ -64,9 +63,6 @@ int main() {
 
   string prevDirection;
   bool firstJourney = true;
-
-// Start the timer
-  auto startTime = steady_clock::now();
 
   while (true) {
     string direction;
@@ -150,13 +146,6 @@ int main() {
       cin >> steps;
     }
 
-// Calculate the elapsed time
-    auto currentTime = steady_clock::now();
-    auto elapsedTime = duration_cast<seconds>(currentTime - startTime).count();
-
-    // Display the elapsed time
-    cout << "Time: " << elapsedTime << " seconds" << endl;
-
     monsterHunt = 0;
       
     movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, monsterCount, monsterHunt);
@@ -166,6 +155,7 @@ int main() {
     monsterSteps(myPlot, rowSize, columnSize);
     clearscreen();
     printPlot(myPlot, rowSize, columnSize, exitPoint);
+    printPlayerStats(player);
 
     if (player.health <= 0) {
       defeatAnimation();
