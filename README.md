@@ -59,7 +59,7 @@ We have separated the program into different groups based on their functionality
 There were no non-standard libraries used in the creation of this game.
 
 ### Use of ASCII Art
-All imported art in this program was obtained from the [ASCII Art Archive](https://www.asciiart.eu/)
+All imported art in this program was obtained from the [ASCII Art Archive](https://www.asciiart.eu/).
 
 ---
 
