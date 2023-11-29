@@ -118,7 +118,7 @@ void exitAnimation() {
   cout << exitArt << endl;
 }
 
-void startMenu(flag){
+void startMenu(){
   cout << "1. Start Game" << endl;
   cout << "2. Rules" << endl;
   cout << "3. Credits" << endl;
@@ -191,7 +191,7 @@ void victoryAnimation() {
   cout << "You will be redirected to the main menu in a few seconds..." << endl;
   sleep(3);
 
-  startMenu(flag);
+  startMenu();
 }
 
 // An animation script for when the player starts the game
@@ -215,6 +215,6 @@ void welcomeAnimation() {
   sleep(2);
 
   flag = true;
-  startMenu(flag);
+  startMenu();
 }
 
