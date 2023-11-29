@@ -140,21 +140,8 @@ void exitAnimation() {
 }
 
 // An animation script for when the player starts the game
-void welcomeAnimation() {
-  system("cls||clear");
-  cout << "A long... long... time ago..." << endl;
-  sleep(2);
 
-  cout << "In the middle of a forest... in ancient China..." << endl;
-  sleep(2);
-
-  cout << "There was a dungeon..." << endl;
-  cout << endl;
-  sleep(1);
-
-  cout << welcomeArt << endl;
-  sleep(1);
-
+void startMenu(){
   cout << "1. Start Game" << endl;
   cout << "2. Rules" << endl;
   cout << "3. Credits" << endl;
@@ -202,5 +189,23 @@ void welcomeAnimation() {
           cout << "Invalid choice. Please try again." << endl;
           break;
   }
+}
+
+void welcomeAnimation() {
+  system("cls||clear");
+  cout << "A long... long... time ago..." << endl;
+  sleep(2);
+
+  cout << "In the middle of a forest... in ancient China..." << endl;
+  sleep(2);
+
+  cout << "There was a dungeon..." << endl;
+  cout << endl;
+  sleep(1);
+
+  cout << welcomeArt << endl;
+  sleep(1);
+
+  startMenu();
 }
 
