@@ -6,7 +6,7 @@
 #include <unistd.h>
 using namespace std;
 
-void purchaseOptions(int & monsterCount, playerObject & player){
+void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & player){
   // Prompt the player and input the target items
 
   cout << "What do you wish to buy? ";
@@ -90,6 +90,7 @@ void purchaseOptions(int & monsterCount, playerObject & player){
     }
     else {
 	    player.coins -= 40;
+	    monsterHunt += 1;
       cout << "One monster has been killed" << endl;
     }
   }
@@ -98,7 +99,7 @@ void purchaseOptions(int & monsterCount, playerObject & player){
   }
 }
 
-void visitShop(int & monsterCount, playerObject & player, string exitPoint){
+void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, string exitPoint){
   clearscreen();
   
   // Input and print the shop screen
