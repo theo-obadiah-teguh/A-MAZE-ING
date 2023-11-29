@@ -192,6 +192,7 @@ void welcomeAnimation() {
           cout << "Lee Ka Ka          |                 " << endl;
           cout << "Teguh Theo Obadiah |                 " << endl;   
           cout << "-----------------------------------" << endl;
+          break;
     case 4:
           //Quit the game
           exitAnimation();
