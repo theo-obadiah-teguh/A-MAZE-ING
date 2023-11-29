@@ -14,7 +14,7 @@ using namespace std::chrono;
 int main() {
   clearscreen();
 
-  bool flag = true;
+  bool firstPlay = true;
 
   welcomeAnimation();
 
@@ -92,6 +92,7 @@ int main() {
       }
 
       if (direction == "q") {
+        //firstPlay = true;
         startMenu();
         break;
       }
@@ -132,6 +133,7 @@ int main() {
       }
 
       if (direction == "q") {
+        flag = false;
         startMenu();
         deleteArray(myPlot, rowSize);
         break;
