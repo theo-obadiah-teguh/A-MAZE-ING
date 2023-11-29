@@ -33,7 +33,7 @@ void createMonsters(int monsterCount){
 
 void huntMonster(string ** array){
     int location = monster.size();
-    myPlot[monster[location-1]->vertical_ax][[monster[location-1]->horizontal_ax]
+    myPlot[monster[location-1]->vertical_ax][[monster[location-1]->horizontal_ax] = ' ';
     monster.pop_back();
     return;
 }
@@ -106,7 +106,7 @@ bool checkValid(int i, int &monsterSteps, string ** myPlot, int rowSize, int col
 //updated plotdimension -> rowSize/columnSize
         //vertical movement
         if (monster[i]->direction == 1)  {
-            if (monster[i]->vertical_ax + monster_steps <= rowSize-1) {
+            if (monster[i]->vertical_ax + monsterSteps <= rowSize-1) {
                 for (int a = 0;a < monsterSteps;++a) {
                     /*
                     if (myPlot[monster[i]->vertical_ax-1-a][monster[i]->horizontal_ax] == "|" || myPlot[monster[i]->vertical_ax-1-a][monster[i]->horizontal_ax] == "*") {
@@ -238,7 +238,7 @@ void monsterSteps(string ** myPlot, int rowSize, int columnSize){
                 //call back function and try until all moves are valid
                 do {
                     monsterSteps=rand()%4+1;
-                } while (check_valid(i, monsterSteps, myPlot, rowSize, columnSize)==false);
+                } while (checkValid(i, monsterSteps, myPlot, rowSize, columnSize)==false);
                 //return;
             }
             
