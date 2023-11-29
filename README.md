@@ -16,7 +16,7 @@ A private repository for creating a text-based game in C++. The is project part 
 ### Game Description
 **A-MAZE-ING**: A thrilling single-player, text-based game awaits you in the depths of your local terminal. Prepare to embark on an epic adventure as you find yourself transported to an ancient Chinese dungeon maze, where your ultimate goal is to find a way out!
 
-> But beware! The labyrinth is teeming with peril, and you'll encounter a host of dangers along the way.
+> **But beware! The labyrinth is teeming with peril, and you'll encounter a host of dangers along the way.**
 
 Keep a watchful eye for the hungry ghosts (鬼 *gwai2*) that lurk in the shadows, their ethereal forms capable of passing through walls, teleporting, and relentlessly pursuing you. Take caution not to unwittingly stumble into unbreakable walls, as they are infused with a mystical poison that can inflict harm. Devise clever strategies to navigate teleporters, overcome obstacles, and reach the exit with utmost swiftness, or alternatively, muster your courage to confront the menacing monsters head-on, deftly leaping over obstacles in your path.
 
