@@ -4,14 +4,8 @@
 using namespace std;
 #include <vector>
 #include "players.h"
+#include "monster.h"
 
-
-
-struct monsterObject{
-    int direction;
-    int vertical_ax;
-    int horizontal_ax;
-};
 vector<monsterObject *> monster;
 //updated monster_count var
 int monsterCount;
