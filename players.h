@@ -19,10 +19,9 @@ struct playerObject {
   playerObject(int vertSpawn, int horiSpawn, bool type) {
     vertical = vertSpawn;
     horizontal = horiSpawn;
-    if (type == true)
+    if (type==true){
       avatar = "☺";
-    else
-      avatar = "☠";
+    }
   }
 };
 
