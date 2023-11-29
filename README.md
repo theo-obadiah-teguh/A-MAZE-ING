@@ -1,17 +1,17 @@
 # group-110
 A private repository for creating a text-based game in C++. The is project part COMP2113: Programming Technologies by the University of Hong Kong.
 
-A-MAZE-ING
+## A-MAZE-ING
 
-Our Group Members and UIDs
+### Our Group Members and UIDs
 
-Bhardwaj, Aryaman 		3035858755
-Fok, Po Hin 				3036062262
+Bhardwaj, Aryaman 		  3035858755
+Fok, Po Hin 				    3036062262
 Lai, Wan Ching Anson 		3036067676
-Lee, Ka Ka 				3035921174
+Lee, Ka Ka 				      3035921174
 Teguh, Theo Obadiah 		3035898872
 
-Description:
+### Description:
 A-MAZE-ING: A thrilling single-player, text-based game awaits you in the depths of your local terminal. Prepare to embark on an epic adventure as you find yourself transported to an ancient Chinese dungeon maze, where your ultimate goal is to find a way out!
 
 But beware! The labyrinth is teeming with peril, and you'll encounter a host of dangers along the way.
@@ -20,7 +20,7 @@ Keep a watchful eye for the hungry ghosts (鬼 gwai2) that lurk in the shadows, 
 
 Will you emerge victorious, escaping the clutches of the treacherous maze and claiming a glorious prize? Or will you find yourself trapped, with no escape in sight? The outcome rests solely in your hands, as you seize control of your destiny!
 
-Game Rules:
+### Game Rules:
 Choose a difficulty level: easy, medium, or hard.
 ‘☺’ is the player avatar, while ‘☠’ is the monster avatar.
 The player will spawn in the centre of the maze, whilst monsters will spawn randomly in the maze.
