@@ -214,7 +214,6 @@ void welcomeAnimation() {
 
   sleep(2);
 
-  flag = true;
   startMenu();
 }
 
