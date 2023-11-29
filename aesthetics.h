@@ -131,7 +131,7 @@ void startMenu(){
   switch (choice){
     case 1:
           //If false then print dungeon explorer
-          if (flag == false){
+          if (firstPlay == false){
             cout << welcomeArt << endl;
           } 
           else{
