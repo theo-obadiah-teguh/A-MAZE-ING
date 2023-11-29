@@ -14,6 +14,8 @@ using namespace std::chrono;
 int main() {
   clearscreen();
 
+  bool flag = true;
+
   welcomeAnimation();
 
   // Selecting a desired difficulty level
@@ -63,8 +65,6 @@ int main() {
 
   string prevDirection;
   bool firstJourney = true;
-
-  bool flag = true;
 
   while (true) {
     string direction;
@@ -132,7 +132,7 @@ int main() {
       }
 
       if (direction == "q") {
-        startMenu();
+        startMenu(flag);
         deleteArray(myPlot, rowSize);
         break;
       }
