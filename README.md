@@ -14,7 +14,7 @@ Teguh, Theo Obadiah 		3035898872
 ---
 
 ### Game Description
-<div style="text-align: right">A-MAZE-ING: A thrilling single-player, text-based game awaits you in the depths of your local terminal. Prepare to embark on an epic adventure as you find yourself transported to an ancient Chinese dungeon maze, where your ultimate goal is to find a way out!</div> 
+<div style="text-align: justify">A-MAZE-ING: A thrilling single-player, text-based game awaits you in the depths of your local terminal. Prepare to embark on an epic adventure as you find yourself transported to an ancient Chinese dungeon maze, where your ultimate goal is to find a way out!</div> 
 
 ***But beware! The labyrinth is teeming with peril, and you'll encounter a host of dangers along the way.***
 
