@@ -45,7 +45,7 @@ int main() {
   playerObject player = playerObject(playerSpawnRow, playerSpawnColumn, true);
   player.health = 100;
   player.coins = 150;
-  player.jumpPoints = 5;
+  player.eatPoints = 5;
 
   clearscreen();
 
