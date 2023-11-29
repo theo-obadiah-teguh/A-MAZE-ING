@@ -104,8 +104,8 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
        bool validPosition = false; //keep obstacles 
 
      while (!validPosition) {
-          row = rand() % rowSize;
-          col = rand() % columnSize;
+          row = rand() % (rowSize - 1);
+          col = rand() % (columnSize -1);
 
        //First check if it is not on maze properties
        if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺") {
