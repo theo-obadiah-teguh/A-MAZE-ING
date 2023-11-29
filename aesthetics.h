@@ -118,6 +118,8 @@ void exitAnimation() {
   cout << exitArt << endl;
 }
 
+bool firstPlay = true;
+
 void startMenu(){
   cout << "1. Start Game" << endl;
   cout << "2. Rules" << endl;
@@ -131,9 +133,10 @@ void startMenu(){
   switch (choice){
     case 1:
           //If false then print dungeon explorer
-          if (firstPlay == false){
-            cout << welcomeArt << endl;
-          } 
+          if (firstPlay){
+             cout << welcomeArt << endl;
+             firstPlay = false;
+          }
           else{
              break;
           }
@@ -208,7 +211,10 @@ void welcomeAnimation() {
   cout << endl;
   sleep(1);
 
-  cout << welcomeArt << endl;
+  if (firstPlay){
+    cout << welcomeArt << endl;
+    firstPlay = false;
+  }
   sleep(1);
   clearscreen();
 
