@@ -87,7 +87,36 @@ const char* exitArt =
 "  |     /      \n"
 "  |    |       \n";
 
-//Start menu for the game
+// Below are the animation scripts
+
+// An animation script for when the player loses the game
+void defeatAnimation() {
+  system("cls||clear");
+
+  cout << "Oh no..." << endl;
+  sleep(2);
+
+  cout << "You have lost the game!" << endl;
+  cout << endl;
+  sleep(2);
+
+  cout << defeatArt;
+  cout << endl;
+  sleep(2);
+
+  cout << "You will be redirected to the main menu in a few seconds..." << endl;
+  sleep(3);
+}
+
+//When the player quits the game
+void exitAnimation() {
+  system("cls||clear");
+
+  cout << "See you next time, traveller!" << endl;
+  sleep(1);
+
+  cout << exitArt << endl;
+}
 
 void startMenu(){
   cout << "1. Start Game" << endl;
@@ -139,28 +168,6 @@ void startMenu(){
   }
 }
 
-
-// Below are the animation scripts
-
-// An animation script for when the player loses the game
-void defeatAnimation() {
-  system("cls||clear");
-
-  cout << "Oh no..." << endl;
-  sleep(2);
-
-  cout << "You have lost the game!" << endl;
-  cout << endl;
-  sleep(2);
-
-  cout << defeatArt;
-  cout << endl;
-  sleep(2);
-
-  cout << "You will be redirected to the main menu in a few seconds..." << endl;
-  sleep(3);
-}
-
 // An animation script for when the player wins the game
 void victoryAnimation() {
   system("cls||clear");
@@ -180,16 +187,6 @@ void victoryAnimation() {
   sleep(3);
 
   startMenu();
-}
-
-//When the player quits the game
-void exitAnimation() {
-  system("cls||clear");
-
-  cout << "See you next time, traveller!" << endl;
-  sleep(1);
-
-  cout << exitArt << endl;
 }
 
 // An animation script for when the player starts the game
