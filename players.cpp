@@ -274,6 +274,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     	//clearscreen();
     	printPlot(plot, rowSize, columnSize, exitPoint);
     	printPlayerStats(character);
+	teleportHit = false;
     }
   }
 }
