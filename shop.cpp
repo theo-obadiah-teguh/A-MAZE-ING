@@ -132,20 +132,27 @@ void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, str
   string drinkConfirmation;
   cin >> drinkConfirmation;
 
-  if (drinkConfirmation == "no") {
+while (drinkConfirmation != "yes" && drinkConfirmation != "no"){
+    cout << "Invalid options." << endl;
+    cout << "Do you wish to but some goods?" << endl;
+    cin >> drinkConfirmation;
+    if (drinkConfirmation == "no") {
     cout << "See you soon." << endl;
     deleteArray(shopArray, shopRowSize);
     clearscreen();
     return;
-  }
-
-  while (drinkConfirmation != "no") {
+    }
+}
+	
+while (drinkConfirmation != "no") {
     purchaseOptions(monsterHunt, monsterCount, player);
     cout << "Is there anything you still want to buy? (yes/no) ";
     cin >> drinkConfirmation;
-    if (drinkConfirmation != "yes"){
-	    continue;
-    }
+    while (drinkConfirmation != "yes" && drinkConfirmation != "no"){
+      cout << "Invalid options." << endl;
+      cout << "Is there anything you still want to buy?" << endl;
+      cin >> drinkConfirmation;
+    }  
   }
 
   cout << "See you soon." << endl;
