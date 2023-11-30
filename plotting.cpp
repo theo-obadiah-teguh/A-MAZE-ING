@@ -99,34 +99,34 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
 	  
     srand(time(0));
 
-    //std::random_device rd;
-    //std::default_random_engine engine(rd());  
-    //std::uniform_int_distribution<int> distribution(0, rowSize - 1);
+    // std::random_device rd;
+    // std::default_random_engine engine(rd());  
+    // std::uniform_int_distribution<int> distribution(0, rowSize - 1);
 	  
-    int cornerDistance = 5; //try not to make obstacles near the exit (not within 5 units)
+    int cornerDistance = 5; // Try not to make obstacles near the exit (not within 5 units)
 
     for (int k = 0; k < numObstacles; ++k) {
       int row, col;
-      bool validPosition = false; //keep obstacles 
+      bool validPosition = false; // Keep obstacles 
 
       while (!validPosition) {
         row = rand() % (rowSize - 3);
         col = rand() % (columnSize -3);
-	      //row = distribution(engine);
-	      //col = distribution(engine);
+	      // row = distribution(engine);
+	      // col = distribution(engine);
 
         // First check if it is not on maze properties
         if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺" && plot[row][col] != "$") {
           validPosition = true;
 
-        // Check if the position is within the corner distance
+          // Check if the position is within the corner distance
           if (row <= cornerDistance || row >= rowSize - cornerDistance - 1 || col <= cornerDistance || col >= columnSize - cornerDistance - 1) {
             validPosition = false;
           }
         }
       }
 
-      //int obstacleType = distribution(engine) % 2;
+      // int obstacleType = distribution(engine) % 2;
       int obstacleType = rand() % 2;
 
       if (obstacleType == 0) {
@@ -157,7 +157,6 @@ string selectPlot (string difficulty) {
   else if (difficulty == "medium") {
     map = "maze2.txt";
   }
-    //try to use maze2.txt to avoid file loading error
   else if (difficulty == "hard") {
     map = "maze3.txt";
   }
