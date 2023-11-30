@@ -25,7 +25,7 @@ const char * victoryArt =
 "                           \\|               :::::/|/                                    \n"
 "                            |               ::::::|                                      \n"
 "                            | Good Job Traveller :|                                      \n"
-"                            | You did great   ::::|                                      \n"
+"                            | You did great!  ::::|                                      \n"
 "                            |               ::::::|                                      \n"
 "                            |              .::::::|                                      \n"
 "                            J              :::::::F                                      \n"
@@ -42,7 +42,7 @@ const char * victoryArt =
 
 // Editing notice for the welcome art
 // There are 40 character slots for the title (see example below)
-//       Welcome to Dungeon Explorer!     |
+//       A-MAZE-ING Dungeon Explorer!     |
 
 const char * welcomeArt = 
 
@@ -53,7 +53,7 @@ const char * welcomeArt =
 "       __            \\||(_)!_!_!_.-._!_!_!(_)||/            __       \n"
 "       \\`-.__        ||_|____!!_|;|_!!____|_||        __,-\'//       \n"
 "        \\    `==---=\'-----------\'=\'-----------`=---==\'    //        \n"
-"        | `--.       Welcome to Dungeon Explorer!     ,--\' |        \n"
+"        | `--.       A-MAZE-ING Dungeon Explorer!     ,--\' |        \n"
 "         \\  ,.`~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\',.  /         \n"
 "           \\||  ____,-------._,-------._,-------.____  ||/           \n"
 "            ||\\|___!`=======\"!`=======\"!`=======\"!___|/||            \n"
@@ -170,7 +170,7 @@ void startMenu() {
           cout << " 4. Find the exit point indicated by the number 1, 2, 3 or 4" << endl;
           cout << " 5. Avoid obstacles '#' and walls '|' to not lose health points" << endl;
           cout << " 6. Watch out for the monsters!" << endl;
-          cout << " 7. Teleport 'T' to a random location if you wish, or eat them if you have enough points" << endl;
+          cout << " 7. Teleport 'T' to a random location or avoid them if you have enough eat points" << endl;
           cout << " 8. Go to shops '$' to purchase items to help you survive!" << endl;
           cout << "--------------------------------------------------------------------------------------- " << endl;
           cout << "PRESS q to exit rules display: ";

@@ -77,8 +77,9 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
 
   string ** plot = new string * [rowSize];
 
-  for (int i = 0; i < rowSize; ++i)
+  for (int i = 0; i < rowSize; ++i) {
     plot[i] = new string [columnSize];
+  }
   
   readTextToArray(plot, rowSize, columnSize, filename, type);
 
@@ -105,34 +106,34 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
     int cornerDistance = 5; //try not to make obstacles near the exit (not within 5 units)
 
     for (int k = 0; k < numObstacles; ++k) {
-       int row, col;
-       bool validPosition = false; //keep obstacles 
+      int row, col;
+      bool validPosition = false; //keep obstacles 
 
-     while (!validPosition) {
-          //row = rand() % (rowSize - 1);
-          //col = rand() % (columnSize -1);
-	  row = distribution(engine);
-	  col = distribution(engine);
+      while (!validPosition) {
+        //row = rand() % (rowSize - 3);
+        //col = rand() % (columnSize -3);
+	      row = distribution(engine);
+	      col = distribution(engine);
 
-       //First check if it is not on maze properties
-       if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺" && plot[row][col] != "$") {
-           validPosition = true;
+        // First check if it is not on maze properties
+        if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺" && plot[row][col] != "$") {
+          validPosition = true;
 
-      // Check if the position is within the corner distance
+        // Check if the position is within the corner distance
           if (row <= cornerDistance || row >= rowSize - cornerDistance - 1 || col <= cornerDistance || col >= columnSize - cornerDistance - 1) {
-              validPosition = false;
+            validPosition = false;
           }
-       }
-     }
-     //int obstacleType = rand() % 2;
-     int obstacleType = distribution(engine) % 2;
+        }
+      }
 
-     if (obstacleType == 0){
-       plot[row][col] = "#"; // Obstacle character
-     }
-     else if (obstacleType == 1){
-       plot[row][col] = "T"; // Teleportation portal character
-     }
+      int obstacleType = distribution(engine) % 2;
+
+      if (obstacleType == 0) {
+        plot[row][col] = "#"; // Obstacle character
+      }
+      else if (obstacleType == 1) {
+        plot[row][col] = "T"; // Teleportation portal character
+      }
     }
   }
   return plot; 
@@ -157,13 +158,7 @@ string selectPlot (string difficulty) {
   }
     //try to use maze2.txt to avoid file loading error
   else if (difficulty == "hard") {
-    map = "maze2.txt";
-  }
-  else {
-    sleep(1);
-    clearscreen();
-    cout << "Invalid Difficulty!" << endl;
-    return NULL;
+    map = "maze3.txt";
   }
   return map;
 }

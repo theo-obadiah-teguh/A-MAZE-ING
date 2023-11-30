@@ -96,7 +96,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
         cout << "You have fought it off, but you are heavily injured. (-50 HP)" << endl;
         sleep(1);
         character.health -= 50;
-          huntMonster(plot);
+          huntMonster(plot, monsterCount);
         cout << "You now have " << character.health << " HP." << endl;
         sleep(2);  
       }
@@ -169,7 +169,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 	    if (answer == "yes") {
 	      visitShop(monsterHunt, monsterCount, character, exitPoint);
 	      for (int j = 0; j< monsterHunt; ++j){
-		      huntMonster(plot);
+		      huntMonster(plot, monsterCount);
 	      }
 	      clearscreen();
       }
@@ -214,11 +214,11 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       printPlot(plot, rowSize, columnSize,  exitPoint, obstacleHit);
       printPlayerStats(character);
 
-      //this_thread::sleep_for(chrono::milliseconds(1200));
+      this_thread::sleep_for(chrono::milliseconds(1200));
 
-      //clearscreen();
-      //printPlot(plot, rowSize, columnSize, exitPoint);
-      //printPlayerStats(character);
+      clearscreen();
+      printPlot(plot, rowSize, columnSize, exitPoint);
+      printPlayerStats(character);
       break; // DO NOT DELETE. CRUCIAL PART
     }
 

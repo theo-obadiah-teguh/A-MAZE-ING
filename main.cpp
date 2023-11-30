@@ -19,19 +19,40 @@ It will then start the maze game.
 void startGame(bool FirstTry){
   clearscreen();
   
-  if(FirstTry){
-  welcomeAnimation();
+  if(FirstTry) {
+    welcomeAnimation();
   }
-  else{
-  startMenu();
+  else {
+    startMenu();
   }
 
+
+  string difficultyInput, difficulty;
 
   // Selecting a desired difficulty level
-  
-  string difficulty;
-  cout << "Please choose a difficulty level -> (easy, medium, hard): ";
-  cin >> difficulty;
+  while (true) {
+    clearscreen();
+    cout << "Please choose a difficulty level (1-3):" << endl;
+    cout << "1: Easy" << endl;
+    cout << "2: Medium" << endl;
+    cout << "3: Hard" << endl;
+    cout << "Your Input: ";
+    cin >> difficultyInput;
+
+    if (difficultyInput == "1") {
+      difficulty = "easy";
+      break;
+    }
+    else if (difficultyInput == "2") {
+      difficulty = "medium";
+      break;
+    }
+    else if (difficultyInput == "3") {
+      difficulty = "hard";
+      break;
+    }
+  }
+
   string map = selectPlot(difficulty);
 
   // Initialize memory allocation and playerObject
@@ -84,9 +105,10 @@ void startGame(bool FirstTry){
 
   // Ask for player input and continue the game repeatedly until the player press 'q'
   
+  int steps; 
+
   while (true) {
     string direction;
-    int steps;
 
     // Describe how to control movement when the player enters the maze. Then ask player for direction to move him/her
     
@@ -123,16 +145,28 @@ void startGame(bool FirstTry){
         continue;
       }
 
-      cout << "How far will you go? (ENTER a number)";
-      cin >> steps;
+      string stepsInput;
+
+      cout << "How far will you go now? ";
+      cin >> stepsInput;
+
+      // Check if input is actually a number
+      if (!all_of(stepsInput.begin(), stepsInput.end(), ::isdigit)) {
+        clearscreen();
+        printPlot(myPlot, rowSize, columnSize, exitPoint);
+        printPlayerStats(player);
+        continue;
+      }
+  
+      // Convert string input to integer
+      steps = stoi(stepsInput);
 
       firstJourney = false;
     }
     else {
-      //cout << "Which direction do you want to go? ";
         cout << "Please ENTER the 'w', 'a', 's', 'd' keys to choose a direction. " << endl;
         cout << "Which direction do you want to go? (ENTER 'q' to quit) ";
-      cin >> direction;
+        cin >> direction;
 
       if (direction == "W") {
         direction = "w";
@@ -146,11 +180,11 @@ void startGame(bool FirstTry){
       else if (direction == "D") {
         direction = "d";
       }
-      //else if (direction == "Q") {
-        //direction = "q";
-      //}
+      else if (direction == "Q") {
+        direction = "q";
+      }
 
-      else if (direction == "q") {
+      if (direction == "q") {
         deleteArray(myPlot, rowSize);
         break;
       }
@@ -162,8 +196,20 @@ void startGame(bool FirstTry){
         continue;
       }
 
+      string stepsInput;
       cout << "How far will you go now? ";
-      cin >> steps;
+      cin >> stepsInput;
+
+      // Check if input is actually a number
+      if (!all_of(stepsInput.begin(), stepsInput.end(), ::isdigit)) {
+        clearscreen();
+        printPlot(myPlot, rowSize, columnSize, exitPoint);
+        printPlayerStats(player);
+        continue;
+      }
+
+      // Convert string input to integer
+      steps = stoi(stepsInput);
     }
 
     // Move the player based on selected direction and move monster towards the player at each stage
@@ -173,7 +219,7 @@ void startGame(bool FirstTry){
     movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, monsterCount, monsterHunt);
     prevDirection = direction;
     
-    //move monster after player move
+    // Moves monster after the player moves
     
     monsterDir(player);
     monsterSteps(myPlot, rowSize, columnSize);
