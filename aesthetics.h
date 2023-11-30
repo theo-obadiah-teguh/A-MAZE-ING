@@ -139,7 +139,7 @@ void startMenu(){
   int choice;
   cout << "Enter your choice number: ";
   cin >> choice;
-  cout << choice << endl;
+  //cout << choice << endl;
   if (choice == 1){
     return;
     }
