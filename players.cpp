@@ -165,6 +165,11 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       cout << "Do you want to visit it? (yes/no) ";
 	    string answer;
 	    cin >> answer;
+	    while (answer != "yes" && answer != "no"){
+	      cout << "Invalid options." << endl;
+	      cout << "Do you want to visit the shop?  (yes/no)" << endl;
+	      cin >> answer;
+	    }
 
 	    if (answer == "yes") {
 	      visitShop(monsterHunt, monsterCount, character, exitPoint);
