@@ -6,6 +6,7 @@
 #include <unistd.h>
 #include <cstdlib>
 #include <ctime>
+#include <random>
 using namespace std;
 
 // Clear screen function that we will use
@@ -97,6 +98,10 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
 	  
     srand(time(0));
 
+    std::random_device rd;
+    std::default_random_engine engine(rd());  
+    std::uniform_int_distribution<int> distribution(0, rowSize - 3);
+	  
     int cornerDistance = 5; //try not to make obstacles near the exit (not within 5 units)
 
     for (int k = 0; k < numObstacles; ++k) {
@@ -104,8 +109,10 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
        bool validPosition = false; //keep obstacles 
 
      while (!validPosition) {
-          row = rand() % (rowSize - 3);
-          col = rand() % (columnSize -3);
+          //row = rand() % (rowSize - 3);
+          //col = rand() % (columnSize -3);
+	  row = distribution(engine);
+	  col = distribution(engine);
 
        //First check if it is not on maze properties
        if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺" && plot[row][col] != "$") {
@@ -117,7 +124,7 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
           }
        }
      }
-     int obstacleType = rand() % 2;
+     int obstacleType = distribution(engine) % 2;
 
      if (obstacleType == 0){
        plot[row][col] = "#"; // Obstacle character
