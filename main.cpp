@@ -62,7 +62,7 @@ void startGame(bool FirstTry){
   playerObject player = playerObject(playerSpawnRow, playerSpawnColumn, true);
   player.health = 100;
   player.coins = 150;
-  player.eatPoints = 3;
+  player.eatPoints = 5;
 
   clearscreen();
 
