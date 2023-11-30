@@ -1,6 +1,12 @@
 # A-MAZE-ING
 A private repository owned by `Group 110` for creating a text-based game in C++ as a final project for COMP2113: Programming Technologies by the University of Hong Kong.
 
+
+
+https://github.com/theo-obadiah-teguh/A-MAZE-ING/assets/146205753/6f198815-a276-44b0-a533-3ec13e9762cc
+
+
+
 ## Our Group Members and UIDs
 
 - (UID: 3035858755) Bhardwaj, Aryaman
