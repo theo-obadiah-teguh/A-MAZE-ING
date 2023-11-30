@@ -162,8 +162,6 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       	 teleportHit = true;
 	 validAnswer = true;
 	 clearscreen();
-         printPlot(plot, rowSize, columnSize, exitPoint);
-         printPlayerStats(character);
         }
         else{
           cout << "Invalid input. Please enter 'yes' or 'no'." << endl;
