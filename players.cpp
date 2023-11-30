@@ -43,7 +43,8 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 
   this_thread::sleep_for(chrono::milliseconds(500));
   clearscreen();
-    
+
+  srand(time(nullptr));
 
   for (int i = 0; i < steps; ++i) {
     plot[character.vertical][character.horizontal] = ' ';
