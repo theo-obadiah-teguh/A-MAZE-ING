@@ -143,6 +143,9 @@ void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, str
     purchaseOptions(monsterHunt, monsterCount, player);
     cout << "Is there anything you still want to buy? (yes/no) ";
     cin >> drinkConfirmation;
+    if (drinkConfirmation != "yes"){
+	    continue;
+    }
   }
 
   cout << "See you soon." << endl;
