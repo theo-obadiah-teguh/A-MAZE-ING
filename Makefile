@@ -15,11 +15,11 @@ monster.o: monster.cpp players.h
 	g++ $(FLAGS) -c $<
 
 #add monster.h to main.o
-main.o: main.cpp shop.h plotting.h players.h monster.h
+main.o: main.cpp shop.h plotting.h players.h monster.h aesthetics.h
 	g++ $(FLAGS) -c $<
 
 #add monster.o
-main: plotting.o players.o shop.o monster.o main.o
+main: plotting.o players.o shop.o monster.o main.o 
 	g++ $(FLAGS) $^ -o $@
 
 clean:
