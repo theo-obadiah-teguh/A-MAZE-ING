@@ -148,11 +148,11 @@ void startGame(bool FirstTry){
       else if (direction == "D") {
         direction = "d";
       }
-      else if (direction == "Q") {
-        direction = "q";
-      }
+      //else if (direction == "Q") {
+        //direction = "q";
+      //}
 
-      if (direction == "q") {
+      else if (direction == "q") {
         startMenu();
         deleteArray(myPlot, rowSize);
         break;
