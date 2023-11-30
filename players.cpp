@@ -244,18 +244,18 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     	} while (true);
 
     // Move the player to the random empty position
-    plot[character.vertical][character.horizontal] = " ";
-    character.vertical = playerRow;
-    character.horizontal = playerCol;
-    plot[character.vertical][character.horizontal] = character.avatar;
+    	plot[character.vertical][character.horizontal] = " ";
+    	character.vertical = playerRow;
+    	character.horizontal = playerCol;
+    	plot[character.vertical][character.horizontal] = character.avatar;
 
     // Remove the teleporter from its original position
-    plot[teleportRow][teleportCol] = " ";
+    	plot[teleportRow][teleportCol] = " ";
 
     // Clear the screen and display the updated maze
-    clearscreen();
-    printPlot(plot, rowSize, columnSize, exitPoint);
-    printPlayerStats(character);
+    	clearscreen();
+    	printPlot(plot, rowSize, columnSize, exitPoint);
+    	printPlayerStats(character);
     }
   }
 }
