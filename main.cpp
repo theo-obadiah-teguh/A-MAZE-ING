@@ -11,10 +11,17 @@
 using namespace std;
 using namespace std::chrono;
 
-int main() {
+void startGame(bool FirstTry){
   clearscreen();
-
+  bool play;
+  
+  if(firstTry){
   welcomeAnimation();
+  }
+  else{
+  startMenu();
+  }
+
 
   // Selecting a desired difficulty level
   string difficulty;
@@ -175,5 +182,13 @@ int main() {
       break;
 
     }
+  }
+}
+
+int main(){
+  bool FirstTry = true; 
+  while (true){
+    startGame(FirstTry);
+    FirstTry = false;
   }
 }
