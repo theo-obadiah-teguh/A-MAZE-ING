@@ -5,7 +5,7 @@ A private repository owned by `Group 110` for creating a text-based game in C++ 
 
 ## Watch Our Recorded Demonstration!
 
-(https://github.com/theo-obadiah-teguh/A-MAZE-ING/assets/146205753/ab0cc288-4d6c-4448-9605-bd832cba6240)
+https://github.com/theo-obadiah-teguh/A-MAZE-ING/assets/146205753/ab0cc288-4d6c-4448-9605-bd832cba6240
 
 ## Our Group Members and UIDs
 
