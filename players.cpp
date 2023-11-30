@@ -155,16 +155,15 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 	  //clearscreen();
                 cout << "You don't have enough points to eat the teleporter." << endl;
 	        teleportHit = true;
-		validAnswer = true;
-		clearscreen();
-            	printPlot(plot, rowSize, columnSize, exitPoint);
-            	printPlayerStats(character);
-		
+		validAnswer = true;		
 	   }
 	}
         else if (answer == "no") {  
       	 teleportHit = true;
 	 validAnswer = true;
+	 clearscreen();
+         printPlot(plot, rowSize, columnSize, exitPoint);
+         printPlayerStats(character);
         }
         else{
           cout << "Invalid input. Please enter 'yes' or 'no'." << endl;
