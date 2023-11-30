@@ -71,7 +71,7 @@ All imported art in this program was obtained from the [ASCII Art Archive](https
 1. Make sure you have Git installed on your device.
 1. Open your terminal, choose your desired directory and clone the repository by executing `git clone https://github.com/theo-obadiah-teguh/A-MAZE-ING.git`.
 1. Enter your GitHub username and token (if applicable).
-1. Enter the newly cloned directory with `cd group-110`.
+1. Enter the newly cloned directory with `cd A-MAZE-ING`.
 1. Execute `make main` to compile the main program.
 1. Execute `./main` to run the program.
 1. Have fun playing the game!
