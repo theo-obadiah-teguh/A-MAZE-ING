@@ -126,7 +126,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       	cout << "Do you want to eat the teleporter? (yes/no) ";
       	string answer;
       	cin >> answer;
-      	if (answer == "yes") {
+        if (answer == "yes") {
         // Check if the player has enough eat points
            if (character.eatPoints > 0) {
           // Decrement the eat points
@@ -157,12 +157,12 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 	        teleportHit = true;
 		validAnswer = true;
 	   }
-      
-      	else if (answer == "no") {  
+	}
+        else if (answer == "no") {  
       	 teleportHit = true;
 	 validAnswer = true;
         }
-      	else{
+        else{
           cout << "Invalid input. Please enter 'yes' or 'no'." << endl;
 	}
       }
