@@ -120,9 +120,13 @@ void exitAnimation() {
 
 bool firstPlay = true;
 
+// Main menu function for the game
+
 void startMenu(){  
   clearscreen();
   string answer;
+
+  // Keep handling for player input until he/she want to enter the maze game or exit
   while (true){
   cout << i << endl;
   int count = 0;
@@ -139,6 +143,8 @@ void startMenu(){
     return;
     }
 
+  // Handle the cases when the player does not want to play the main game yet
+	  
   switch (choice){
     case 2:
           //Display the rules
