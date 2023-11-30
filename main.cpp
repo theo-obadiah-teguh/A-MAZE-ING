@@ -11,6 +11,10 @@
 using namespace std;
 using namespace std::chrono;
 
+/* 
+Function to display welcome animation or menu screen depending on whether it is the first try. 
+It will then start the maze game. 
+*/
 void startGame(bool FirstTry){
   clearscreen();
   
@@ -184,6 +188,10 @@ void startGame(bool FirstTry){
   }
 }
 
+/* 
+Main function that will keep calling startGame. 
+There is an exit function in the menu function so there will not be infinite loops. 
+*/
 int main(){
   bool FirstTry = true; 
   while (true){
