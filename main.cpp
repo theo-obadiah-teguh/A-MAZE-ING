@@ -64,10 +64,12 @@ int main() {
   string prevDirection;
   bool firstJourney = true;
 
+  // Ask for player input and continue the game repeatedly until the player press 'q'
   while (true) {
     string direction;
     int steps;
 
+    // Describe how to control movement when the player enters the maze. Then ask player for direction to move him/her
     if (firstJourney) {
       cout << "Please ENTER the 'w', 'a', 's', 'd' keys to choose a direction." << endl;
       cout << "Which direction do you want to go? (ENTER 'q' to quit) ";
@@ -147,6 +149,7 @@ int main() {
       cin >> steps;
     }
 
+    // Move the player based on selected direction and move monster towards the player at each stage
     monsterHunt = 0;
       
     movePlayer(myPlot, steps, player, direction, rowSize, columnSize, timeLimit, win, exitPoint, monsterCount, monsterHunt);
@@ -158,11 +161,14 @@ int main() {
     printPlot(myPlot, rowSize, columnSize, exitPoint);
     printPlayerStats(player);
 
+    // Delete dynamic array and display defeat anaimation when the player loses
     if (player.health <= 0) {
       defeatAnimation();
       deleteArray(myPlot, rowSize);
       break;
     }
+
+    // Delete dynamic array and display victory anaimation when player win the game
     else if (win == true){
       victoryAnimation();
       deleteArray(myPlot, rowSize);
