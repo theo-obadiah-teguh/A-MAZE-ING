@@ -10,6 +10,7 @@ vector<monsterObject *> monster;
 //updated monster_count var
 int monsterCount;
 
+// Function to determine the number of monsters based on player selected difficulty
 void monsterNo(string difficulty, int &monsterCount){
     if (difficulty == "easy") {
       monsterCount = 1;
@@ -25,12 +26,14 @@ void monsterNo(string difficulty, int &monsterCount){
     }
 }
 
+// Function to add the monster objects into the vector
 void createMonsters(int monsterCount){
     for(int i = 0; i < monsterCount; ++i){
         monster.push_back(new monsterObject);
     }
 }
 
+// Function to remove a monster from the plot
 void huntMonster(string ** myPlot){
     int location = monster.size();
     myPlot[monster[location-1]->vertical_ax][monster[location-1]->horizontal_ax] = " ";
@@ -38,6 +41,7 @@ void huntMonster(string ** myPlot){
     return;
 }
 
+// Function to decide monster moving direction based on player location so that the monster will move towards the player
 void monsterDir(playerObject player){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
@@ -61,6 +65,7 @@ void monsterDir(playerObject player){
     }
 }
 
+// Function to move the monster towards the player
 void init(int rowSize, int columnSize, string ** myPlot, int monsterCount){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
