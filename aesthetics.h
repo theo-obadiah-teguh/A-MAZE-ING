@@ -125,7 +125,8 @@ bool firstPlay = true;
 void startMenu(){  
   clearscreen();
   string answer;
-
+  
+  int i;  
   // Keep handling for player input until he/she want to enter the maze game or exit
   while (true){
   cout << i << endl;
