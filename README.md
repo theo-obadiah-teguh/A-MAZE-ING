@@ -4,11 +4,7 @@ A private repository owned by `Group 110` for creating a text-based game in C++ 
 ## Watch Our Recorded Demonstration
 Get a brief tour of our game, led by one of our group members, Dora (Lee, Ka Ka) and check out the general features of the game!
 
-
-
-https://github.com/theo-obadiah-teguh/A-MAZE-ING/assets/117540086/ab3368e9-604a-442a-a6bb-2bb1fb7bf6a9
-
-
+https://github.com/theo-obadiah-teguh/A-MAZE-ING/assets/117540086/4841f8de-87a1-4df8-9690-4b114b983b19
 
 ## Our Group Members and UIDs
 
