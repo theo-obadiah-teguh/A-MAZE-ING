@@ -55,7 +55,7 @@ The 2D arrays storing constructor characters of the maze and shop are created dy
 All three mazes are handcrafted text files. When we prompt the player for the difficulty level, the program will input the maze according to the chosen level.
 
 ### Coding Element 5: *Program codes in multiple files*
-We have separated the program into different groups based on their functionality. We have files specifically for the playerObject, monsterObject, the shop feature, and aesthetics which include the ASCII art and main menu screen. Each of these additions are organised within their own header files and implemented in the main program as needed.
+We have separated the program into different groups based on their functionality. We have files specifically for the playerObject, monsterObject, the shop feature, and aesthetics which include the ASCII art and main menu screen. Each of these additions are organised within their own header files and implemented in the main program as needed. This helped us import functions for certain elements of the game in a much more systematic way, compared to having all the functions in one place.
 
 ---
 
