@@ -72,8 +72,8 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
       cout << "Your endurance is now better than ever." << endl;
     }
     else if (original_health > 85){
-      cout << "The training increases your max health by " << (player.health) - 100 << " and ";
-      cout << "recovers your injuries by " << 100 - original_health << " health points." << endl;
+      cout << "The training increases your max health by " << (player.health) - 100 << "." << endl;
+      cout << "It also recovers your injuries by " << 100 - original_health << " health points." << endl;
       cout << "Your endurance is now better than ever." << endl;
     }
     else {
