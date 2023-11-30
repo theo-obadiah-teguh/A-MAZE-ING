@@ -13,9 +13,8 @@ using namespace std::chrono;
 
 void startGame(bool FirstTry){
   clearscreen();
-  bool play;
   
-  if(firstTry){
+  if(FirstTry){
   welcomeAnimation();
   }
   else{
