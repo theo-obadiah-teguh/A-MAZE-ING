@@ -187,7 +187,7 @@ bool checkValid(int i, int & monsterSteps, string ** myPlot, int rowSize, int co
       	/* if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax-1-d] == "*" || myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax-1-d] == "|") {
           monsterSteps++;
         } */
-        if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax-1-d] != " ") {
+        if (myPlot[monster[i]->vertical_ax][monster[i]->horizontal_ax - 1 - d] != " ") {
           monsterSteps++;
         }
       }

@@ -1,11 +1,11 @@
+#include "aesthetics.h"
 #include "plotting.h"
 #include "players.h"
-#include "aesthetics.h"
+#include "monster.h"
 #include <iostream>
 #include <unistd.h>
 #include <string>
 #include <cctype>
-#include "monster.h"
 #include <chrono>
 
 using namespace std;
@@ -16,7 +16,7 @@ Function to display welcome animation or menu screen depending on whether it is 
 It will then start the maze game. 
 */
 
-void startGame(bool FirstTry){
+void startGame(bool FirstTry) {
   clearscreen();
   
   if(FirstTry) {
@@ -134,6 +134,7 @@ void startGame(bool FirstTry){
       }
 
       if (direction == "q") {
+        deleteArray(myPlot, rowSize);
         break;
       }
 
@@ -241,7 +242,6 @@ void startGame(bool FirstTry){
       victoryAnimation();
       deleteArray(myPlot, rowSize);
       break;
-
     }
   }
 }
@@ -253,7 +253,7 @@ There is an exit function in the menu function so there will not be infinite loo
 
 int main(){
   bool FirstTry = true; 
-  while (true){
+  while (true) {
     startGame(FirstTry);
     FirstTry = false;
   }
