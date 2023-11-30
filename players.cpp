@@ -120,41 +120,51 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       //clearscreen();
       cout << "You encountered a teleporter" << endl;
       sleep(2);
-      cout << "Do you want to eat the teleporter? (yes/no) ";
-      string answer;
-      cin >> answer;
-      if (answer == "yes") {
+
+      bool validAnswer = false;
+      while (!validAnswer){    
+      	cout << "Do you want to eat the teleporter? (yes/no) ";
+      	string answer;
+      	cin >> answer;
+      	if (answer == "yes") {
         // Check if the player has enough eat points
-        if (character.eatPoints > 0) {
+           if (character.eatPoints > 0) {
           // Decrement the eat points
-          character.eatPoints--;
+          	character.eatPoints--;
 
 	  // Update the plot with the new position
-          plot[character.vertical][character.horizontal] = character.avatar;
+          	plot[character.vertical][character.horizontal] = character.avatar;
 
           // Clear the current position
-          plot[character.vertical][character.horizontal] = ' ';
+          	plot[character.vertical][character.horizontal] = ' ';
 
           // Print the updated plot and player stats
-          clearscreen();
-          printPlot(plot, rowSize, columnSize, exitPoint);
-          printPlayerStats(character);
+          	clearscreen();
+          	printPlot(plot, rowSize, columnSize, exitPoint);
+          	printPlayerStats(character);
 
           // Display the eat message
-          cout << "You ate the teleporter!" << endl;
+          	cout << "You ate the teleporter!" << endl;
 
           // Wait for a moment before clearing the screen
-          this_thread::sleep_for(chrono::milliseconds(1000));
-          clearscreen();
-	      }
-        else {
+          	this_thread::sleep_for(chrono::milliseconds(1000));
+          	clearscreen();
+		validAnswer = true;
+	   }
+           else {
 	  //clearscreen();
-          cout << "You don't have enough points to eat the teleporter." << endl;
+                cout << "You don't have enough points to eat the teleporter." << endl;
 	        teleportHit = true;
-	}
-      }
-      else {  
+		validAnswer = true;
+	   }
+      
+      	else if (answer == "no") {  
       	 teleportHit = true;
+	 validAnswer = true;
+        }
+      	else{
+          cout << "Invalid input. Please enter 'yes' or 'no'." << endl;
+	}
       }
     }
 
