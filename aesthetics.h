@@ -126,10 +126,9 @@ void startMenu(){
   clearscreen();
   string answer;
   
-  int i;  
   // Keep handling for player input until he/she want to enter the maze game or exit
   while (true){
-  cout << i << endl;
+  //cout << i << endl;
   int count = 0;
   cout << "1. Start Game" << endl;
   cout << "2. Rules" << endl;
