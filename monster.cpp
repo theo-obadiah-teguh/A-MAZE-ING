@@ -23,9 +23,16 @@ void monsterNo(string difficulty, int & monsterCount) {
 }
 
 // Function to add the monster objects into the vector
-void createMonsters(int monsterCount){
+void createMonsters(int monsterCount) {
   for(int i = 0; i < monsterCount; ++i){
-      monster.push_back(new monsterObject);
+    monster.push_back(new monsterObject);
+  }
+}
+
+// Function to delete all the monsters if the player quits
+void deleteMonsters(int monsterCount) {
+  for(int i = 0; i < monsterCount; ++i){
+      monster.pop_back();
   }
 }
 

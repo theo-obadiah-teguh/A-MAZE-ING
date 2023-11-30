@@ -63,9 +63,8 @@ void readTextToArray (string **& array, int rowLength, int columnLength, string 
   if (type == "maze") {
     int playerSpawnRow = rowLength / 2;
     int playerSpawnColumn = columnLength / 2;
-    
-    playerObject character = playerObject(playerSpawnRow, playerSpawnColumn, true);
-    array[playerSpawnRow][playerSpawnColumn] = character.avatar;
+  
+    array[playerSpawnRow][playerSpawnColumn] = "☺";
   }
   fin.close();
 }

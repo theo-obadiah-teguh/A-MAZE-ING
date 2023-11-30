@@ -80,11 +80,7 @@ void startGame(bool FirstTry) {
 
   // Initialize main player object
   
-  playerObject player = playerObject(playerSpawnRow, playerSpawnColumn, true);
-  player.health = 100;
-  player.coins = 150;
-  player.eatPoints = 5;
-
+  playerObject player = {playerSpawnRow, playerSpawnColumn, "☺", 100, 150, 5};
   clearscreen();
 
   // Initialize monster vector
@@ -135,6 +131,7 @@ void startGame(bool FirstTry) {
 
       if (direction == "q") {
         deleteArray(myPlot, rowSize);
+        deleteMonsters(monsterCount);
         break;
       }
 
@@ -187,6 +184,7 @@ void startGame(bool FirstTry) {
 
       if (direction == "q") {
         deleteArray(myPlot, rowSize);
+        deleteMonsters(monsterCount);
         break;
       }
 
@@ -233,6 +231,7 @@ void startGame(bool FirstTry) {
     if (player.health <= 0) {
       defeatAnimation();
       deleteArray(myPlot, rowSize);
+      deleteMonsters(monsterCount);
       break;
     }
 
@@ -241,6 +240,7 @@ void startGame(bool FirstTry) {
     else if (win == true){
       victoryAnimation();
       deleteArray(myPlot, rowSize);
+      deleteMonsters(monsterCount);
       break;
     }
   }
