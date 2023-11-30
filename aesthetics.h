@@ -120,7 +120,11 @@ void exitAnimation() {
 
 bool firstPlay = true;
 
-void startMenu(){
+void startMenu(){  
+  clearscreen();
+  string answer;
+  while (true){
+  cout << i << endl;
   int count = 0;
   cout << "1. Start Game" << endl;
   cout << "2. Rules" << endl;
@@ -130,10 +134,12 @@ void startMenu(){
   int choice;
   cout << "Enter your choice number: ";
   cin >> choice;
+  cout << choice << endl;
+  if (choice == 1){
+    return;
+    }
 
   switch (choice){
-    case 1:
-          break;
     case 2:
           //Display the rules
           cout << "------------------------------------------------------------ " << endl;
@@ -147,7 +153,13 @@ void startMenu(){
           cout << "Teleport 'T' to a random location if you wish, or eat them if you have enough points" << endl;
           cout << "Collect coins '$' to purchase items like more health" << endl;
           cout << "------------------------------------------------------------ " << endl;
-          break;
+          cout << "press q to exit rule display." << endl;
+	  cin >> answer;
+	  if (answer == "q"){
+	    clearscreen();
+	    break;
+	    }
+	  break;
     case 3:
           cout << "---------------------------------------" << endl;
           cout << "Credits:" << endl;
@@ -158,15 +170,23 @@ void startMenu(){
           cout << "Lee Ka Ka             |  3035921174  " << endl;
           cout << "Teguh Theo Obadiah    |  3035898872  " << endl;   
           cout << "---------------------------------------" << endl;
-          break;
+          cout << "Press q to exit credit screen." << endl;
+	  cin >> answer;
+	  if(answer == "q"){
+	    clearscreen();
+	    break;
+	    }
+	  break;
     case 4:
           //Quit the game
           exitAnimation();
           exit(0);
+	  break;
     default:
           //Invalid choice
           cout << "Invalid choice. Please try again." << endl;
-          break;
+	  break;
+  }
   }
 }
 
