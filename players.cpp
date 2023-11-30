@@ -117,7 +117,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
     
     // Checks if player encounters a teleporter
     else if (plot[character.vertical][character.horizontal] == "T") {
-      clearscreen();
+      //clearscreen();
       cout << "You encountered a teleporter" << endl;
       sleep(2);
       cout << "Do you want to eat the teleporter? (yes/no) ";
