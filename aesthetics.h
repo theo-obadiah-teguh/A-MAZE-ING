@@ -1,6 +1,7 @@
 #include <iostream>
 #include <unistd.h>
 #include <cctype>
+#include <algorithm>
 #include "plotting.h" // For the availability of the clearscreen() function
 using namespace std;
 
