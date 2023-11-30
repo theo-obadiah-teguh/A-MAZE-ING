@@ -219,9 +219,49 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       //printPlayerStats(character);
       break; // DO NOT DELETE. CRUCIAL PART
     }
+
+    if (teleportHit) {
+    // Store the teleporter's original position
+    	int teleportRow = character.vertical;
+    	int teleportCol = character.horizontal;
+
+    // Set a constraint on how far the player can teleport
+    	int maxDistance = 10;
+
+    // Find a random empty position in the maze
+    	int playerRow, playerCol;
+    	do {
+        	playerRow = teleportRow + (rand() % (2 * maxDistance + 1) - maxDistance);
+        	playerCol = teleportCol + (rand() % (2 * maxDistance + 1) - maxDistance);
+
+        // Check if the generated position is within the valid range of the maze
+        	if (playerRow >= 0 && playerRow < rowSize && playerCol >= 0 && playerCol < columnSize) {
+            // Check if the generated position is an empty space
+            		if (plot[playerRow][playerCol] == " ") {
+                		break;  // Exit the loop if an empty location is found
+            		}
+        	}
+    	} while (true);
+
+    // Move the player to the random empty position
+    plot[character.vertical][character.horizontal] = " ";
+    character.vertical = playerRow;
+    character.horizontal = playerCol;
+    plot[character.vertical][character.horizontal] = character.avatar;
+
+    // Remove the teleporter from its original position
+    plot[teleportRow][teleportCol] = " ";
+
+    // Clear the screen and display the updated maze
+    clearscreen();
+    printPlot(plot, rowSize, columnSize, exitPoint);
+    printPlayerStats(character);
+    }
+
+	  
     
     // Teleports the player to a random position in the maze 
-    if (teleportHit) {
+    //if (teleportHit) {
       // Store the teleporter's original position
       int teleportRow = character.vertical;
       int teleportCol = character.horizontal;
@@ -230,26 +270,34 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
       int maxDistance = 10;
 	    
     // Find a random empty position in the maze
-      int playerRow, playerCol;
-    	do {
-       	playerRow = teleportRow + (rand() % (2 * maxDistance + 1) - maxDistance);
-        playerCol = teleportCol + (rand() % (2 * maxDistance + 1) - maxDistance);
-    	} while (playerRow < 0 && playerRow >= rowSize && playerCol < 0 && playerCol >= columnSize && plot[playerRow][playerCol] != " ");
+      //int playerRow, playerCol;
+    	//do {
+    //playerRow = teleportRow + (rand() % (2 * maxDistance + 1) - maxDistance);
+    //playerCol = teleportCol + (rand() % (2 * maxDistance + 1) - maxDistance);
+    
+    // Check if the generated position is within the valid range of the maze
+    //if (playerRow >= 0 && playerRow < rowSize && playerCol >= 0 && playerCol < columnSize) {
+        // Check if the generated position is an empty space
+        //if (plot[playerRow][playerCol] == " ") {
+            //break;  // Exit the loop if an empty location is found
+        //}
+    //}
+//} while (true);
 
     // Move the player to the random empty position
-    	plot[character.vertical][character.horizontal] = " ";
-    	character.vertical = playerRow;
-    	character.horizontal = playerCol;
-    	plot[character.vertical][character.horizontal] = character.avatar;
+    	//plot[character.vertical][character.horizontal] = " ";
+    	//character.vertical = playerRow;
+    	//character.horizontal = playerCol;
+    	//plot[character.vertical][character.horizontal] = character.avatar;
 
     // Remove the teleporter from its original position
-    	plot[teleportRow][teleportCol] = " ";
+    	//plot[teleportRow][teleportCol] = " ";
 
     // Clear the screen and display the updated maze
-    	clearscreen();
-	    printPlot(plot, rowSize, columnSize, exitPoint);
-        printPlayerStats(character);
+    	//clearscreen();
+	    //printPlot(plot, rowSize, columnSize, exitPoint);
+        //printPlayerStats(character);
 
-    }
+    //}
   }
 }
