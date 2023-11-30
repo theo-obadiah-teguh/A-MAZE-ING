@@ -128,11 +128,11 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
           // Decrement the eat points
           character.eatPoints--;
 
+	  // Update the plot with the new position
+          plot[character.vertical][character.horizontal] = character.avatar;
+
           // Clear the current position
           plot[character.vertical][character.horizontal] = ' ';
-
-          // Update the plot with the new position
-          plot[character.vertical][character.horizontal] = character.avatar;
 
           // Print the updated plot and player stats
           clearscreen();
@@ -150,7 +150,7 @@ void movePlayer (string ** plot, int steps, playerObject& character, string dire
 	  //clearscreen();
           cout << "You don't have enough points to eat the teleporter." << endl;
 	        teleportHit = true;
-	      }
+	}
       }
       else {  
       	 teleportHit = true;
