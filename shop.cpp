@@ -59,20 +59,29 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
     if (player.coins < 30) {
       cout << rejection << endl;
 	    return;
-	  }
+    }
+    int original_health = player.health;
     player.coins -= 30;
     player.health += 15;
     
     cout << "You have been trained.";
     cout << " Your endurance is now better than ever." << endl;
+
+    if (original_health >= 100){
+      cout << "The training increases your max health by 15." << endl;
+    }
+    else if (original_health > 85){
+      cout << "The training increases your max health by " << (player.health) - 100 << "." endl;
+    }
   }
+
 	  
   // Handle the case when the player want to kill one monster
   else if (item == "monster hunter" || item == "Monster hunter") {
     if (player.coins < 40) {
       cout << rejection << endl;
 	    return;
-	  }
+    }
 
     if (monsterCount == 0) {
 	    cout << "There are no monsters in the maze. Do you still wish to hire a hunter? (yes/no)" << endl;
