@@ -1,9 +1,7 @@
-# group-110
-A private repository for creating a text-based game in C++. The is project part COMP2113: Programming Technologies by the University of Hong Kong.
+# A-MAZE-ING
+A private repository owned by Group 110 for creating a text-based game in C++. The is project part COMP2113: Programming Technologies by the University of Hong Kong.
 
-## A-MAZE-ING
-
-### Our Group Members and UIDs
+## Our Group Members and UIDs
 
 - (UID: 3035858755) Bhardwaj, Aryaman
 - (UID: 3036062262) Fok, Po Hin
@@ -13,7 +11,7 @@ A private repository for creating a text-based game in C++. The is project part 
 
 ---
 
-### Game Description
+## Game Description
 **A-MAZE-ING**: A thrilling single-player, text-based game awaits you in the depths of your local terminal. Prepare to embark on an epic adventure as you find yourself transported to an ancient Chinese dungeon maze, where your ultimate goal is to find a way out!
 
 > **But beware! The labyrinth is teeming with peril, and you'll encounter a host of dangers along the way.**
@@ -24,7 +22,7 @@ Will you emerge victorious, escaping the clutches of the treacherous maze and cl
 
 ---
 
-### Game Rules
+## Game Rules
 1. Choose a difficulty level: easy, medium, or hard.
 1. `☺` is the player avatar, while `☠` is the monster avatar.
 1. Click `w` to move upwards, `s` to move downwards, `a` to move leftwards and `d` to move rightwards.
@@ -38,35 +36,36 @@ Will you emerge victorious, escaping the clutches of the treacherous maze and cl
 
 ---
 
-### List of Features and Fulfilment of Task Requirements
-#### Coding Element 1: *Generation of random game sets or events*
+## List of Features and Fulfilment of Task Requirements
+### Coding Element 1: *Generation of random game sets or events*
 All three mazes each have four exits. When a player enters the maze, the program will randomly choose one exit to be assigned as the winning condition for the game. Additionally, obstacles, teleporters, and monsters are all spawned randomly throughout the maze. This was implemented using the in-built random function.
 
-#### Coding Element 2: *Data structures for storing game status*
+### Coding Element 2: *Data structures for storing game status*
 Mazes of three different difficulties (different sizes) have been prepared and stored  into a 2D dynamic array of strings where its contents get updated as the player moves. The location, avatar, health points, and eat points are saved in a custom struct called playerObject. Similarly, each ghost/monster is represented by a monsterObject which includes its location and the next direction of its movement. The monsters are programmed to move towards the player's location/index in the array. The number of health points, coins, and eat points on the screen is updated every time a player runs into an obstacle, shop or teleporter. If obstacles, shops or teleporters have been encountered they disappear from the maze.
 
-#### Coding Element 3: *Dynamic memory management*
+### Coding Element 3: *Dynamic memory management*
 The 2D arrays storing constructor characters of the maze and shop are created dynamically with sizes determined at runtime. This dynamic 2D array is actually an array of pointers to pointers. The size of the 2D array for the maze is based on the chosen difficulty level, and it will be deleted when the player exits a game and returns to the main menu. On the other hand, each time a player encounters a shop, the shop text file will be transformed into a 2D array and deleted every time after the player exits the shop. 
 
-#### Coding Element 4: *File input/output*
+### Coding Element 4: *File input/output*
 All three mazes are handcrafted text files. When we prompt the player for the difficulty level, the program will input the maze according to the chosen level.
 
-#### Coding Element 5: *Program codes in multiple files*
+### Coding Element 5: *Program codes in multiple files*
 We have separated the program into different groups based on their functionality. We have files specifically for the playerObject, monsterObject, the shop feature, and aesthetics which include the ASCII art and main menu screen. Each of these additions are organised within their own header files and implemented in the main program as needed.
 
 ---
 
-### Use of Non-Standard Libraries
+## Use of Non-Standard Libraries
 There were no non-standard libraries used in the creation of this game.
 
-### Use of ASCII Art
+## Use of ASCII Art
 All imported art in this program was obtained from the [ASCII Art Archive](https://www.asciiart.eu/).
 
 ---
 
-### Compilation and Execution Instructions:
-1. Make sure you have Git installed on your device
+## Compilation and Execution Instructions:
+1. Make sure you have Git installed on your device.
 1. Open your terminal, choose your desired directory and clone the repository by executing `git clone https://github.com/theo-obadiah-teguh/group-110.git`.
+1. Enter your GitHub username and token (if applicable).
 1. Enter the newly cloned directory with `cd group-110`.
 1. Execute `make main` to compile the main program.
 1. Execute `./main` to run the program.
