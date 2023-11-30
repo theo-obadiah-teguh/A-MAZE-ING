@@ -27,6 +27,7 @@ Will you emerge victorious, escaping the clutches of the treacherous maze and cl
 ### Game Rules
 1. Choose a difficulty level: easy, medium, or hard.
 1. `☺` is the player avatar, while `☠` is the monster avatar.
+1. Click `w` to move upwards, `s` to move downwards, `a` to move leftwards and `d` to move rightwards.
 1. The player will spawn in the centre of the maze, whilst monsters will spawn randomly in the maze.
 1. Every maze has four exits, but only one will be randomly chosen as the road to victory. This exit will be shown on top of the maze.
 1. The player will start with 100 HP, 150 coins, and 5 chances to avoid teleporting.
