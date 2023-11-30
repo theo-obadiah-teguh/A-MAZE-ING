@@ -113,7 +113,6 @@ void startGame(bool FirstTry){
 
       if (direction == "q") {
       
-        startMenu();
         break;
       }
 
@@ -153,7 +152,6 @@ void startGame(bool FirstTry){
       //}
 
       else if (direction == "q") {
-        startMenu();
         deleteArray(myPlot, rowSize);
         //break;
       }
