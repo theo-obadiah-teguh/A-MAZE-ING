@@ -100,7 +100,7 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
 
     std::random_device rd;
     std::default_random_engine engine(rd());  
-    std::uniform_int_distribution<int> distribution(0, rowSize - 3);
+    std::uniform_int_distribution<int> distribution(0, rowSize - 1);
 	  
     int cornerDistance = 5; //try not to make obstacles near the exit (not within 5 units)
 
@@ -109,8 +109,8 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
        bool validPosition = false; //keep obstacles 
 
      while (!validPosition) {
-          //row = rand() % (rowSize - 3);
-          //col = rand() % (columnSize -3);
+          //row = rand() % (rowSize - 1);
+          //col = rand() % (columnSize -1);
 	  row = distribution(engine);
 	  col = distribution(engine);
 
