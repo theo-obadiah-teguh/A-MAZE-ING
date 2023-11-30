@@ -39,7 +39,7 @@ void huntMonster(string ** myPlot, int & monsterCount){
 }
 
 // Function to decide monster moving direction based on player location so that the monster will move towards the player
-void monsterDir(playerObject player){
+void monsterDir(playerObject player) {
   time_t _time = time(nullptr);
   srand(static_cast<unsigned>(_time));
     
