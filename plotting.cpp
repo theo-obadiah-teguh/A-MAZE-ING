@@ -108,7 +108,7 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
           col = rand() % (columnSize -3);
 
        //First check if it is not on maze properties
-       if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺") {
+       if (plot[row][col] != "*" && plot[row][col] != "☠" && plot[row][col] != "|" && plot[row][col] != "-" && plot[row][col] != "☺" && plot[row][col] != "$") {
            validPosition = true;
 
       // Check if the position is within the corner distance
