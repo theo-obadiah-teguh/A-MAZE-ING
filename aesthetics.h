@@ -1,5 +1,7 @@
 #include <iostream>
 #include <unistd.h>
+#include <cctype>
+#include "plotting.h" // For the availability of the clearscreen() function
 using namespace std;
 
 // Copyright disclaimer, all ASCII art was retrieved from the ASCII Art Archive website
@@ -91,7 +93,7 @@ const char* exitArt =
 
 // An animation script for when the player loses the game
 void defeatAnimation() {
-  system("cls||clear");
+  clearscreen();
 
   cout << "Oh no..." << endl;
   sleep(2);
@@ -108,9 +110,9 @@ void defeatAnimation() {
   sleep(3);
 }
 
-//When the player quits the game
+// When the player quits the game
 void exitAnimation() {
-  system("cls||clear");
+  clearscreen();
 
   cout << "See you next time, traveller!" << endl;
   sleep(1);
@@ -122,83 +124,99 @@ bool firstPlay = true;
 
 // Main menu function for the game
 
-void startMenu(){  
+void startMenu() {  
   clearscreen();
   string answer;
   
   // Keep handling for player input until he/she want to enter the maze game or exit
-  while (true){
-  //cout << i << endl;
-  int count = 0;
-  cout << "1. Start Game" << endl;
-  cout << "2. Rules" << endl;
-  cout << "3. Credits" << endl;
-  cout << "4. Quit" << endl;
+  while (true) {
+    //cout << i << endl;
+    int count = 0;
+    cout << "1. Start Game" << endl;
+    cout << "2. Rules" << endl;
+    cout << "3. Credits" << endl;
+    cout << "4. Quit" << endl;
 
-  int choice;
-  cout << "Enter your choice number: ";
-  cin >> choice;
-  //cout << choice << endl;
-  if (choice == 1){
-    return;
+    string prompt;
+    cout << "Please PRESS a number (1-4): ";
+    cin >> prompt;
+
+    // Check if the input is indeed a number
+    if (!all_of(prompt.begin(), prompt.end(), ::isdigit)) {
+      clearscreen();
+      continue;
     }
 
-  // Handle the cases when the player does not want to play the main game yet
-	  
-  switch (choice){
-    case 2:
-          //Display the rules
-          cout << "------------------------------------------------------------ " << endl;
-          cout << "Rules:" << endl;
-          cout << "Choose a difficulty level: easy, medium, or hard" << endl;
-          cout << "Navigate the maze through the arrow keys 'w' 'a' 's' 'd' " << endl;
-          cout << "Select how many steps to take" << endl;
-          cout << "Find the exit point indicated by the number 1, 2, 3 or 4" << endl;
-          cout << "Avoid obstacles '#' and walls '|' to not lose health points" << endl;
-          cout << "Watch out for the monsters!" << endl;
-          cout << "Teleport 'T' to a random location if you wish, or eat them if you have enough points" << endl;
-          cout << "Collect coins '$' to purchase items like more health" << endl;
-          cout << "------------------------------------------------------------ " << endl;
-          cout << "press q to exit rule display." << endl;
-	  cin >> answer;
-	  if (answer == "q"){
-	    clearscreen();
-	    break;
-	    }
-	  break;
-    case 3:
+    // Convert string input to integer
+    int choice = stoi(prompt);
+    if (choice == 1) {
+      return;
+    }
+
+    // Handle the cases when the player does not want to play the main game yet
+	  if (!isdigit(choice))
+    switch (choice) {
+      case 2:
+        while (true) {
+          // Display the rules
+          clearscreen();
+          cout << "--------------------------------------------------------------------------------------- " << endl;
+          cout << "                                         Rules                                          " << endl;
+          cout << "--------------------------------------------------------------------------------------- " << endl;
+          cout << " 1. Choose a difficulty level: easy, medium, or hard" << endl;
+          cout << " 2. Navigate the maze with the 'w'(up), 'a'(left), 's'(down), 'd'(right) keys" << endl;
+          cout << " 3. Select how many steps to take" << endl;
+          cout << " 4. Find the exit point indicated by the number 1, 2, 3 or 4" << endl;
+          cout << " 5. Avoid obstacles '#' and walls '|' to not lose health points" << endl;
+          cout << " 6. Watch out for the monsters!" << endl;
+          cout << " 7. Teleport 'T' to a random location if you wish, or eat them if you have enough points" << endl;
+          cout << " 8. Go to shops '$' to purchase items to help you survive!" << endl;
+          cout << "--------------------------------------------------------------------------------------- " << endl;
+          cout << "PRESS q to exit rules display: ";
+	        cin >> answer;
+	        if (answer == "q") {
+	          clearscreen();
+	          break;
+	        }
+        }
+	      break;
+      case 3:
+        while (true) {
+          clearscreen();
           cout << "---------------------------------------" << endl;
-          cout << "Credits:" << endl;
-          cout << "      Name            |     UID" << endl;
-          cout << "Bhardwaj Aryaman      |  3035858755  " << endl;
-          cout << "Fok Po Hin            |  3036062262  " << endl;
-          cout << "Lai Wan Ching Anson   |  3036067676  " << endl;
-          cout << "Lee Ka Ka             |  3035921174  " << endl;
-          cout << "Teguh Theo Obadiah    |  3035898872  " << endl;   
+          cout << "                Credits                " << endl;
           cout << "---------------------------------------" << endl;
-          cout << "Press q to exit credit screen." << endl;
-	  cin >> answer;
-	  if(answer == "q"){
-	    clearscreen();
-	    break;
-	    }
-	  break;
-    case 4:
-          //Quit the game
-          exitAnimation();
-          exit(0);
-	  break;
-    default:
-          //Invalid choice
-          cout << "Invalid choice. Please try again." << endl;
-	  break;
-  }
+          cout << "        Name          |     UID        " << endl;
+          cout << " Bhardwaj Aryaman     |  3035858755    " << endl;
+          cout << " Fok Po Hin           |  3036062262    " << endl;
+          cout << " Lai Wan Ching Anson  |  3036067676    " << endl;
+          cout << " Lee Ka Ka            |  3035921174    " << endl;
+          cout << " Teguh Theo Obadiah   |  3035898872    " << endl;   
+          cout << "---------------------------------------" << endl;
+          cout << "PRESS q to exit credit screen: ";
+	        cin >> answer;
+	        if(answer == "q") {
+	          clearscreen();
+	          break;
+	        }
+        }
+	      break;
+      case 4:
+        // Quit the game
+        exitAnimation();
+        exit(0);
+	      break;
+      default:
+        // Invalid choice
+        clearscreen();
+	      break;
+    }
   }
 }
 
 // An animation script for when the player wins the game
 void victoryAnimation() {
-  system("cls||clear");
+  clearscreen();
 
   cout << "Congratulations." << endl;
   sleep(2);
@@ -220,22 +238,22 @@ void victoryAnimation() {
 // An animation script for when the player starts the game
 
 void welcomeAnimation() {
-  system("cls||clear");
+  clearscreen();
   cout << "A long... long... time ago..." << endl;
-  sleep(2);
+  sleep(1);
 
   cout << "In the middle of a forest... in ancient China..." << endl;
-  sleep(2);
+  sleep(1);
 
   cout << "There was a dungeon..." << endl;
   cout << endl;
   sleep(1);
   
   cout << welcomeArt << endl;
-  sleep(1);
+  sleep(3);
   clearscreen();
 
-  sleep(2);
+  sleep(1);
 
   startMenu();
 }
