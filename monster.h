@@ -14,7 +14,7 @@ struct monsterObject{
 // Avoid duplicate error
 extern vector<monsterObject *> monster;
 
-void monsterNo(string difficulty, int &monsterCount);
+void monsterNo(string difficulty, int & monsterCount);
 
 void createMonsters(int monsterCount);
 
