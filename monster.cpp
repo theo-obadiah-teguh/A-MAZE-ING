@@ -65,7 +65,7 @@ void monsterDir(playerObject player){
     }
 }
 
-// Function to move the monster towards the player
+// Function to initialize monster position in the maze
 void init(int rowSize, int columnSize, string ** myPlot, int monsterCount){
     time_t _time=time(nullptr);
     srand(static_cast<unsigned>(_time));
