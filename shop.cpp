@@ -132,16 +132,19 @@ void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, str
   string drinkConfirmation;
   cin >> drinkConfirmation;
 
-while (drinkConfirmation != "yes" && drinkConfirmation != "no"){
-    cout << "Invalid options." << endl;
-    cout << "Do you wish to but some goods? (yes/no)" << endl;
-    cin >> drinkConfirmation;
+while (drinkConfirmation != "yes"){
     if (drinkConfirmation == "no") {
     cout << "See you soon." << endl;
+    sleep(1);
+    cout << "Redirecting you to the maze.";
+    sleep(1);
     deleteArray(shopArray, shopRowSize);
     clearscreen();
     return;
     }
+    cout << "Invalid options." << endl;
+    cout << "Do you wish to but some goods? (yes/no)" << endl;
+    cin >> drinkConfirmation;    
 }
 	
 while (drinkConfirmation != "no") {
@@ -157,7 +160,9 @@ while (drinkConfirmation != "no") {
 
   cout << "See you soon." << endl;
   sleep(1);
-
+  cout << "Redirecting you to the maze." << endl;
+  sleep(1);
+	
   // Free memory slots
   deleteArray(shopArray, shopRowSize);
 
