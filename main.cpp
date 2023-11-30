@@ -112,7 +112,6 @@ void startGame(bool FirstTry){
       }
 
       if (direction == "q") {
-      
         break;
       }
 
@@ -153,7 +152,7 @@ void startGame(bool FirstTry){
 
       else if (direction == "q") {
         deleteArray(myPlot, rowSize);
-        //break;
+        break;
       }
 
       if (direction != "w" && direction != "a" && direction != "s" && direction != "d") {
