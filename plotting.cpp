@@ -110,8 +110,8 @@ string ** initPlot (string filename, string type, int & rowSize, int & columnSiz
       bool validPosition = false; // Keep obstacles 
 
       while (!validPosition) {
-        row = rand() % (rowSize - 3);
-        col = rand() % (columnSize -3);
+        row = rand() % (rowSize - 1);
+        col = rand() % (columnSize -1);
 	      // row = distribution(engine);
 	      // col = distribution(engine);
 
