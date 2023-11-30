@@ -134,7 +134,7 @@ void visitShop(int & monsterHunt, int & monsterCount, playerObject & player, str
 
 while (drinkConfirmation != "yes" && drinkConfirmation != "no"){
     cout << "Invalid options." << endl;
-    cout << "Do you wish to but some goods?" << endl;
+    cout << "Do you wish to but some goods? (yes/no)" << endl;
     cin >> drinkConfirmation;
     if (drinkConfirmation == "no") {
     cout << "See you soon." << endl;
@@ -150,7 +150,7 @@ while (drinkConfirmation != "no") {
     cin >> drinkConfirmation;
     while (drinkConfirmation != "yes" && drinkConfirmation != "no"){
       cout << "Invalid options." << endl;
-      cout << "Is there anything you still want to buy?" << endl;
+      cout << "Is there anything you still want to buy? (yes/no)" << endl;
       cin >> drinkConfirmation;
     }  
   }
