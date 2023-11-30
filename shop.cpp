@@ -10,9 +10,9 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
   // Prompt the player and input the target items
 
   cout << "What do you wish to buy? ";
-    string item1, item2, item;
-      cin >> item1 >> item2;
-      item = item1 + " " + item2;
+  string item_string_1, item_string_2, item;
+  cin >> item_string_1 >> item_string_2;
+  item = item_string_1 + " " + item_string_2;
 
   // Check the cases where the player does not have enough money
   string rejection = "Not enough coins. Try to earn more in the game.";
@@ -54,7 +54,7 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
       cout << "Now you have " << player.health << " HP." << endl;
     }
   }
-  // Handle the case when player wnat to be trained
+  // Handle the case when player wnat to be trained. This option allows player to increase maximum health
   else if (item == "Body training" || item == "body training") {
     if (player.coins < 30) {
       cout << rejection << endl;
@@ -62,15 +62,11 @@ void purchaseOptions(int & monsterHunt, int & monsterCount, playerObject & playe
 	  }
     player.coins -= 30;
     player.health += 15;
-
-    // Maximum hit points is 100
-      if (player.health > 100) {
-        player.health = 100;
-      }
     
     cout << "You have been trained.";
     cout << " Your endurance is now better than ever." << endl;
   }
+	  
   // Handle the case when the player want to kill one monster
   else if (item == "monster hunter" || item == "Monster hunter") {
     if (player.coins < 40) {
