@@ -1,5 +1,5 @@
 # A-MAZE-ING
-A private repository owned by `Group 110` for creating a text-based game in C++ as a final project for COMP2113: Programming Technologies by the University of Hong Kong.
+A repository owned by `Group 110` for COMP2113: Programming Technologies by the University of Hong Kong. The objective was to create a fully-functioning text-based game in C/C++.
 
 ## Watch Our Recorded Demonstration
 Get a brief tour of our game, led by one of our group members, Dora (Lee, Ka Ka) and check out the general features of the game!
